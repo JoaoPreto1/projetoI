@@ -5,49 +5,63 @@
         "nome": "Caminho Francês",
         "distancia": "800 km",
         "dificuldade": "Moderada",
-        "descricao": "O mais popular, atravessa a Espanha de leste a oeste."
+        "descricao": "O mais popular, atravessa a Espanha de leste a oeste.",
+        "latitude": 42.8782,
+        "longitude": -8.5448
       },
       {
         "id": 2,
         "nome": "Caminho Português",
         "distancia": "600 km",
         "dificuldade": "Fácil",
-        "descricao": "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa."
+        "descricao": "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa.",
+        "latitude": 41.1579,
+        "longitude": -8.6291
       },
       {
         "id": 3,
         "nome": "Caminho Primitivo",
         "distancia": "300 km",
         "dificuldade": "Alta",
-        "descricao": "A rota mais antiga e desafiadora, através de montanhas."
+        "descricao": "A rota mais antiga e desafiadora, através de montanhas.",
+        "latitude": 43.3614,
+        "longitude": -5.8494
       },
       {
         "id": 4,
         "nome": "Caminho da Costa",
         "distancia": "280 km",
         "dificuldade": "Moderada",
-        "descricao": "Litoral português e espanhol, com belas vistas do oceano."
+        "descricao": "Litoral português e espanhol, com belas vistas do oceano.",
+        "latitude": 43.2569,
+        "longitude": -2.9234
       },
       {
         "id": 5,
-        "nome": "Caminho Sarracenico",
+        "nome": "Caminho Sarracênico",
         "distancia": "400 km",
         "dificuldade": "Alta",
-        "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada."
+        "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada.",
+        "latitude": 43.0546,
+        "longitude": -6.5736
       },
       {
         "id": 6,
         "nome": "Caminho de Fisterra",
         "distancia": "90 km",
         "dificuldade": "Fácil",
-        "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra."
+        "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
+        "latitude": 42.9071,
+        "longitude": -9.2625
       },
       {
         "id": 7,
         "nome": "Caminho da Via de la Plata",
         "distancia": "1000 km",
         "dificuldade": "Alta",
-        "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha."
+        "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
+        "latitude": 37.3886,
+        "longitude": -5.9823
       }
     ]
   }
