@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejar Caminho</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Resetando margens e paddings padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        /* Container centralizado com fundo branco e bordas arredondadas */
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Título da página */
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #004c97;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para os inputs e selects */
+        .form-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            padding: 10px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #004c97;
+            box-shadow: 0 0 5px rgba(0, 76, 151, 0.5);
+        }
+
+        /* Estilo para os botões */
+        button[type="submit"] {
+            background-color: #004c97;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #003a75;
+            transform: translateY(-2px);
+        }
+
+        .btn-cancelar {
+            background-color: #e2e6ea;
+            color: #333;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-cancelar:hover {
+            background-color: #cfd8d8;
+            transform: translateY(-2px);
+        }
+
+     
+        #resumoViagem {
+            background-color: #e1f7fc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+       
+        .form-check-input {
+            margin-right: 10px;
+        }
+
+      
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+
+    
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Planeje Seu Caminho</h2>
+        <form id="formCaminho">
+            <div class="mb-3">
+                <label for="localPartida" class="form-label">Local de Partida</label>
+                <select class="form-select" id="localPartida" required>
+                    <option value="">Selecione...</option>
+                    <option value="Porto">Porto</option>
+                    <option value="Lisboa">Lisboa</option>
+                    <option value="Vila do Conde">Vila do Conde</option>
+                    <option value="Lisboa">Castelo Branco</option>
+                    <option value="Lisboa">Bragança</option>
+                    <option value="Lisboa">Aveiro</option>
+                    <option value="Lisboa">Outro</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="destino" class="form-label">Destino</label>
+                <select class="form-select" id="destino" required>
+                    <option value="">Selecione...</option>
+                    <option value="Santiago de Compostela">Santiago de Compostela</option>
+                    <option value="Finisterra">Finisterra</option>
+                    <option value="Muxía">Muxía</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="dataViagem" class="form-label">Data da Viagem</label>
+                <input type="date" class="form-control" id="dataViagem" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="diasViagem" class="form-label">Número de Dias</label>
+                <input type="number" class="form-control" id="diasViagem" min="1" max="30" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Alojamento Preferido</label>
+                <select class="form-select" id="alojamento">
+                    <option value="">Escolher...</option>
+                    <option value="Albergue">Albergue</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Hostel">Hostel</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="nivelDificuldade" class="form-label">Nível de Dificuldade</label>
+                <select class="form-select" id="nivelDificuldade">
+                    <option value="Fácil">Fácil</option>
+                    <option value="Moderado">Moderado</option>
+                    <option value="Difícil">Difícil</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Transporte</label><br>
+                <input type="radio" name="transporte" value="A pé" checked> A pé
+                <input type="radio" name="transporte" value="Bicicleta"> Bicicleta
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Gerar Itinerário</button>
+        </form>
+
+        <div id="resumoViagem" class="alert alert-info mt-4 d-none"></div>
+
+        <div id="melhoresCaminhos" class="mt-4"></div>
+    </div>
+
+    <script>
+        document.getElementById('formCaminho').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let partida = document.getElementById("localPartida").value;
+            let destino = document.getElementById("destino").value;
+            let data = document.getElementById("dataViagem").value;
+            let dias = document.getElementById("diasViagem").value;
+            let alojamento = document.getElementById("alojamento").value || "Não especificado";
+            let dificuldade = document.getElementById("nivelDificuldade").value;
+            let transporte = document.querySelector('input[name="transporte"]:checked').value;
+
+            // Criar o objeto com as preferências do usuário
+            let preferencias = {
+                partida: partida,
+                destino: destino,
+                data: data,
+                dias: dias,
+                alojamento: alojamento,
+                dificuldade: dificuldade,
+                transporte: transporte
+            };
+            
+            
+            fetch('http://localhost:3000/caminhos') 
+                .then(response => response.json())
+                .then(caminhos => {
+                    let melhoresCaminhos = caminhos.filter(caminho => {
+                       
+                        return caminho.dificuldade.toLowerCase() === dificuldade.toLowerCase();
+                    });
+
+                    
+                    let caminhoHTML = melhoresCaminhos.map(caminho => {
+                        return `
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">${caminho.nome}</h5>
+                                    <p><strong>Distância:</strong> ${caminho.distancia}</p>
+                                    <p><strong>Descrição:</strong> ${caminho.descricao}</p>
+                                <a href="#" class="btn btn-primary" onclick="mostrarDetalhes(${caminho.id})">Detalhes</a>
+                                </div>
+                        `;
+                    }).join('');
+
+                    document.getElementById("melhoresCaminhos").innerHTML = caminhoHTML;
+                    document.getElementById("melhoresCaminhos").classList.remove("d-none");
+                })
+                .catch(error => {
+                    console.error("Erro ao obter caminhos:", error);
+                });
+        });
+    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Certifique-se de que o Bootstrap JS está carregado -->
+        <script src="/js/script.js"></script> 
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script> <!-- API do Google Maps -->
+    
+</body>
+</html>

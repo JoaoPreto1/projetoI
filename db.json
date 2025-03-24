@@ -1,0 +1,54 @@
+{
+    "caminhos": [
+      {
+        "id": 1,
+        "nome": "Caminho Francês",
+        "distancia": "800 km",
+        "dificuldade": "Moderada",
+        "descricao": "O mais popular, atravessa a Espanha de leste a oeste."
+      },
+      {
+        "id": 2,
+        "nome": "Caminho Português",
+        "distancia": "600 km",
+        "dificuldade": "Fácil",
+        "descricao": "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa."
+      },
+      {
+        "id": 3,
+        "nome": "Caminho Primitivo",
+        "distancia": "300 km",
+        "dificuldade": "Alta",
+        "descricao": "A rota mais antiga e desafiadora, através de montanhas."
+      },
+      {
+        "id": 4,
+        "nome": "Caminho da Costa",
+        "distancia": "280 km",
+        "dificuldade": "Moderada",
+        "descricao": "Litoral português e espanhol, com belas vistas do oceano."
+      },
+      {
+        "id": 5,
+        "nome": "Caminho Sarracenico",
+        "distancia": "400 km",
+        "dificuldade": "Alta",
+        "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada."
+      },
+      {
+        "id": 6,
+        "nome": "Caminho de Fisterra",
+        "distancia": "90 km",
+        "dificuldade": "Fácil",
+        "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra."
+      },
+      {
+        "id": 7,
+        "nome": "Caminho da Via de la Plata",
+        "distancia": "1000 km",
+        "dificuldade": "Alta",
+        "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha."
+      }
+    ]
+  }
+  
