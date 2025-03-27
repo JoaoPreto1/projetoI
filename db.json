@@ -1,68 +1,127 @@
 {
-    "caminhos": [
-      {
-        "id": 1,
-        "nome": "Caminho Francês",
-        "distancia": "800 km",
-        "dificuldade": "Moderada",
-        "descricao": "O mais popular, atravessa a Espanha de leste a oeste.",
-        "latitude": 42.8782,
-        "longitude": -8.5448
-      },
-      {
-        "id": 2,
-        "nome": "Caminho Português",
-        "distancia": "600 km",
-        "dificuldade": "Fácil",
-        "descricao": "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa.",
-        "latitude": 41.1579,
-        "longitude": -8.6291
-      },
-      {
-        "id": 3,
-        "nome": "Caminho Primitivo",
-        "distancia": "300 km",
-        "dificuldade": "Alta",
-        "descricao": "A rota mais antiga e desafiadora, através de montanhas.",
-        "latitude": 43.3614,
-        "longitude": -5.8494
-      },
-      {
-        "id": 4,
-        "nome": "Caminho da Costa",
-        "distancia": "280 km",
-        "dificuldade": "Moderada",
-        "descricao": "Litoral português e espanhol, com belas vistas do oceano.",
-        "latitude": 43.2569,
-        "longitude": -2.9234
-      },
-      {
-        "id": 5,
-        "nome": "Caminho Sarracênico",
-        "distancia": "400 km",
-        "dificuldade": "Alta",
-        "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada.",
-        "latitude": 43.0546,
-        "longitude": -6.5736
-      },
-      {
-        "id": 6,
-        "nome": "Caminho de Fisterra",
-        "distancia": "90 km",
-        "dificuldade": "Fácil",
-        "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
-        "latitude": 42.9071,
-        "longitude": -9.2625
-      },
-      {
-        "id": 7,
-        "nome": "Caminho da Via de la Plata",
-        "distancia": "1000 km",
-        "dificuldade": "Alta",
-        "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
-        "latitude": 37.3886,
-        "longitude": -5.9823
-      }
-    ]
-  }
-  
+  "caminhos": [
+    {
+      "id": 1,
+      "nome": "Caminho Francês",
+      "distancia": "800 km",
+      "dificuldade": "Moderada",
+      "descricao": "O mais popular, atravessa a Espanha de leste a oeste.",
+      "latitude": 42.8782,
+      "longitude": -8.5448,
+      "variantes": [
+        {
+          "id": 1.1,
+          "nome": "Rota de Sarria a Santiago",
+          "distancia": "111 km",
+          "descricao": "Trecho mais percorrido, ideal para obter a Compostela."
+        },
+        {
+          "id": 1.2,
+          "nome": "Rota de Roncesvalles",
+          "distancia": "790 km",
+          "descricao": "Passagem tradicional pelos Pirineus, cheia de história."
+        },
+        {
+          "id": 1.3,
+          "nome": "Rota de León a Santiago",
+          "distancia": "300 km",
+          "descricao": "Opção intermediária para quem tem menos tempo."
+        },
+        {
+          "id": 1.4,
+          "nome": "Rota de O Cebreiro",
+          "distancia": "150 km",
+          "descricao": "Paisagens montanhosas impressionantes e vilas históricas."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Caminho Português",
+      "distancia": "600 km",
+      "dificuldade": "Fácil",
+      "descricao": "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa.",
+      "latitude": 41.1579,
+      "longitude": -8.6291,
+      "variantes": [
+        {
+          "id": 2.1,
+          "nome": "Caminho Central",
+          "distancia": "600 km",
+          "descricao": "A rota principal, passando por cidades históricas como Porto, Coimbra e Tui."
+        },
+        {
+          "id": 2.2,
+          "nome": "Caminho da Costa",
+          "distancia": "280 km",
+          "descricao": "Alternativa mais panorâmica, seguindo pela costa atlântica."
+        },
+        {
+          "id": 2.3,
+          "nome": "Caminho Interior",
+          "distancia": "420 km",
+          "descricao": "Menos movimentado, passando por cidades do interior como Viseu e Chaves."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Caminho Primitivo",
+      "distancia": "300 km",
+      "dificuldade": "Alta",
+      "descricao": "A rota mais antiga e desafiadora, através de montanhas.",
+      "latitude": 43.3614,
+      "longitude": -5.8494,
+      "variantes": [
+        {
+          "id": 3.1,
+          "nome": "Rota de Oviedo",
+          "distancia": "300 km",
+          "descricao": "Começa na capital das Astúrias, considerada o berço do Caminho de Santiago."
+        },
+        {
+          "id": 3.2,
+          "nome": "Rota de Lugo",
+          "distancia": "100 km",
+          "descricao": "Trecho final que se conecta ao Caminho Francês em Melide."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Caminho da Costa",
+      "distancia": "280 km",
+      "dificuldade": "Moderada",
+      "descricao": "Litoral português e espanhol, com belas vistas do oceano.",
+      "latitude": 43.2569,
+      "longitude": -2.9234
+    },
+    {
+      "id": 5,
+      "nome": "Caminho Sarracênico",
+      "distancia": "400 km",
+      "dificuldade": "Alta",
+      "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada.",
+      "latitude": 43.0546,
+      "longitude": -6.5736
+    },
+    {
+      "id": 6,
+      "nome": "Caminho de Fisterra",
+      "distancia": "90 km",
+      "dificuldade": "Fácil",
+      "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
+      "latitude": 42.9071,
+      "longitude": -9.2625
+    },
+    {
+      "id": 7,
+      "nome": "Caminho da Via de la Plata",
+      "distancia": "1000 km",
+      "dificuldade": "Alta",
+      "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
+      "latitude": 37.3886,
+      "longitude": -5.9823
+    }
+  ]
+}
