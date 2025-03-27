@@ -1,3 +1,21 @@
+let map;
+
+function initMap(latitude = 42.8782, longitude = -8.5448) {
+    const center = { lat: latitude, lng: longitude };
+
+    // Inicialize o mapa
+    map = new google.maps.Map(document.getElementById("mapa"), {
+        center: center,
+        zoom: 12, // Nível de zoom
+    });
+
+    // Adiciona marcador no centro
+    new google.maps.Marker({
+        position: center,
+        map: map,
+        title: "Caminho de Santiago",
+    });
+}
 
 function carregarCaminhos() {
     fetch("http://localhost:3000/caminhos")
@@ -42,7 +60,6 @@ function mostrarDetalhes(caminhoId) {
                 <p><strong>Descrição:</strong> ${caminho.descricao}</p>
             `;
 
-           
             const variantesContainer = document.getElementById("variantesContainer");
             variantesContainer.innerHTML = ""; 
 
@@ -52,7 +69,7 @@ function mostrarDetalhes(caminhoId) {
                         <div class="card mb-2 p-2 border-secondary">
                             <h6 class="m-0">${variacao.nome}</h6>
                             <p class="m-0 text-muted"><small>${variacao.distancia}</small></p>
-                            <button class="btn btn-sm btn-outline-primary mt-1" onclick="percorrerCaminho('${variacao.nome}')">Percorrer</button>
+                            <button class="btn btn-sm btn-outline-primary mt-1" onclick="percorrerCaminho('${variacao.nome}', true)">Percorrer</button>
                         </div>
                     `;
                     variantesContainer.innerHTML += varianteCard;
@@ -61,39 +78,28 @@ function mostrarDetalhes(caminhoId) {
                 variantesContainer.innerHTML = "<p class='text-muted'>Nenhuma variante disponível.</p>";
             }
 
-           
             variantesContainer.innerHTML += `
-                <button class="btn btn-success mt-3 w-100" onclick="percorrerCaminho('${caminho.nome}')">Percorrer o Caminho Completo</button>
+                <button class="btn btn-success mt-3 w-100" onclick="percorrerCaminho('${caminho.nome}', false)">Percorrer o Caminho Completo</button>
             `;
 
-            
+            // Inicializa o mapa com as coordenadas do caminho
             initMap(caminho.latitude, caminho.longitude);
 
-          
             let modal = new bootstrap.Modal(document.getElementById('detalhesModal'));
             modal.show();
         })
         .catch(error => console.error("Erro ao carregar os detalhes do caminho:", error));
 }
 
+function percorrerCaminho(nome, variante) {
+    let modal = bootstrap.Modal.getInstance(document.getElementById('detalhesModal'));
+    modal.hide();
 
-function initMap(lat, lng) {
-    const map = new google.maps.Map(document.getElementById("mapa"), {
-        zoom: 10,
-        center: { lat: lat, lng: lng }
-    });
+    let novoModal = new bootstrap.Modal(document.getElementById('caminhoModal'));
+    document.getElementById("caminhoModalLabel").innerText = variante ? `Percorrendo a variante: ${nome}` : `Percorrendo o Caminho Completo: ${nome}`;
+    document.getElementById("caminhoDescricao").innerText = `Você iniciou o percurso do caminho: ${nome}. Boa jornada!`;
 
-    new google.maps.Marker({
-        position: { lat: lat, lng: lng },
-        map: map,
-        title: "Localização do Caminho"
-    });
+    novoModal.show();
 }
-
-
-function percorrerCaminho(nome) {
-    alert(`Agora você está percorrendo: ${nome}`);
-}
-
 
 document.addEventListener("DOMContentLoaded", carregarCaminhos);
