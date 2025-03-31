@@ -1,3 +1,4 @@
+const initGame = document.getElementById('gameBtn')
 // Função para carregar os caminhos a partir do JSON Server
 function carregarCaminhos() {
     fetch("http://localhost:3000/caminhos")
@@ -71,6 +72,18 @@ function initMap(lat, lng) {
     });
 }
 
+
+let MyRandomNumber = () => {
+    const min = 0;
+    const max = 2;
+    let i = Math.floor(Math.random() * (max- min + 1) + min);
+    return i
+
+}
+initBtn.addEventListener('click', (MyRandomNumber) => {
+    alert(MyRandomNumber)
+})
+    
 
 
 

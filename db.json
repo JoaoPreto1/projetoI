@@ -63,6 +63,24 @@
         "latitude": 37.3886,
         "longitude": -5.9823
       }
+    ],
+    "gamificacao" : [
+      {
+        "id": 0,
+        "url":"https://pdm.cm-porto.pt/static/images/image-contacts.jpg",
+        "local": "Camara do Porto"
+      },
+      {
+        "id": 1,
+        "url":"https://www.visitepontedelima.pt/temas/pdl/images/share.jpg",
+        "local": "Ponte de Lima"
+      },
+      {
+        "id": 2,
+        "url": "https://ominho.pt/wp-content/uploads/2023/07/es.jpg",
+        "local": "escultura de apóstolo"
+      }
+
     ]
   }
   
