@@ -102,4 +102,23 @@ function percorrerCaminho(nome, variante) {
     novoModal.show();
 }
 
+
+let MyRandomNumber = () => {
+    const min = 0;
+    const max = 2;
+    let i = Math.floor(Math.random() * (max- min + 1) + min);
+    return i
+
+}
+
+const initBtn = document.querySelector('#initBtn')
+
+initBtn.addEventListener('click', (MyRandomNumber) => {
+    alert('MyRandomNumber')
+})
+    
+
+
+
+document.addEventListener("DOMContentLoaded", carregarCaminhos);
 document.addEventListener("DOMContentLoaded", carregarCaminhos);
