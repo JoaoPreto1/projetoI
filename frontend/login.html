@@ -122,30 +122,29 @@ p a:hover {
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorMessageDiv = document.getElementById('error-message');
 
-            const errorMessageDiv = document.getElementById('error-message');
+        errorMessageDiv.innerHTML = '';
 
-          
-            errorMessageDiv.innerHTML = '';
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(user => user.email === email && user.password === password);
 
-            
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(user => user.email === email && user.password === password);
+        if (!user) {
+            errorMessageDiv.innerHTML = 'Email ou senha incorretos.';
+            return;
+        }
 
-            if (!user) {
-                errorMessageDiv.innerHTML = 'Email ou senha incorretos.';
-                return;
-            }
+    
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
 
-           
-           
-            window.location.href = 'home.html';
-        });
-    </script>
+        
+        window.location.href = 'home.html';
+    });
+</script>
 </body>
 </html>

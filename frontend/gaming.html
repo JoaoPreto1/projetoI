@@ -72,7 +72,9 @@
                     <li class="nav-item"><a class="nav-link" href="formulario.html">Planejar Caminho</a></li>
                     <li class="nav-item"><a class="nav-link" href="gaming.html">Conhecer</a></li>
                     <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-light text-primary px-3" href="login.html" style="color: white !important;">Login</a></li>
+                    <li class="nav-item">
+                        <a id="loginButton" class="nav-link btn btn-light text-primary px-3" href="login.html" style="color: white !important;">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -87,6 +89,22 @@
         function iniciarJogo() {
             alert('O jogo começou! Boa sorte!');
         }
+
+      
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginButton = document.getElementById("loginButton");
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    
+            if (user) {
+                
+                loginButton.outerHTML = `
+                    <a id="profileIcon" class="nav-link" href="perfil.html">
+                        <img src="user-icon.png" alt="Perfil" style="width: 35px; height: 35px; border-radius: 50%;">
+                    </a>
+                `;
+            }
+        });
+   
     </script>
 
 </body>
