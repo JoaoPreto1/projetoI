@@ -139,11 +139,15 @@ p a:hover {
             return;
         }
 
-    
+        
         localStorage.setItem("loggedInUser", JSON.stringify(user));
 
-        
-        window.location.href = 'home.html';
+        //admin vai para a pagina admin.html os utilizadores vão para a home.html
+        if (user.role === "admin") {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'home.html';
+        }
     });
 </script>
 </body>
