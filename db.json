@@ -123,5 +123,22 @@
       "latitude": 37.3886,
       "longitude": -5.9823
     }
+  ],
+  "gamificacao" : [
+      {
+        "id" : 0,
+        "nome": "Ponte de Lima",
+        "url": "https://www.cm-pontedelima.pt/thumbs/cmpontedelima/uploads/writer_file/image/2000/pontedelima_fot._manuel_teixeira_1_1024_2500.jpg"
+      },
+      {
+        "id" : 1,
+        "nome" : "Catedral de Santiago de Compostela",
+        "url" : "https://www.caminodesantiago.gal/osdam/filestore/7/1/7/5/9_5e4b5b6a70ef8b7/71759scr_5f1b870eaf3cc5b.jpg"
+      },
+      {
+        "id" : 2,
+        "nome" : "Igreja de Santa Maria",
+        "url" : "https://www.santiagoturismo.com/files/full/SantaMariadoCamio01.jpg"
+      }
   ]
 }

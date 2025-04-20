@@ -3,13 +3,13 @@ let map;
 function initMap(latitude = 42.8782, longitude = -8.5448) {
     const center = { lat: latitude, lng: longitude };
 
-    // Inicialize o mapa
+  
     map = new google.maps.Map(document.getElementById("mapa"), {
         center: center,
-        zoom: 12, // Nível de zoom
+        zoom: 12, 
     });
 
-    // Adiciona marcador no centro
+   
     new google.maps.Marker({
         position: center,
         map: map,
@@ -82,7 +82,7 @@ function mostrarDetalhes(caminhoId) {
                 <button class="btn btn-success mt-3 w-100" onclick="percorrerCaminho('${caminho.nome}', false)">Percorrer o Caminho Completo</button>
             `;
 
-            // Inicializa o mapa com as coordenadas do caminho
+          
             initMap(caminho.latitude, caminho.longitude);
 
             let modal = new bootstrap.Modal(document.getElementById('detalhesModal'));
