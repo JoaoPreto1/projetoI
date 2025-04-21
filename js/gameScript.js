@@ -12,13 +12,13 @@ initBtn.addEventListener('click', () => {
             container.innerHTML = "";
             let decider = randomNumb()
             gamificacao.forEach(imagem =>{
-               if(imagem.id === decider){
+               if(Number(imagem.id) === decider){
                   const card = `
                      <div id="myPopup" style="display: block; position: fixed; width:80vw; height: 80vh; top: 20%; left: 50%; transform: translate(-50%, -20%); padding: 20px; background: white; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1000;">
                         <h1 style= "color : black";>Adivinha o que está na imagem!</h1>
                         <img src=${imagem.url} style= "width:60vw; height:60vh;">
                         <input id='myAnswer'type= 'text'>
-                        <button onclick="closePopUp('${imagem.nome}')">Adivinhar</button>
+                        <button class="btn-iniciar" onclick="closePopUp('${imagem.nome}')">Adivinhar</button>
                      </div>
                 `;
                 container.innerHTML += card;
@@ -40,6 +40,8 @@ let closePopUp = (name) =>  {
    let urGuess = document.getElementById('myAnswer').value.toLowerCase()
    if( urGuess === name.toLowerCase() ){
       alert('ACERTASTE')
+   } else {
+      alert('Errouuuuuuuuuuuuuuuuuuuuuuu')
    }
  }
 
