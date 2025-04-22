@@ -14,15 +14,15 @@ initBtn.addEventListener('click', () => {
             gamificacao.forEach(imagem =>{
                if(Number(imagem.id) === decider){
                   const card = `
-                     <div id="myPopup" style="display: block; position: fixed; width:80vw; height: 80vh; top: 20%; left: 50%; transform: translate(-50%, -20%); padding: 20px; background: white; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1000; padding: 0;">
-                        <div style="display:flex; justify-content: flex-end">
-                           <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:red; color:white; font-size: .7em; text-align:center; width: 2.7vw; height: 2.5vh; border-radius: 5px; cursor: pointer;">X</button>
+                     <div id="myPopup" style="display: block; position: fixed; width:80vw; height: 80vh; top: 20%; left: 50%; transform: translate(-50%, -20%); padding: 20px; border: 0px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1000; padding:0">
+                        <div id="myClosePopUpContainer" style="display:flex; justify-content: flex-end; background-color: white; width:80vw; border:0px;">
+                           <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:white; color:black; font-size: .7em; text-align:center; width: 2.7vw; height: 2.5vh; border:0px; border-radius: 5px; cursor: pointer;">X</button>
                         </div>
-                        <div id= "MyPopUpContainer" style="display:flex; flex-direction: column; align-items:center; justify-content: space-around; width:80vw; height: 80vh">   
+                        <div id= "MyPopUpContainer" style="display:flex; flex-direction: column; align-items:center; justify-content: space-around; width:80vw; background-color: white;">   
                            <h1 style= "color : black";>Adivinha o que está na imagem!</h1>
-                           <img src=${imagem.url} style= "width:70vw; height:60vh;">
+                           <img src=${imagem.url} style= "width:60vw; height:60vh;">
                            <div style="display: flex; padding: 50px; display:flex; flex-direction: row; justify-content: space-around; width: 80vw;">  
-                              <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="height: 3vh; width: 15vw; font-size:'.7rem'">
+                              <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="height: 3vh; width: 15vw; font-size:1rem">
                               <button class="btn-iniciar" onclick="closePopUp('${imagem.nome}')">Adivinhar</button>
                            </div>  
                         </div>
@@ -32,11 +32,13 @@ initBtn.addEventListener('click', () => {
                const myCloseBtn = document.querySelector('#myCloseBtn');
 
                myCloseBtn.addEventListener('mouseenter', () =>{
-                  myCloseBtn.style.backgroundColor = '#bf1304';
+                  myCloseBtn.style.backgroundColor = '#e32717';
+                  myCloseBtn.style.color = 'white';
                })
 
                myCloseBtn.addEventListener('mouseleave', () =>{
-                  myCloseBtn.style.backgroundColor = 'red';
+                  myCloseBtn.style.backgroundColor = 'white';
+                  myCloseBtn.style.color = 'black';
                })
                }
             });
