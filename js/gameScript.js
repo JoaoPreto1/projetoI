@@ -20,7 +20,7 @@ initBtn.addEventListener('click', () => {
                         </div>
                         <div id= "MyPopUpContainer" style="display:flex; flex-direction: column; align-items:center; justify-content: space-around; width:80vw; background-color: white;">   
                            <h1 style= "color : black";>Adivinha o que está na imagem!</h1>
-                           <img src=${imagem.url} style= "width:60vw; height:60vh;">
+                           <img src=${imagem.url} style= "width:60vw; height:60vh; loading="lazy";">
                            <div style="display: flex; padding: 50px; display:flex; flex-direction: row; justify-content: space-around; width: 80vw;">  
                               <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="height: 3vh; width: 15vw; font-size:1rem">
                               <button class="btn-iniciar" onclick="closePopUp('${imagem.nome}')">Adivinhar</button>
