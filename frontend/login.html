@@ -10,31 +10,59 @@
    
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f1f1f1; 
+    background-color: white; 
     color: #333; 
     margin: 0;
     padding: 0;
 }
-.containerDoLogin{
+
+.containerGeral{
     display: flex;
     justify-content: center;
     align-items:center;
-    width: 20vw;
+    width: 100vw;
+    height:100vh;
 }
+.containerDoLogin{
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 65vw;
+    height:70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
 .container {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 8px;
-    padding: 40px;
     width: 20vw;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height:45vh;
+    margin:0 3vw 0 0;
+    padding: 0 0 0 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#loginForm{
+    padding:2.7vh 1.56vw;
+    width: 20vw;
+    height:45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .containerDeImagemDeFundo{
     background-image: url('../images/2.webp');
+    border-radius: 10px;
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
+    width: 40vw;
+    height: 68vh;
+    padding:2.7vh 1.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,8 +80,8 @@ h2 {
 
 input[type="email"],
 input[type="password"] {
-    background-color: #f9f9f9; 
-    border: 1px solid #ccc; 
+    background-color: rgba(255, 255, 255, 0.5);
+    border: .1px solid #007bff; 
     border-radius: 5px;
     font-size: 1rem;
     padding: 12px;
@@ -114,29 +142,31 @@ p a:hover {
 
     </style>
 <body>
-    <div class="containerDeImagemDeFundo">
-        <div class="containerDoLogin">
-            <div class="container mt-5">
-                <h2 class="text-center mb-4">Entrar na Conta</h2>
+    <div class="containerGeral">
+        <div class="containerDoLogin">   
+            <div class="containerDeImagemDeFundo"></div>
+            <div class="container">
                 
                 <form id="loginForm">
+                    <h2 class="text-center mb-4">Entrar na Conta</h2>
                     <div class="mb-3">
                         <label for="email" class="form-label" style="font-weight: bold;">Email</label>
                         <input type="email" class="form-control" id="email" required>
                     </div>
-    
+        
                     <div class="mb-3">
                         <label for="password" class="form-label" style="font-weight: bold;">Senha</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
-    
-                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+        
+                    <div class="mb-3">    
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                        <div id="error-message" class="text-danger mt-3"></div>    
+                        <p class="mt-3 text-center" style="font-weight: bold;">Ainda não tem uma conta? <a href="register.html">Crie uma aqui</a></p>
+                    </div>    
                 </form>
-                <div id="error-message" class="text-danger mt-3"></div>
-                
-                <p class="mt-3 text-center">Ainda não tem uma conta? <a href="register.html">Crie uma aqui</a></p>
             </div>
-        </div>
+        </div>    
     </div>    
     <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
