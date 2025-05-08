@@ -38,16 +38,16 @@ body {
     border-radius: 8px;
     width: 20vw;
     height:45vh;
-    margin:0 3vw 0 0;
+    margin:0 6vw 12vh 0;
     padding: 0 0 0 3vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-#loginForm{
+#registerForm{
     padding:2.7vh 1.56vw;
     width: 20vw;
-    height:52.5vh;
+    height:45vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -83,7 +83,7 @@ input[type="password"] {
     border: 1px solid #007bff;
     border-radius: 5px;
     font-size: 1rem;
-    padding: 12px;
+    padding: .8vh .4vw;
     width: 100%;
     margin-bottom: 15px;
     transition: border-color 0.3s ease;
@@ -102,7 +102,7 @@ button[type="submit"] {
     background-color: #007bff; 
     color: #fff;
     border: none;
-    padding: 12px;
+    padding: .8vh .4vw;
     border-radius: 5px;
     font-size: 1.1rem;
     width: 100%;
@@ -150,11 +150,10 @@ p a:hover {
         <div class="containerDoRegistar">
             <div class="containerDeImagemDeFundo"></div>   
             <div class="container">
-                
                 <form id="registerForm">
                     <h2 class="text-center mb-4">Criar Conta</h2>
                     <div class="mb-3">
-                        <label for="username" class="form-label" style="font-weight: bold;">Nome de Usuário</label>
+                        <label for="username" class="form-label" style="font-weight: bold;">Nome de Utilizador</label>
                         <input type="text" class="form-control" id="username" required>
                     </div>
 
@@ -171,7 +170,7 @@ p a:hover {
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label" style="font-weight: bold;">Confirmar Senha</label>
                         <input type="password" class="form-control" id="confirmPassword" required>
-                        <input type="checkbox" style="cursor: pointer;" id="TermosECondiçoes" value="accepted">  Concordo com os <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" style="color:#007bff;">termos e condições</a>
+                        <input type="checkbox" style="cursor: pointer;" id="TermosECondiçoes" value="accepted">  Concordo com os <a target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0" style="color:#007bff;">termos e condições</a>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100" id="myRegisterBtn" disabled>Registrar</button>
@@ -179,7 +178,6 @@ p a:hover {
                     
                     <p class="mt-3 text-center" style="font-weight: bold;">Já tem uma conta? <a href="login.html">Faça login aqui</a></p>
                 </form>
-
             </div>
         </div>
     </div> 
