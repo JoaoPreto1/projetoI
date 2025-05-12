@@ -56,13 +56,13 @@ let randomNumb = () => {
 let closePopUp = (name) =>  {
    let urGuess = document.querySelector('#myAnswer').value.toLowerCase();
    if( urGuess === name.toLowerCase() ){
-      alert('ACERTASTE')
-      document.getElementById('myPopup').style.display = 'none';
+      alert('ACERTASTE');
+      closeMyPopUp();
    } else if (urGuess === '') {
-      alert('Tens de escrever a resposta Burrooooo')
+      alert('Tens de escrever a resposta Burrooooo');
    } else {
-      alert('Errouuuuuuuu')
-      document.getElementById('myPopup').style.display = 'none';
+      alert('Errouuuuuuuu');
+      closeMyPopUp();
    }
 }
 
