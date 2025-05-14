@@ -38,8 +38,8 @@ body {
     border-radius: 8px;
     width: 20vw;
     height:45vh;
-    margin:0 6vw 12vh 0;
-    padding: 0 0 0 3vw;
+    margin:0 2vw 12vh 2vw;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -53,19 +53,20 @@ body {
     justify-content: space-between;
 }
 .containerDeImagemDeFundo{
-    background-image: url('../images/4.webp');
     border-radius: 10px;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-    width: 40vw;
+    width: 50vw;
     height: 68vh;
-    padding:2.7vh 1.5vw;
+    margin : 0vh .5vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.containerDeImagemDeFundo img {
+    width: 100%;
+    height: 100%;
+    padding: 0vh 0vw;
+    border-radius: 10px;
+}
 
 h2 {
     text-align: center;
@@ -148,7 +149,9 @@ p a:hover {
 <body>
     <div class="containerGeral">    
         <div class="containerDoRegistar">
-            <div class="containerDeImagemDeFundo"></div>   
+            <div class="containerDeImagemDeFundo">
+                <img src="../images/4.webp" alt="imagem do Registar" loading="lazy">   
+            </div>
             <div class="container">
                 <form id="registerForm">
                     <h2 class="text-center mb-4">Criar Conta</h2>
