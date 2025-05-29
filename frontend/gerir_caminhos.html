@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Admin Caminhos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
+ <style>
+
     body { padding-top: 70px; background-color: #f8f9fa; }
     .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; }
     .btn-action { margin-right: 5px; }
@@ -13,6 +14,7 @@
     .badge-facil { background-color: #198754; }
     .card-coord { font-size: 0.9rem; color: #6c757d; }
     .variant-list { font-size: 0.9rem; }
+
   </style>
 </head>
 <body>
@@ -20,8 +22,9 @@
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">Administração de Caminhos</span>
       <div>
-        <button class="btn btn-outline-light btn-sm me-2" onclick="voltar()">Voltar</button>
-        <button class="btn btn-light btn-sm" onclick="logout()">Logout</button>
+                        <a id="navbar" class="nav-link btn btn-light text-primary px-3" href="admin.html" style="color: white !important;">voltar</a>
+                        <a id="navbar" class="nav-link btn btn-light text-primary px-3" href="login.html" style="color: white !important;">Logout</a>
+                   
       </div>
     </div>
   </nav>
@@ -29,20 +32,12 @@
   <div class="container">
     <h2 class="my-4">Lista de Caminhos</h2>
     <div id="caminhosContainer" class="row g-4">
-      <!-- Caminhos carregados dinamicamente aqui -->
+      
     </div>
   </div>
 
   <script>
     const API_URL = 'http://localhost:3000/caminhos';
-
-    function voltar() {
-      alert('Função de voltar ainda não implementada.');
-    }
-
-    function logout() {
-      alert('Função de logout ainda não implementada.');
-    }
 
     function getBadgeClass(dificuldade) {
       switch ((dificuldade || '').toLowerCase()) {
@@ -118,7 +113,7 @@
     }
 
     function editarCaminho(id) {
-      alert(`Funcionalidade de edição do caminho ID ${id} (a implementar).`);
+      alert(`...`);
     }
 
     carregarCaminhos();
