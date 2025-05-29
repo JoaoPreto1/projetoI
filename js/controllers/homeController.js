@@ -1,6 +1,6 @@
 
 export function initHomePage() {
-  fetch("../views/home.html")
+  fetch("../frontend/home.html")
     .then(response => response.text())
     .then(html => {
       document.getElementById("app").innerHTML = html;

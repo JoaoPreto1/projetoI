@@ -114,7 +114,7 @@
     function fecharFormulario() {
       document.getElementById('formularioUtilizador').style.display = 'none';
     }
-    let abrirformulárioEdit = async (id) => {
+    let abrirformulárioEdit = (id) => {
       document.getElementById('formularioUtilizadorEdit').style.display = 'block';
       document.getElementById('formTitle').innerText = 'Editar Utilizador';
       document.getElementById('utilizadorId').value = `${id}`;
@@ -139,7 +139,6 @@
       const utilizadores = obterUtilizadores();
       const tbody = document.getElementById('utilizadoresBody');
       tbody.innerHTML = '';
-
       utilizadores.forEach(u => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -193,16 +192,14 @@
         } 
     }
     let editarUtilizador = async () => {
-      const id = document.getElementById('utilizadorIdE').value;
+      const id = parseInt(document.getElementById('utilizadorIdE').value);
       const nome = document.getElementById('nomeE').value.trim();
       const email = document.getElementById('emailE').value.trim();
       const password = document.getElementById('passwordE').value.trim();
       const tipo = document.getElementById('tipoE').value;
 
-      console.log(id)
-
       if(isGmail(email)){
-        let utilizadores = obterUtilizadores().filter(u => u.id !== id);
+        let utilizadores = await obterUtilizadores().filter(u => u.id !== id);
         console.log(utilizadores)
           const editedUser = {
             id : id,
@@ -211,6 +208,7 @@
             password: password,
             tipo : tipo
           }
+          console.log(editedUser.id)
           utilizadores.push(editedUser);
   
           salvarUtilizadores(utilizadores);
