@@ -35,6 +35,7 @@
           <tr>
             <th>Nome</th>
             <th>Email</th>
+            <th>Password</th>
             <th>Tipo</th>
             <th>Ações</th>
           </tr>
@@ -55,7 +56,10 @@
         <input class="form-control" id="nome" placeholder="Nome completo">
       </div>
       <div class="mb-2">
-        <input class="form-control" id="email" placeholder="Email">
+        <input class="form-control" id="email" type="email" placeholder="Email">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="password" placeholder="password">
       </div>
       <div class="mb-2">
         <select class="form-select" id="tipo">
@@ -79,6 +83,7 @@
       document.getElementById('utilizadorId').value = '';
       document.getElementById('nome').value = '';
       document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
       document.getElementById('tipo').value = 'user';
     }
 
@@ -87,11 +92,11 @@
     }
 
     function obterUtilizadores() {
-      return JSON.parse(localStorage.getItem('utilizadores')) || [];
+      return JSON.parse(localStorage.getItem('users')) || [];
     }
 
     function salvarUtilizadores(utilizadores) {
-      localStorage.setItem('utilizadores', JSON.stringify(utilizadores));
+      localStorage.setItem('users', JSON.stringify(utilizadores));
     }
 
     function carregarUtilizadores() {
@@ -104,6 +109,7 @@
         tr.innerHTML = `
           <td>${u.nome}</td>
           <td>${u.email}</td>
+          <td>${u.password}</td>
           <td><span class="badge ${u.tipo === 'admin' ? 'bg-danger' : 'bg-secondary'}">${u.tipo}</span></td>
           <td>
             <button class="btn btn-warning btn-sm me-2" onclick="editarUtilizador(${u.id})">✏️</button>
@@ -118,29 +124,37 @@
       const id = document.getElementById('utilizadorId').value;
       const nome = document.getElementById('nome').value.trim();
       const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
       const tipo = document.getElementById('tipo').value;
 
-      if (!nome || !email) {
+      let isGmail = (email) => {
+        if(email.trim().toLowerCase().endsWith("@gmail.com")){
+            if (!nome || !email) {
         alert('Preenche todos os campos!');
         return;
       }
 
       let utilizadores = obterUtilizadores();
-
-      if (id) {
-    
-        utilizadores = utilizadores.map(u =>
-          u.id == id ? { ...u, nome, email, tipo } : u
-        );
-      } else {
       
         const novoId = utilizadores.length ? Math.max(...utilizadores.map(u => u.id)) + 1 : 1;
-        utilizadores.push({ id: novoId, nome, email, tipo });
+        const novoUser = {
+          id : novoId,
+          nome: nome,
+          email: email,
+          password: password,
+          tipo : tipo
+        }
+        utilizadores.push(novoUser);
+
+        salvarUtilizadores(utilizadores);
+        fecharFormulario();
+        carregarUtilizadores();
+        } else {
+          return alert('Ao menos tenta usar um email que possa existir!')
+        }
       }
 
-      salvarUtilizadores(utilizadores);
-      fecharFormulario();
-      carregarUtilizadores();
+      isGmail(email)
     }
 
     function editarUtilizador(id) {
