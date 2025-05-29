@@ -20,6 +20,6 @@ export function setupLoginForm() {
         localStorage.setItem("loggedInUser", JSON.stringify(user));
 
       
-        window.location.href = user.role === "admin" ? 'admin.html' : 'home.html';
+        window.location.href = user.id == 1 ? 'admin.html' : 'home.html';
     });
 }

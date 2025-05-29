@@ -1,10 +1,10 @@
 
 const ADMIN_USER = {
   id: 1,
-  name: "Administrador",
+  nome: "admin",
   email: "admin@gmail.com",
   password: "admin123", 
-  role: "admin"
+  tipo: "admin"
 };
 
 

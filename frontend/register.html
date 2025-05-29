@@ -156,8 +156,8 @@ p a:hover {
                 <form id="registerForm">
                     <h2 class="text-center mb-4">Criar Conta</h2>
                     <div class="mb-3">
-                        <label for="username" class="form-label" style="font-weight: bold;">Nome de Utilizador</label>
-                        <input type="text" class="form-control" id="username" required>
+                        <label for="nome" class="form-label" style="font-weight: bold;">Nome de Utilizador</label>
+                        <input type="text" class="form-control" id="nome" required>
                     </div>
 
                     <div class="mb-3">
@@ -203,10 +203,10 @@ p a:hover {
         if (!adminExists) {
             
             users.push({
-                username: "admin",
+                nome: "admin",
                 email: "admin@email.com",
                 password: "admin123",
-                role: "admin"
+                tipo: "admin"
             });
 
             localStorage.setItem('users', JSON.stringify(users));
@@ -216,7 +216,7 @@ p a:hover {
     document.getElementById('registerForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const username = document.getElementById('username').value;
+        const nome = document.getElementById('nome').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
@@ -239,10 +239,10 @@ p a:hover {
         }
 
         // Definir role 
-        const role = email === "admin@email.com" ? "admin" : "user";
+        const tipo = email === "admin@gmail.com" ? "admin" : "user";
 
       
-        users.push({ username, email, password, role });
+        users.push({ nome, email, password, tipo });
         localStorage.setItem('users', JSON.stringify(users));
 
         
