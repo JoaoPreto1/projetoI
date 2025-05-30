@@ -1,6 +1,10 @@
 import { findUser } from '../models/userModel.js';
 
-export function setupLoginForm() {
+document.addEventListener('DOMContentLoaded', () =>{
+    setupLoginForm();
+})
+
+function setupLoginForm() {
     const form = document.getElementById('loginForm');
     const errorMessage = document.getElementById('error-message');
 

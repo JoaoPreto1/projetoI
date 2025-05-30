@@ -94,25 +94,7 @@
         <a href="gerir_etapas.html" class="btn btn-success btn-bottom">Gerir Etapas</a>
     </div>
 
-    <script>
-        document.getElementById("logoutButton").addEventListener("click", function() {
-            localStorage.removeItem("loggedInUser");
-            window.location.href = "login.html";
-        });
-
-        document.getElementById("backButton").addEventListener("click", function() {
-            window.location.href = "home.html";
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const user = JSON.parse(localStorage.getItem("loggedInUser"));
-            console.log(user.tipo)
-
-            // if (!user || user.role !== "admin") {
-            //     window.location.href = "home.html";
-            // }
-        });
-    </script>
+    <script src="../js/Views/adminView.js" defer></script>
 
 </body>
 </html>

@@ -16,8 +16,8 @@
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">Administração de Caminhos</span>
       <div>
-                        <a id="navbar" class="nav-link btn btn-light text-primary px-3" href="admin.html" style="color: white !important;">voltar</a>
-                        <a id="navbar" class="nav-link btn btn-light text-primary px-3" href="login.html" style="color: white !important;">Logout</a>
+          <a id="navbar" class="nav-link btn btn-light text-primary px-3" href="admin.html" style="color: white !important;">voltar</a>
+          <a id="navbar" class="nav-link btn btn-light text-primary px-3" href="login.html" style="color: white !important;">Logout</a>
                    
       </div>
     </div>
@@ -26,7 +26,7 @@
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h3>Lista de Utilizadores</h3>
-      <button class="btn btn-success" onclick="abrirFormulario()">➕ Adicionar Utilizador</button>
+      <button class="btn btn-success" id="addUserBtn">➕ Adicionar Utilizador</button>
     </div>
 
     <div class="table-responsive">
@@ -68,8 +68,8 @@
           <option value="admin">Admin</option>
         </select>
       </div>
-      <button class="btn btn-primary" onclick="guardarUtilizador()">💾 Guardar</button>
-      <button class="btn btn-secondary" onclick="fecharFormulario()">Cancelar</button>
+      <button class="btn btn-primary" id="guardarAddUserBtn">💾 Guardar</button>
+      <button class="btn btn-secondary" id="closeAddUserBtn">Cancelar</button>
     </div>
   </div>
   <div class="container form-popup" id="formularioUtilizadorEdit">
@@ -91,145 +91,12 @@
           <option value="admin">Admin</option>
         </select>
       </div>
-      <button class="btn btn-primary" onclick="editarUtilizador()">💾 Editar</button>
+      <button class="btn btn-primary" onclick="editarUtilizadorView()">💾 Editar</button>
       <button class="btn btn-secondary" onclick="fecharEditFormulario()">Cancelar</button>
     </div>
   </div>
 
-  <script>
-    function voltar() {
-      window.history.back();
-    }
-
-    function abrirFormulario() {
-      document.getElementById('formularioUtilizador').style.display = 'block';
-      document.getElementById('formTitle').innerText = 'Adicionar Utilizador';
-      document.getElementById('utilizadorId').value = '';
-      document.getElementById('nome').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('password').value = '';
-      document.getElementById('tipo').value = 'user';
-    }
-
-    function fecharFormulario() {
-      document.getElementById('formularioUtilizador').style.display = 'none';
-    }
-    let abrirformulárioEdit = (id) => {
-      document.getElementById('formularioUtilizadorEdit').style.display = 'block';
-      document.getElementById('formTitle').innerText = 'Editar Utilizador';
-      document.getElementById('utilizadorId').value = `${id}`;
-      document.getElementById('nome').value = `${id.nome}`;
-      document.getElementById('email').value = `${id.email}`;
-      document.getElementById('password').value = `${id.password}`;
-      document.getElementById('tipo').value = 'user';
-    }
-    let fecharEditFormulario = async () => {
-      document.getElementById('formularioUtilizadorEdit').style.display = 'none';
-    }
-
-    function obterUtilizadores() {
-      return JSON.parse(localStorage.getItem('users')) || [];
-    }
-
-    function salvarUtilizadores(utilizadores) {
-      localStorage.setItem('users', JSON.stringify(utilizadores));
-    }
-
-    function carregarUtilizadores() {
-      const utilizadores = obterUtilizadores();
-      const tbody = document.getElementById('utilizadoresBody');
-      tbody.innerHTML = '';
-      utilizadores.forEach(u => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${u.id}</td>
-          <td>${u.nome}</td>
-          <td>${u.email}</td>
-          <td>${u.password}</td>
-          <td><span class="badge ${u.tipo === 'admin' ? 'bg-danger' : 'bg-secondary'}">${u.tipo}</span></td>
-          <td>
-            <button class="btn btn-warning btn-sm me-2" onclick="abrirformulárioEdit(${u.id})">✏️</button>
-            <button class="btn btn-danger btn-sm" onclick="removerUtilizador(${u.id})">❌</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-    
-    let isGmail = (email) => {
-      if(email.trim().toLowerCase().endsWith("@gmail.com")){
-        return true
-      
-      } else {
-        return false
-      }
-    }
-    function guardarUtilizador() {
-      const id = document.getElementById('utilizadorId').value;
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const tipo = document.getElementById('tipo').value;
-
-      if(isGmail(email)){
-          let utilizadores = obterUtilizadores();
-      
-          const novoId = utilizadores.length ? Math.max(...utilizadores.map(u => u.id)) + 1 : 1;
-          const novoUser = {
-            id : novoId,
-            nome: nome,
-            email: email,
-            password: password,
-            tipo : tipo
-          }
-          utilizadores.push(novoUser);
-      
-          salvarUtilizadores(utilizadores);
-          fecharFormulario();
-          carregarUtilizadores();
-        } else {
-          alert('Ao menos tenta usar um email que possa existir!')
-        } 
-    }
-    let editarUtilizador = async () => {
-      const id = parseInt(document.getElementById('utilizadorIdE').value);
-      const nome = document.getElementById('nomeE').value.trim();
-      const email = document.getElementById('emailE').value.trim();
-      const password = document.getElementById('passwordE').value.trim();
-      const tipo = document.getElementById('tipoE').value;
-
-      if(isGmail(email)){
-        let utilizadores = await obterUtilizadores().filter(u => u.id !== id);
-        console.log(utilizadores)
-          const editedUser = {
-            id : id,
-            nome: nome,
-            email: email,
-            password: password,
-            tipo : tipo
-          }
-          console.log(editedUser.id)
-          utilizadores.push(editedUser);
-  
-          salvarUtilizadores(utilizadores);
-          fecharEditFormulario();
-          carregarUtilizadores();
-      } else {
-        alert('Ao menos usa um email que possa existir!')
-      }
-  }
-
-    function removerUtilizador(id) {
-      if (confirm('Deseja remover este utilizador?')) {
-        let utilizadores = obterUtilizadores().filter(u => u.id !== id);
-        salvarUtilizadores(utilizadores);
-        carregarUtilizadores();
-      }
-    }
-
-    
-    carregarUtilizadores();
-  </script>
+  <script type="module" src="../js/Views/gerirUserView.js" defer></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
