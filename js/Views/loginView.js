@@ -1,6 +1,8 @@
 import { findUser } from '../models/userModel.js';
+import { initAdminUser } from '../models/userModel.js';
 
 document.addEventListener('DOMContentLoaded', () =>{
+    initAdminUser();
     setupLoginForm();
 })
 

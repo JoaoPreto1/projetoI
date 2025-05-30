@@ -1,5 +1,5 @@
 
-export function initHomePage() {
+function initHomePage() {
   fetch("../frontend/home.html")
     .then(response => response.text())
     .then(html => {
@@ -24,3 +24,7 @@ export function initHomePage() {
       console.error("Erro ao carregar a home page:", error);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initHomePage()
+})
