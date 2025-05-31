@@ -50,3 +50,16 @@ export async function mostrarDetalhes(caminhoId) {
         return null;
     }
 }
+
+export async function carregarCaminhos() {
+    try {
+        const res = await fetch("http://localhost:3000/caminhos")
+        if(!res.ok){
+            throw new Error("Caminhos nao encontrados!")
+        }
+        const resF = await res.json();
+        return resF;
+    } catch (err){
+        console.error('Erro ao buscar os caminhos', err)
+    }
+}
