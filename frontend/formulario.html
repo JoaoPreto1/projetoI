@@ -156,11 +156,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="diasViagem" class="form-label">Número de Dias</label>
-                <input type="number" class="form-control" id="diasViagem" min="1" max="30" required>
-            </div>
-
-            <div class="mb-3">
                 <label class="form-label">Alojamento Preferido</label>
                 <select class="form-select" id="alojamento">
                     <option value="">Escolher...</option>
@@ -191,11 +186,14 @@
         <div id="resumoViagem" class="alert alert-info mt-4 d-none"></div>
 
         <div id="melhoresCaminhos" class="mt-4"></div>
+
+        <div id="mapa" style="height: 400px;"></div>
     </div>
 
     <script type="module" src="../js/Views/formularioView.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Certifique-se de que o Bootstrap JS está carregado -->
-    <script src="/js/script.js"></script> 
+    <!-- <script src="/js/script.js"></script>  -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script> <!-- API do Google Maps -->
     
 </body>

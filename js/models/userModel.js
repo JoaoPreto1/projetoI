@@ -11,7 +11,7 @@ const ADMIN_USER = {
 export function initAdminUser() {
   let users = JSON.parse(localStorage.getItem('users')) || [];
 
-  const adminExists = users.some(user => user.email === ADMIN_USER.email);
+  const adminExists = users.some(user => user.id === ADMIN_USER.id);
 
   if (!adminExists) {
     users.push(ADMIN_USER);
