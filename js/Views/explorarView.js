@@ -1,5 +1,6 @@
 import {carregarCaminhos, mostrarDetalhes} from '../models/CaminhoModel.js'
 import { initLeafletMap } from '../models/mapModel.js';
+import {changePath} from '../models/userModel.js'
 
 document.addEventListener("DOMContentLoaded", function () {
     CarregarCaminhosView();
@@ -42,24 +43,26 @@ let CarregarCaminhosView = async () => {
 }
 let mostrarDetalhesView = async (id) => {
     try {
-        let caminho = await mostrarDetalhes(id)
-        const myH1 = document.createElement("h1");
-        myH1.innerText = caminho.nome;
-        myH1.id = "myH1";
-        const myPara = document.createElement("p");
-        myPara.id = "myPara";
-        myPara.innerHTML = `
+        let caminho = await mostrarDetalhes(id);
+
+        // Título do modal
+        document.getElementById("detalhesModalLabel").innerText = caminho.nome;
+
+        // Descrição do caminho
+        const descricaoEl = document.getElementById("detalhesDescricao");
+        descricaoEl.innerHTML = `
             <p><strong>Distância:</strong> ${caminho.distancia}</p>
             <p><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
             <p><strong>Descrição:</strong> ${caminho.descricao}</p>
         `;
 
-        const variantesContainer = document.createElement("div");
-        variantesContainer.innerHTML = "";
+        // Variantes
+        const variantesEl = document.getElementById("variantesContainer");
+        variantesEl.innerHTML = "";
 
         if (caminho.variantes?.length) {
             caminho.variantes.forEach(variacao => {
-                variantesContainer.innerHTML += `
+                variantesEl.innerHTML += `
                     <div class="card mb-2 p-2 border-secondary">
                         <h6 class="m-0">${variacao.nome}</h6>
                         <p class="m-0 text-muted"><small>${variacao.distancia}</small></p>
@@ -68,20 +71,39 @@ let mostrarDetalhesView = async (id) => {
                 `;
             });
         } else {
-            variantesContainer.innerHTML = "<p class='text-muted'>Nenhuma variante disponível.</p>";
+            variantesEl.innerHTML = "<p class='text-muted'>Nenhuma variante disponível.</p>";
         }
 
-        variantesContainer.innerHTML += `
-            <button class="btn btn-success mt-3 w-100" onclick="percorrerCaminho('${caminho.nome}', false)">Percorrer o Caminho Completo</button>
+        variantesEl.innerHTML += `
+            <button class="btn btn-success mt-3 w-100" onclick="percorrerCaminho('${caminho.nome}', '${caminho.id}', false)">Percorrer o Caminho Completo</button>
         `;
 
-        // CORRIGIDO: chamava initMap, agora chama initLeafletMap
-        initLeafletMap(caminho.latitude, caminho.longitude);
+        const modalEl = document.getElementById('detalhesModal');
+        const modal = new bootstrap.Modal(modalEl);
 
-        let modal = new bootstrap.Modal(document.createElement('div'));
+        modalEl.addEventListener('shown.bs.modal', () => {
+            initLeafletMap(caminho.latitude, caminho.longitude);
+        }, { once: true });
+
         modal.show();
-        }catch (err) {
-            console.error("Erro ao carregar os detalhes do caminho:", err)
-        }
+    } catch (err) {
+        console.error("Erro ao carregar os detalhes do caminho:", err);
+    }
+};
+
+function percorrerCaminho(nome, variante) {
+    changePath(nome);
+    let modal = bootstrap.Modal.getInstance(document.getElementById('detalhesModal'));
+    modal.hide();
+
+    let novoModal = new bootstrap.Modal(document.getElementById('caminhoModal'));
+    document.getElementById("caminhoModalLabel").innerText = variante
+        ? `Percorrendo a variante: ${nome}`
+        : `Percorrendo o Caminho Completo: ${nome}`;
+    document.getElementById("caminhoDescricao").innerText = `Você iniciou o percurso do caminho: ${nome}. Boa jornada!`;
+
+    novoModal.show();
 }
+
 window.mostrarDetalhesView = mostrarDetalhesView
+window.percorrerCaminho = percorrerCaminho

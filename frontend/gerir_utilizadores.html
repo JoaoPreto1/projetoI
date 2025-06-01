@@ -38,6 +38,9 @@
             <th>Email</th>
             <th>Password</th>
             <th>Tipo</th>
+            <th>Percurso</th>
+            <th>Pontos</th>
+            <th>Total</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -90,6 +93,15 @@
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="percursoE" placeholder="percurso">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="pontosE" placeholder="pontos">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="totalE" placeholder="total">
       </div>
       <button class="btn btn-primary" onclick="editarUtilizadorView()">💾 Editar</button>
       <button class="btn btn-secondary" onclick="fecharEditFormulario()">Cancelar</button>

@@ -88,25 +88,7 @@
     
     <div class="container" id="gamificacaoContainer"></div>
 
-    <script src="../js/gameScript.js" defer></script>
-    <script>
-
-      
-        document.addEventListener("DOMContentLoaded", function () {
-            const loginButton = document.getElementById("loginButton");
-            const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    
-            if (user) {
-                
-                loginButton.outerHTML = `
-                    <a id="profileIcon" class="nav-link" href="perfil.html">
-                        <img src="user-icon.png" alt="Perfil" style="width: 35px; height: 35px; border-radius: 50%;">
-                    </a>
-                `;
-            }
-        });
-   
-    </script>
+    <script type="module" src="../js/Views/conhecerView.js" defer></script>
 
 </body>
 </html>

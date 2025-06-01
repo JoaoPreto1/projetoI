@@ -1,19 +1,14 @@
 export let filtrarCaminho = async (preferencias) => {
     let response = await fetch('http://localhost:3000/caminhos');
     let caminhos = await response.json();
-    let osCaminhos = [];
-    caminhos.filter(caminho => {caminho.dificuldade.toLowerCase() == preferencias.dificuldade.toLowerCase();
-        if(caminho.dificuldade.toLowerCase() == preferencias.dificuldade.toLowerCase()){
-            osCaminhos.push(caminho)
-        } 
-        });
+    const osCaminhos = caminhos.filter(caminho => 
+    caminho.dificuldade.toLowerCase() === preferencias.dificuldade.toLowerCase()
+);
     return osCaminhos
 }
 
 export let nDias = (t, d) => {
-    console.log(t)
     const d1 = d.split('km')[0]
-    console.log(d1)
     if (t == 'A pé'){
         let nDias = d1 / 25
         if (d1 % 25 !== 0) {

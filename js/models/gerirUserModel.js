@@ -27,7 +27,10 @@ export function guardarUtilizador(id, nome, email, password, tipo) {
             nome: nome,
             email: email,
             password: password,
-            tipo : tipo
+            tipo : tipo,
+            percurso : "Ainda por escolher",
+            pontos : 0,
+            total : 0
         }
         utilizadores.push(novoUser);
       
@@ -36,16 +39,18 @@ export function guardarUtilizador(id, nome, email, password, tipo) {
         alert('Ao menos tenta usar um email que possa existir!')
     } 
 }
-export let editarUtilizador = (id, nome, email, password, tipo) => {
+export let editarUtilizador = (id, nome, email, password, tipo, percurso, pontos, total) => {
     if(isGmail(email)){
     let utilizadores = obterUtilizadores().filter(u => u.id !== id);
-    console.log(utilizadores)
     const editedUser = {
         id : id,
         nome: nome,
         email: email,
         password: password,
-        tipo : tipo
+        tipo : tipo,
+        percurso: percurso,
+        pontos : pontos, 
+        total: total
     }
         utilizadores.push(editedUser);
   
