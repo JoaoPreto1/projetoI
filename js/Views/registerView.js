@@ -11,15 +11,19 @@
         document.addEventListener("DOMContentLoaded", function () {
         let users = JSON.parse(localStorage.getItem('users')) || [];
 
-        const adminExists = users.some(user => user.email === "admin@email.com");
+        const adminExists = users.find(user => user.id == 1);
 
         if (!adminExists) {
             
             users.push({
+                id : 1,
                 nome: "admin",
-                email: "admin@email.com",
+                email: "admin@gmail.com",
                 password: "admin123",
-                tipo: "admin"
+                tipo: "admin",
+                percurso : "Ainda por escolher",
+                pontos : 0,
+                total: 0
             });
 
             localStorage.setItem('users', JSON.stringify(users));
@@ -47,20 +51,32 @@
         }
 
         let users = JSON.parse(localStorage.getItem('users')) || [];
+        const novoId = users.length ? Math.max(...users.map(u => u.id)) + 1 : 1;
+        
         const userExists = users.some(user => user.email === email);
-
+        
         if (userExists) {
             errorMessageDiv.innerHTML = 'Esse email já está registrado.';
             return;
         }
-
+        
         // Definir role 
         const tipo = email === "admin@gmail.com" ? "admin" : "user";
-
-      
-        users.push({ nome, email, password, tipo, percurso, pontos, total });
+        
+        
+        const novoUser = {
+            id : novoId,
+            nome: nome,
+            email: email,
+            password: password,
+            tipo : tipo,
+            percurso : percurso,
+            pontos : pontos,
+            total : total
+        }
+        users.push(novoUser);
         localStorage.setItem('users', JSON.stringify(users));
 
         
-        window.location.href = 'login.html';
+        // window.location.href = 'login.html';
     });
