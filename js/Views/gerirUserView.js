@@ -1,9 +1,16 @@
 import {voltar, obterUtilizadores, guardarUtilizador, editarUtilizador, removerUtilizador} from '../models/gerirUserModel.js'
-import { hitRate } from '../models/gamingModel.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await carregarUtilizadoresView(); 
 });
+
+document.getElementById('logOut').addEventListener('click', () => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+})
+document.getElementById('voltar').addEventListener('click', () => {
+    voltar();
+})
 
 let carregarUtilizadoresView = async () => {
     const tbody = document.getElementById('utilizadoresBody');
