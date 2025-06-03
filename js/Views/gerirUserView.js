@@ -54,7 +54,7 @@ let editarUtilizadorView = () => {
     const tipo = document.getElementById('tipoE').value;
     const percurso = document.getElementById('percursoE').value;
     const pontos = document.getElementById('pontosE').value;
-    const total = document.getElementById('pontosE').value;
+    const total = document.getElementById('totalE').value;
     editarUtilizador(id, nome, email, password, tipo, percurso, pontos, total);
     fecharEditFormulario();
     carregarUtilizadoresView();
@@ -89,7 +89,7 @@ closeAddUserBtn.addEventListener('click', async (e) => {
     document.getElementById('formularioUtilizador').style.display = 'none';
 })
 
-let abrirformulárioEdit = (id, nome, email, password, tipo, percurso) => {
+let abrirformulárioEdit = (id, nome, email, password, tipo, percurso, pontos, total) => {
     document.getElementById('formularioUtilizador').style.display = 'none';
     document.getElementById('formularioUtilizadorEdit').style.display = 'block';
     document.getElementById('formTitle').innerText = 'Editar Utilizador';
@@ -99,6 +99,8 @@ let abrirformulárioEdit = (id, nome, email, password, tipo, percurso) => {
     document.getElementById('passwordE').value = `${password}`;
     document.getElementById('tipoE').value = `${tipo}`;
     document.getElementById('percursoE').value = `${percurso}`;
+    document.getElementById('pontosE').value = `${pontos}`;
+    document.getElementById('totalE').value = `${total}`
 }
 let fecharEditFormulario = async () => {
     document.getElementById('formularioUtilizadorEdit').style.display = 'none';

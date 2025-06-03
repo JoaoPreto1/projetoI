@@ -17,13 +17,14 @@ export let nDias = (transporte, distancia) => {
 
 export async function mostrarDetalhes(caminhoId) {
   try {
-    const response = await fetch(`http://localhost:3000/caminhos/${parseInt(caminhoId)}`);
+    const res = await fetch(`http://localhost:3000/caminhos/${parseInt(caminhoId)}`);
 
-    if (!response.ok) {
+    if (!res.ok) {
+      console.error(`ID não encontrado: ${caminhoId}`);
       throw new Error("Caminho não encontrado");
     }
 
-    return await response.json();
+    return await res.json();
   } catch (error) {
     console.error("Erro ao buscar caminho:", error);
     return null;

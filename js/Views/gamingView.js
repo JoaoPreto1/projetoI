@@ -1,4 +1,4 @@
-import {getImage, hitRateLeaderBoard} from '../models/gamingModel.js'
+import {getImage, hitRateLeaderBoard, CalculateImages, getTheObjGame} from '../models/gamingModel.js'
 import {countPoints} from '../models/userModel.js'
 import {obterUtilizadores} from '../models/gerirUserModel.js'
 
@@ -28,7 +28,7 @@ initBtn.addEventListener('click', () => {
     if (existingPopup) existingPopup.remove();
 
     try {
-        const myImg = await getImage()
+        const myImg = await CalculateImages()
         const card = `
         <div id="myPopup" style="display: block; position: fixed; width:80vw; height: 80vh; top: 20%; left: 50%; transform: translate(-50%, -20%); padding: 20px; border: 0px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1000; padding:0">
             <div id="myClosePopUpContainer" style="display:flex; justify-content: flex-end; background-color: white; width:80vw; border:0px;">
@@ -39,7 +39,7 @@ initBtn.addEventListener('click', () => {
                 <img src="${myImg.url}" style= "width:60vw; height:60vh; loading="lazy">
                 <div style="display:flex; padding: 50px; flex-direction: row; justify-content: space-around; width: 80vw;">  
                     <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="height: 3vh; width: 15vw; font-size:1rem">
-                    <button class="btn-iniciar" onclick="closePopUp('${myImg.nome}')">Adivinhar</button>
+                    <button class="btn-iniciar" onclick="closePopUp('${myImg.id}')">Adivinhar</button>
                 </div>  
             </div>
         </div> 
@@ -60,14 +60,20 @@ initBtn.addEventListener('click', () => {
         console.error("Erro ao carregar os caminhos:", err)
     }
 }
-let closePopUp = (name) =>  {
+let closePopUp = async (id) =>  {
+   const myObj = await getTheObjGame(id)
    let urGuess = document.querySelector('#myAnswer').value.toLowerCase();
    let acertou = true
-   if( urGuess === name.toLowerCase() ){
+   if( urGuess === myObj.nome.toLowerCase() ){
       alert('ACERTASTE');
       countPoints(acertou)
       closeMyPopUp();
-   } else if (urGuess === '') {
+   } else if (myObj.nome2){
+       alert('ACERTASTE');
+       countPoints(acertou)
+       closeMyPopUp();
+
+   }else if (urGuess === '') {
       alert('Tens de escrever a resposta Burrooooo');
    } else {
       alert('Errouuuuuuuu');
