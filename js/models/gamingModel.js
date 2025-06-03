@@ -11,7 +11,12 @@ export let hitRate = async () => {
     const pontos = await getLoggedInPoints()
     const total = await getLoggedInTotal()
     const hitRate = 100 * parseInt(pontos) / parseInt(total);
-    return parseInt(hitRate)
+    return parseInt(hitRate) + '%'
+}
+
+export let hitRateLeaderBoard = async (pontos, total) => {
+    const hitRate = 100 * parseInt(pontos) / parseInt(total);
+    return parseInt(hitRate) + '%'
 }
 
 export let getImage = async () => {

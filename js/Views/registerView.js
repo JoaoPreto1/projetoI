@@ -78,5 +78,5 @@
         localStorage.setItem('users', JSON.stringify(users));
 
         
-        // window.location.href = 'login.html';
+        window.location.href = 'login.html';
     });

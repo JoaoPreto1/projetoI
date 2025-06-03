@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.location.href = "login.html";
     } else {
         document.getElementById("userEmail").innerText = `Bem-vindo, ${user.nome}`;
-        document.getElementById('userRate').innerText = `A tua taxa de acerto é ${ await hitRate()}%`;
+        document.getElementById('userRate').innerText = `A tua taxa de acerto é ${ await hitRate()}`;
     }
 
     document.getElementById("logoutButton").addEventListener("click", function () {
