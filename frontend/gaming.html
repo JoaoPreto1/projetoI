@@ -135,10 +135,10 @@
   }
 
   #myLeaderboardTable td:last-child {
-    color: #FFD700; 
+    color: #d5a103; 
     font-weight: bold;
   }
-  #closeLeaderboardBtn {
+  #closeLeaderboardBtn{
   position: absolute;
   margin: 10px;
   right: 20px;
@@ -155,11 +155,29 @@
   transition: background-color 0.2s ease;
 }
 
-#closeLeaderboardBtn:hover {
-  background-color: #ffc107; 
+#closeLeaderboardBtn:hover{
+  background-color: #967203; 
 }
-       
-    </style>
+
+#containerOfContainer{
+  display: none;
+  width: 60vw;
+  height: 80vh;
+  position: relative;
+  background-color: #92f266 ;
+  border-radius: 10px;
+}
+
+#myPopUpContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #92f266;
+  color: black;
+  width: 40vw;
+  height: 70vh;
+}       
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
@@ -203,12 +221,18 @@
         </table>
     </div>    
     
-    <h1>Bem-vindo ao Caminho de Santiago!</h1>
-
-    <button class="btn-iniciar" id="initBtn">Iniciar</button>
+    <div id="containerGaming">
+      <h1>Bem-vindo ao Caminho de Santiago!</h1>
+      <div>
+        <button class="btn-iniciar" id="initBtn">Iniciar</button>
+      </div>
+    </div>  
+    <div id="containerOfContainer">
+      <div class="container" id="myPopUpContainer"></div>
+    </div>
     
     <div class="container" id="gamificacaoContainer"></div>
-
+    
 
     <script type="module" src="../js/Views/gamingView.js" defer></script>
 

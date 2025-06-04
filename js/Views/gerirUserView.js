@@ -16,6 +16,7 @@ let carregarUtilizadoresView = async () => {
     const tbody = document.getElementById('utilizadoresBody');
     tbody.innerHTML = '';
     const utilizadores = obterUtilizadores()
+    utilizadores.sort((a, b) => a.id - b.id);
     utilizadores.forEach(u => {
         const tr = document.createElement('tr');
         tr.innerHTML = `

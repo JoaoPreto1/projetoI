@@ -1,6 +1,6 @@
 import {getLoggedInTotal, getLoggedInPoints} from '../models/userModel.js'
 
-let randomNumb = (min, max) => {
+export let randomNumb = (min, max) => {
    let i = Math.floor(Math.random() * (max- min + 1) + min);
    return i 
 }

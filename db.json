@@ -276,5 +276,31 @@
         "nome" : "Igreja de Santa Maria de Silvela",
         "url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Silvelaigrexa.jpg/960px-Silvelaigrexa.jpg"
       }
-  ]
+  ],
+    "gifs" :[
+       {
+        "id" : 1,
+        "url" : "https://upload.wikimedia.org/wikipedia/commons/a/a9/Popping_dancer.gif"
+       },
+       {
+        "id" : 2,
+        "url" : "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXJubDA3ZzFmMjhnZDI5MWx5ZXI1Z3hrNjEyM21lNnhld2VxcXN6YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13hxeOYjoTWtK8/giphy.gif"
+       },
+       {
+        "id" : 3,
+        "url" : "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXFueG5jcXk4aWdtc24yb2gyNTV5b3J0MmtmYTQyZ3BjdjcwbWlvOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3V0lsGtTMSB5YNgc/giphy.gif"
+       },
+       {
+        "id" : 4,
+        "url" : "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDhsNXRlbGFpbGV6eWI3dmV2NWc0MHM4ZDI0emRxcG4ydjI0dWRnbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OPU6wzx8JrHna/giphy.gif"
+       },
+       {
+        "id" : 5,
+        "url" : "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGFtZ2Nxbnk1Y2hrN3l1anNucHdsNnlwcjRwYWptN3Z5dWxhdjNxMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8UGoOaR1lA1uaAN892/giphy.gif"
+       },
+       {
+        "id" : 6,
+        "url" : "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGhnOGo3bjFkdTdiZ3Q5ZzJib251dW9yYTc1MTAxOTluNHg2bnEwYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LAFShX32UwUj6/giphy.gif"
+       }
+    ]
 }
