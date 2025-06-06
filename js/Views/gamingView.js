@@ -31,16 +31,32 @@ initBtn.addEventListener('click', () => {
     try {
         const myImg = await CalculateImages()
         const card = `
-        <div id="myPopup" style="display: block; position: fixed; width:80vw; height: 80vh; top: 20%; left: 50%; transform: translate(-50%, -20%); padding: 20px; border: 0px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1000; padding:0">
-            <div id="myClosePopUpContainer" style="display:flex; justify-content: flex-end; background-color: white; width:80vw; border:0px;">
-                <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:white; color:black; font-size: .7em; text-align:center; width: 2.7vw; height: 2.5vh; border:0px; border-radius: 5px; cursor: pointer;">X</button>
+        <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:100vw; height: 95vh; top: 20%; left: 50%; transform: translate(-50%, -20%); margin-top: 6.4vh; border: 0px solid black;z-index: 1000; padding:0; background-color: white">
+            <div id="myClosePopUpContainer" style="display:flex; justify-content: flex-end ;width:80vw; border:0px;">
+                <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:#007BFF; color:#FFD700; font-size: .7em; text-align:center; width: 2.7vw; height: 2.5vh; border:0px; border-radius: 5px; cursor: pointer;">X</button>
             </div>
-            <div id="MyPopUpContainer" style="display:flex; flex-direction: column; align-items:center; justify-content: space-around; width:80vw; background-color: white; border:0px;">   
-                <h1 style="color:black; border:0px;">Adivinha o que está na imagem!</h1>
-                <img src="${myImg.url}" style= "width:60vw; height:60vh; loading="lazy">
-                <div style="display:flex; padding: 50px; flex-direction: row; justify-content: space-around; width: 80vw;">  
-                    <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="height: 3vh; width: 15vw; font-size:1rem">
-                    <button class="btn-iniciar" onclick="closePopUp('${myImg.id}')">Adivinhar</button>
+            <div id="MyPopUpContainer" style="display:flex; flex-direction: column; align-items:center; justify-content: space-around; width:100vw; padding: 5vh 10vw;">   
+                <div style=" background-color:white;border: 2px solid black; border-radius: 50px; width: 60vw; padding: 0vh 10vw; display:flex; flex-direction: column; justify-content: center; align-items: center">
+                    <h1 style="color:black; border:0px;">Adivinha o que está na imagem!</h1>
+                    <img src="${myImg.url}" style= "width:50vw; height:50vh; loading="lazy">
+                    <div style="display:flex; padding: 50px; flex-direction: row; justify-content: space-around; width: 60vw;">  
+                        <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="
+        height: 5vh; 
+        width: 15vw; 
+        font-size: 1rem; 
+        border: 2px solid #FFD700; 
+        border-radius: 20px;
+        background-color: #FFD700; 
+        color: 'black'; 
+        padding: 0.3rem; 
+        outline: none;
+        box-shadow: 0 0 5px #FFD700;
+        transition: all 0.3s ease;
+    "
+     onfocus="this.style.color='black'; this.style.boxShadow='0 0 8px #007BFF';"
+     onblur="this.style.color='#black'; this.style.boxShadow=' 0 0 5px #FFD700';">
+                        <button class="btn-iniciar" id="AdivinharBtn" onclick="closePopUp('${myImg.id}')">Adivinhar</button>
+                    </div>
                 </div>  
             </div>
         </div> 
@@ -54,20 +70,34 @@ initBtn.addEventListener('click', () => {
         })
     
         myCloseBtn.addEventListener('mouseleave', () =>{
-            myCloseBtn.style.backgroundColor = 'white';
-             myCloseBtn.style.color = 'black';
+            myCloseBtn.style.backgroundColor = '#007BFF';
+             myCloseBtn.style.color = '#FFD700';
+        })
+
+        const AdivinharBtn = document.querySelector('#AdivinharBtn')
+        AdivinharBtn.addEventListener('mouseenter', () => {
+            AdivinharBtn.style.backgroundColor = '#007BFF';
+            AdivinharBtn.style.color = '#FFD700';
+        })
+
+        AdivinharBtn.addEventListener('mouseleave', () => {
+            AdivinharBtn.style.backgroundColor = '#4CAF50';
+            AdivinharBtn.style.color = 'white';
         })
     } catch (err) {
         console.error("Erro ao carregar os caminhos:", err)
     }
 }
+
+
+
 let myCOC = document.getElementById('containerOfContainer')
 let gameContainer = document.getElementById('myPopUpContainer')
 let containerGaming = document.getElementById('containerGaming')
 let closePopUp = async (id) =>  {
     const myObj = await getTheObjGame(id)
-    let urGuess = document.querySelector('#myAnswer').value;
     let acertou = true
+    let urGuess = document.querySelector('#myAnswer').value;
     containerGaming.style.display = 'none'
     myLeaderboardBtn.style.display = 'none'
    if( urGuess.toLowerCase() === myObj.nome.toLowerCase() ){
@@ -161,7 +191,7 @@ let closeGameContainer = () => {
     containerGaming.style.display = 'flex'
     containerGaming.style.flexDirection = 'column'
     myLeaderboardBtn.style.display = 'flex'
-    myLeaderboardBtn.style.justifyContent = 'flex-end'
+    myLeaderboardBtn.style.justifyContent = 'center'
 }
 
 let closeMyPopUp = () => {
@@ -169,8 +199,10 @@ let closeMyPopUp = () => {
 }
 const myLeaderboardBtn = document.getElementById('myLeaderboardBtn')
 myLeaderboardBtn.addEventListener('click', async () => {
+    containerGaming.style.display = 'none'
     const myDiv = document.getElementById('myLeaderboardContainer')
-    myDiv.style.display = 'block'
+    myDiv.style.display = 'flex'
+    myDiv.style.flexDirection = 'column'
     const users = obterUtilizadores()
     users.sort((a, b) => b.pontos - a.pontos);
     const myTBody = document.getElementById('myTableBody')
@@ -273,6 +305,8 @@ document.getElementById('RateOrder').addEventListener('click', async () => {
 document.getElementById('closeLeaderboardBtn').addEventListener('click', () => {
     const myDiv = document.getElementById('myLeaderboardContainer')
     myDiv.style.display = 'none'
+    containerGaming.style.display = 'flex'
+    containerGaming.style.flexDirection = 'column'
 })
 
 window.closePopUp = closePopUp

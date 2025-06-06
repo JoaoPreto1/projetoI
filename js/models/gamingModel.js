@@ -32,9 +32,9 @@ export let CalculateImages = async () => {
     let images = await res.json();
     let decider;
     let myImg;
+    const max = images.length - 1
     switch(percurso){
         case "Ainda por escolher" : 
-            const max = images.length- 1
             decider = randomNumb(0, max);
             myImg = images.find(img => parseInt(img.id) == decider)
             return myImg || null;
@@ -86,6 +86,22 @@ export let CalculateImages = async () => {
             decider = randomNumb(27, 29)
             myImg = images.find(img => parseInt(img.id) == decider)
             return myImg || null;
+        case "Caminho da Costa":
+        decider = randomNumb(0, max);
+        myImg = images.find(img => parseInt(img.id) == decider)
+        return myImg || null;
+        case "Caminho Sarracênico":
+        decider = randomNumb(0, max);
+        myImg = images.find(img => parseInt(img.id) == decider)
+        return myImg || null;
+        case "Caminho de Fisterra":
+        decider = randomNumb(0, max);
+        myImg = images.find(img => parseInt(img.id) == decider)
+        return myImg || null;
+        case "Caminho da Via de la Plata":
+        decider = randomNumb(0, max);
+        myImg = images.find(img => parseInt(img.id) == decider)
+        return myImg || null;    
         default: 
             return null
     }
