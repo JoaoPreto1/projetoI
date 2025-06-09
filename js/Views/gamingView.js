@@ -204,11 +204,12 @@ myLeaderboardBtn.addEventListener('click', async () => {
     myDiv.style.display = 'flex'
     myDiv.style.flexDirection = 'column'
     const users = obterUtilizadores()
+    users.shift()
     users.sort((a, b) => b.pontos - a.pontos);
     const myTBody = document.getElementById('myTableBody')
     myTBody.style.color = 'black';
     let rows = "";
-    for(let i = 1; i < users.length; i++){
+    for(let i = 0; i < users.length; i++){
         const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
         rows += `<tr>
         <td>${users[i].nome}</td>
@@ -223,10 +224,11 @@ myLeaderboardBtn.addEventListener('click', async () => {
 
 document.getElementById('NameOrder').addEventListener('click', async () => {
     const users = obterUtilizadores()
+    users.shift()
     users.sort((a, b) => a.nome.localeCompare(b.nome));
     const myTBody = document.getElementById('myTableBody')
     let rows = "";
-    for(let i = 1; i < users.length; i++){
+    for(let i = 0; i < users.length; i++){
         const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
         rows += `<tr>
         <td>${users[i].nome}</td>
@@ -240,10 +242,11 @@ document.getElementById('NameOrder').addEventListener('click', async () => {
     })
 document.getElementById('TotalOrder').addEventListener('click', async () => {
     const users = obterUtilizadores()
+    users.shift()
     users.sort((a, b) => b.total - a.total);
     const myTBody = document.getElementById('myTableBody')
     let rows = "";
-    for(let i = 1; i < users.length; i++){
+    for(let i = 0; i < users.length; i++){
         const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
         rows += `<tr>
         <td>${users[i].nome}</td>
@@ -257,10 +260,11 @@ document.getElementById('TotalOrder').addEventListener('click', async () => {
 })
 document.getElementById('PontosOrder').addEventListener('click', async () => {
     const users = obterUtilizadores()
+    users.shift()
     users.sort((a, b) => b.pontos - a.pontos);
     const myTBody = document.getElementById('myTableBody')
     let rows = "";
-    for(let i = 1; i < users.length; i++){
+    for(let i = 0; i < users.length; i++){
         const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
         rows += `<tr>
         <td>${users[i].nome}</td>
@@ -275,10 +279,11 @@ document.getElementById('PontosOrder').addEventListener('click', async () => {
 
 document.getElementById('RateOrder').addEventListener('click', async () => {
     const users = obterUtilizadores()
+    users.shift()
 
     const usersWithRate = [];
 
-    for (let i = 1; i < users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
     const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
     usersWithRate.push({
         ...users[i],
