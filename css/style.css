@@ -242,3 +242,65 @@ footer p {
   background-color: #00376b;
   border-color: #00376b;
 }
+
+.caminho-card {
+    border: 1px solid #e0e6ed;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.caminho-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.caminho-card .card-body {
+    padding: 1.5rem;
+}
+
+.caminho-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #004c97;
+    margin-bottom: 1rem;
+}
+
+.caminho-card .card-text {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.card-info li {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.4rem;
+}
+
+.card-info i {
+    color: #004c97;
+    margin-right: 8px;
+}
+
+.caminho-card .btn {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.caminho-card .btn-outline-primary {
+    border: 2px solid #004c97;
+    color: #004c97;
+}
+
+.caminho-card .btn-outline-primary:hover {
+    background-color: #004c97;
+    color: #fff;
+}

@@ -2,6 +2,7 @@ import {carregarCaminhos, mostrarDetalhes} from '../models/CaminhoModel.js'
 import { initLeafletMap } from '../models/mapModel.js';
 import {changePath} from '../models/userModel.js'
 
+
 document.addEventListener("DOMContentLoaded", function () {
     CarregarCaminhosView();
     const loginButton = document.getElementById("loginButton");
@@ -17,30 +18,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 let CarregarCaminhosView = async () => {
-    const Caminhos  = await carregarCaminhos()
+    const Caminhos = await carregarCaminhos();
     const container = document.getElementById("caminhosContainer");
     container.innerHTML = "";
+
     Caminhos.forEach(c => {
         try {
             const card = `
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card p-3 border-primary shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">${c.nome}</h5>
-                                <p class="card-text"><strong>Distância:</strong> ${c.distancia}</p>
-                                <p class="card-text"><strong>Dificuldade:</strong> ${c.dificuldade}</p>
-                                <p class="card-text">${c.descricao}</p>
-                                <a href="#" class="btn btn-primary" onclick="mostrarDetalhesView(${c.id})">Detalhes</a>
-                            </div>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card caminho-card h-100 d-flex flex-column justify-content-between">
+                        <div class="card-body">
+                            <h5 class="card-title">${c.nome}</h5>
+                            <ul class="list-unstyled card-info">
+                                <li><i class="bi bi-signpost-2"></i> <strong>Distância:</strong> ${c.distancia}</li>
+                                <li><i class="bi bi-activity"></i> <strong>Dificuldade:</strong> ${c.dificuldade}</li>
+                            </ul>
+                            <p class="card-text">${c.descricao}</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0 text-center">
+                            <a href="#" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
                         </div>
                     </div>
-                `;
-                container.innerHTML += card;
-        } catch (err){
-            console.error('Caminhos nao listados', err)
+                </div>
+            `;
+            container.innerHTML += card;
+        } catch (err) {
+            console.error('Erro ao listar caminhos:', err);
         }
-    })
-}
+    });
+};
 let mostrarDetalhesView = async (id) => {
     try {
         let caminho = await mostrarDetalhes(id);
