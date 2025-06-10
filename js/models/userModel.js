@@ -4,7 +4,10 @@ const ADMIN_USER = {
   nome: "admin",
   email: "admin@gmail.com",
   password: "admin123", 
-  tipo: "admin"
+  tipo: "admin",
+  percurso: "Ainda por escolher",
+  pontos: 0,
+  total: 0,
 };
 
 
@@ -63,7 +66,7 @@ export let changePath = async (nome) => {
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
 }
 
-export let countPoints = async (acertou) => {
+export let countPoints = (acertou) => {
   const user = JSON.parse(localStorage.getItem("loggedInUser"))
    const id = user.id
    const name = user.nome
@@ -103,5 +106,11 @@ export let countPoints = async (acertou) => {
     salvarUtilizadores(utilizadores);
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
     }
+}
+
+export let getPoints = () => {
+const user = JSON.parse(localStorage.getItem("loggedInUser"))
+const total = user.pontos
+return total
 }
 

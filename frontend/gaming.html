@@ -15,11 +15,9 @@
             background-size: cover;
             background-position: center;
             height: 100vh;
+            width: 100vw;
             margin: 0;
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: white;
             text-align: center;
             flex-direction: column;
@@ -167,24 +165,23 @@
   color: white; 
 }
 
-#containerOfContainer{
-  display: none;
-  width: 60vw;
-  height: 80vh;
-  position: relative;
-  background-color: #92f266 ;
-  border-radius: 10px;
-}
-
-#myPopUpContainer{
+#containerGaming{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  background-color: #92f266;
-  color: black;
-  width: 40vw;
-  height: 70vh;
-} 
+  justify-content: center;
+  align-items: center;
+  top:50%;
+}
+
+#containerOfContainer{
+  position: relative;
+  display: none;
+  width: 99.8vw;
+  height: 91vh;
+  justify-content: center;
+  align-items: center;
+  background-color: white;  
+}
 
 #myFlex{
   display:flex;
@@ -194,10 +191,43 @@
   display: flex;
   justify-content: center;
 }
+.gamificacaoContainer{
+  width: 99vw;
+  height: 94vh;
+}
+.myOptions{
+  box-shadow: none;
+  background-color: #007BFF;
+  color:white;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+.myOptions:hover{
+  box-shadow: '0px 2px 16px black';
+  background-color: #FFD700;
+  color:black;
+  text-decoration: underline;
+}
+
+#myNavBar{
+  position: relative;
+  width: 100vw;
+}
+
+#myIdDiv{
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+  height: 70vh;
+  background-color: white;
+  border: 8px solid;
+  border-image: linear-gradient(to right,#FFD700, #007BFF) 1;
+}
 </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="myNavBar">
         <div class="container">
             <a class="navbar-brand" href="home.html">Caminhos de Santiago</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -247,10 +277,10 @@
         </div>
     </div>  
     <div id="containerOfContainer">
-      <div class="container" id="myPopUpContainer"></div>
+      <div id="myPopUpContainer"></div>
     </div>
     
-    <div class="container" id="gamificacaoContainer"></div>
+    <div id="gamificacaoContainer"></div>
     
 
     <script type="module" src="../js/Views/gamingView.js" defer></script>

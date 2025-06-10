@@ -1,5 +1,5 @@
-import {hitRateLeaderBoard, CalculateImages, getTheObjGame} from '../models/gamingModel.js'
-import {countPoints} from '../models/userModel.js'
+import {hitRateLeaderBoard, CalculateImages, getTheObjGame, calculateMyAltAnswers, shuffleArray} from '../models/gamingModel.js'
+import {countPoints, getPoints} from '../models/userModel.js'
 import {obterUtilizadores} from '../models/gerirUserModel.js'
 import {getGifs} from '../models/gifsModels.js'
 
@@ -18,50 +18,44 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 const initBtn = document.querySelector('#initBtn');
 
-initBtn.addEventListener('click', () => {
-     carregarImagens()
+initBtn.addEventListener('click', async () => {
+    containerGaming.style.display = 'none'
+    carregarImagens()
  })
-
+ 
+ const gamificacaoContainer = document.getElementById('gamificacaoContainer')
  const carregarImagens = async () => {
-    const gamificacaoContainer = document.getElementById('gamificacaoContainer')
-
-    const existingPopup = document.getElementById('myPopup');
-    if (existingPopup) existingPopup.remove();
-
+    gamificacaoContainer.style.display = 'block'
     try {
         const myImg = await CalculateImages()
+        const myAltAnswers = await calculateMyAltAnswers(myImg.id)
+        myAltAnswers.push(myImg)
+        shuffleArray(myAltAnswers)
         const card = `
-        <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:100vw; height: 95vh; top: 20%; left: 50%; transform: translate(-50%, -20%); margin-top: 6.4vh; border: 0px solid black;z-index: 1000; padding:0; background-color: white">
-            <div id="myClosePopUpContainer" style="display:flex; justify-content: flex-end ;width:80vw; border:0px;">
-                <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:#007BFF; color:#FFD700; font-size: .7em; text-align:center; width: 2.7vw; height: 2.5vh; border:0px; border-radius: 5px; cursor: pointer;">X</button>
-            </div>
-            <div id="MyPopUpContainer" style="display:flex; flex-direction: column; align-items:center; justify-content: space-around; width:100vw; padding: 5vh 10vw;">   
-                <div style=" background-color:white;border: 2px solid black; border-radius: 50px; width: 60vw; padding: 0vh 10vw; display:flex; flex-direction: column; justify-content: center; align-items: center">
-                    <h1 style="color:black; border:0px;">Adivinha o que está na imagem!</h1>
-                    <img src="${myImg.url}" style= "width:50vw; height:50vh; loading="lazy">
-                    <div style="display:flex; padding: 50px; flex-direction: row; justify-content: space-around; width: 60vw;">  
-                        <input id='myAnswer' type= 'text' placeholder="Escreve aqui a tua resposta" style="
-        height: 5vh; 
-        width: 15vw; 
-        font-size: 1rem; 
-        border: 2px solid #FFD700; 
-        border-radius: 20px;
-        background-color: #FFD700; 
-        color: 'black'; 
-        padding: 0.3rem; 
-        outline: none;
-        box-shadow: 0 0 5px #FFD700;
-        transition: all 0.3s ease;
-    "
-     onfocus="this.style.color='black'; this.style.boxShadow='0 0 8px #007BFF';"
-     onblur="this.style.color='#black'; this.style.boxShadow=' 0 0 5px #FFD700';">
-                        <button class="btn-iniciar" id="AdivinharBtn" onclick="closePopUp('${myImg.id}')">Adivinhar</button>
+        <div id="newDiv"style="z-index: 1000; width: 99.6vw; height: 94.3vh; left: 50%; transform(-50%); background-color: #f2f2f2;display:flex; justify-content: center">
+            <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:98vw; height: 90vh; border: 0px solid black; padding:0; background-color:u7.u white;">
+                <div id="myClosePopUpContainer" style="display:flex; justify-content: space-between; align-items: center; width:98vw; height: 15vh; padding: 0vh .5vw 2vh 0vw; border:0px; background-color: white; text-align:center;">
+                    <div style="display:flex; justify-content: flex-start; align-items:center; background-color: white;">
+                        <div style="background-color: #007BFF; width: 5vw; height: 8vh; border-top-right-radius: 20px; border-bottom-right-radius:20px;"></div>
+                        <h1 style="color:black; padding: 0vh 0vw 0vh 1vw; margin:0; text-align:center;">Adivinha o que está na imagem!</h1>
                     </div>
-                </div>  
+                    <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:#007BFF; color:#FFD700; font-size: .7em; text-align:center; padding: 1vh 1vw; border-radius: 50%; cursor: pointer;">X</button>
+                </div>
+                <div id="MyPopUpContainer" style="display:flex; flex-direction: flex; align-items:center; justify-content: space-around; width:98vw; padding: 2vh 2vw 10vh 6vw;  background-color: white;">   
+                    <div>
+                        <img src="${myImg.url}" style= "width:36vw; height:60vh; loading="lazy">
+                    </div>
+                    <div style="display:flex; padding: 2vh 2vw; flex-direction: column; justify-content: space-around; width: 50vw; height: 50vh">  
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw;" onclick="closePopUp(${myAltAnswers[0].id}, ${myImg.id})">${myAltAnswers[0].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[1].id} , ${myImg.id})">${myAltAnswers[1].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[2].id}, ${myImg.id})">${myAltAnswers[2].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[3].id}, ${myImg.id})">${myAltAnswers[3].nome}</button>
+                    </div>
+                </div>
             </div>
         </div> 
         `;
-        gamificacaoContainer.innerHTML += card;
+        gamificacaoContainer.innerHTML = card;
         const myCloseBtn = document.querySelector('#myCloseBtn');
     
         myCloseBtn.addEventListener('mouseenter', () =>{
@@ -72,18 +66,7 @@ initBtn.addEventListener('click', () => {
         myCloseBtn.addEventListener('mouseleave', () =>{
             myCloseBtn.style.backgroundColor = '#007BFF';
              myCloseBtn.style.color = '#FFD700';
-        })
-
-        const AdivinharBtn = document.querySelector('#AdivinharBtn')
-        AdivinharBtn.addEventListener('mouseenter', () => {
-            AdivinharBtn.style.backgroundColor = '#007BFF';
-            AdivinharBtn.style.color = '#FFD700';
-        })
-
-        AdivinharBtn.addEventListener('mouseleave', () => {
-            AdivinharBtn.style.backgroundColor = '#4CAF50';
-            AdivinharBtn.style.color = 'white';
-        })
+        });
     } catch (err) {
         console.error("Erro ao carregar os caminhos:", err)
     }
@@ -92,110 +75,96 @@ initBtn.addEventListener('click', () => {
 
 
 let myCOC = document.getElementById('containerOfContainer')
-let gameContainer = document.getElementById('myPopUpContainer')
 let containerGaming = document.getElementById('containerGaming')
-let closePopUp = async (id) =>  {
-    const myObj = await getTheObjGame(id)
+let closePopUp = async (id, rightId) =>  {
+    gamificacaoContainer.innerHTML = '';
+    const myObj = await getTheObjGame(rightId)
     let acertou = true
-    let urGuess = document.querySelector('#myAnswer').value;
-    containerGaming.style.display = 'none'
-    myLeaderboardBtn.style.display = 'none'
+    let urGuessObj = await getTheObjGame(id)
+    let urGuess = urGuessObj.nome
+    myCOC.style.display = 'flex'
    if( urGuess.toLowerCase() === myObj.nome.toLowerCase() ){
       const url = await getGifs(acertou)
-      console.log(url)
-      myCOC.style.display = 'flex'
-      myCOC.style.justifyContent = 'center'
-      myCOC.style.alignItems = 'center'
-      myCOC.style.backgroundColor = '#92f266'
-      gameContainer.style.backgroundColor = '#92f266'
-      gameContainer.innerHTML = `<h1>A sua resposta: ${urGuess}</h1>
-        <p style="background-color: #11f720; font-size: 2em">ESTÁ CORRETAA</p>
-        <div style="height : 25vh display: flex; justify-content: center">
-            <img src=${url} alt="dancing gif">
+      const pontos = getPoints()
+      const total = parseInt(pontos) + 1
+      myCOC.innerHTML = `
+        <div id="myIdDiv">
+            <div style="height: 40vh; display: flex; justify-content: center">
+                <img src=${url} alt="dancing gif">
+            </div>
+            <div style="display:flex; flex-direction: column; justify-content: flex-start; align-items:center; color:black;font-weight: bold; height: 40vh; padding: 0vh 5vw 0vh 0vw">
+                <h1 style="color: #FFD700; font-size: 5em">Correto!</h1>
+                <div>   
+                    <div>
+                        <h2>Pontos:</h2>
+                        <h3 style="color: #FFD700;"> + 1</h3>
+                    </div>
+                    <div>
+                    <h2>Pontuação atual:<br>
+                        ${total}
+                    </h2>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content: space-around; width: 6vw;">
+                <button onclick="closeMyPopUp()" style="background-color: red; color: white; border-radius: 50%; padding: .5vh .5vw;">❌</button>
+                <button class="myOptions" onclick="NextQuestion()" style="border-radius: 50%; text-decoration: none; padding: .5vh .5vw; text-align: center"><span>&#10148;</span></button> 
+                </div>
+            </div>
         </div>
-        <div>
-        <button onclick="closeGameContainer()" style="background-color: #007BFF; color: white; width: 5vw; height: 3vh; border-radius:50px;">Ok</button>
-        </div>`
+      
+      `
       countPoints(acertou)
-      closeMyPopUp();
-   } else if (myObj.nome2){
-    if(urGuess.toLowerCase() === myObj.nome2.toLowerCase()){
-        const url = await getGifs(acertou)
-        myCOC.style.display = 'flex'
-        myCOC.style.justifyContent = 'center'
-        myCOC.style.alignItems = 'center'
-        myCOC.style.backgroundColor = '#92f266'
-        gameContainer.style.backgroundColor = '#92f266'
-        gameContainer.innerHTML = `<h1>A sua resposta: ${urGuess}</h1>
-                                 <p style="background-color: #11f720; font-size: 2em">ESTÁ CORRETAA</p>
-                                 <div style="height : 25vh display: flex; justify-content: center">
-                                    <img style="width: 50%; height: 100%" src=${url} alt="dancing gif">
-                                </div>
-                                <div>
-                                <button onclick="closeGameContainer()" style="background-color: #007BFF; color: white; width: 5vw; height: 3vh; border-radius:50px;">Ok</button>
-                                </div>`
-        countPoints(acertou)
-        closeMyPopUp();
-    } else {
-      acertou = !acertou;
-      const url = await getGifs(acertou)
-      myCOC.style.display = 'flex'
-      myCOC.style.justifyContent = 'center'
-      myCOC.style.alignItems = 'center'
-      myCOC.style.backgroundColor = '#f77c7c'
-      gameContainer.style.backgroundColor = '#f77c7c'
-      gameContainer.style.backgroundColor = '#f77c7c'
-      gameContainer.innerHTML = `<h1>A sua resposta: ${urGuess}</h1>
-                                <p style="background-color: #f71111; font-size: 2em">ESTÁ ERRADAAAAAA</p>
-                                <div style="height : 25vh display: flex; justify-content: center">
-                                    <img style="width: 50%; height: 100%" src=${url} alt="sad gif">
-                                </div>
-                                <p style="font-size: 2em; font-weigh: bold">A resposta correta é ${myObj.nome}</p>
-                                <div>
-                                <button onclick="closeGameContainer()" style="background-color: #007BFF; color: white; width: 5vw; height: 3vh; border-radius:50px;">Ok</button>
-                                </div>`
-                                countPoints(acertou)
-                                closeMyPopUp();
-                            }
-                            
-    }else if (urGuess === '') {
+   }else if (urGuess === '') {
     myCOC.style.display = 'block'
-    gameContainer.innerHTML = `<p style="background-color: #cce5ff; font-size: 2em">Só porque não sabes a resposta, nao quer dizer que nao possas adivinhar :p</p>
+    myCOC.innerHTML = `<p style="background-color: #cce5ff; font-size: 2em">Só porque não sabes a resposta, nao quer dizer que nao possas adivinhar :p</p>
             <div>
             <button onclick="closeGameContainer()" style="background-color: #007BFF; color: white; width: 5vw; height: 3vh; border-radius:50px;">Ok</button>
             </div>`
     } else {
         acertou = !acertou;
         const url = await getGifs(acertou)
-        myCOC.style.display = 'flex'
-        myCOC.style.justifyContent = 'center'
-        myCOC.style.alignItems = 'center'
-        myCOC.style.backgroundColor = '#f77c7c'
-        gameContainer.style.backgroundColor = '#f77c7c'
-        gameContainer.innerHTML = `<h1>A sua resposta: ${urGuess}</h1>
-            <p style="background-color: #f71111; font-size: 2em">ESTÁ ERRADAAAAAA</p>
-            <div style="height : 25vh display: flex; justify-content: center">
-                <img style="width: 50%; height: 100%" src=${url} alt="sad gif">
+        const pontos = getPoints()
+        const total = parseInt(pontos)
+        myCOC.innerHTML = `
+        <div id="myIdDiv">
+            <div style="height: 40vh; display: flex; justify-content: center">
+                <img src=${url} alt="dancing gif">
             </div>
-            <p style="font-size: 2em; font-weigh: bold">A resposta correta é ${myObj.nome}</p>
-            <div>
-                <button onclick="closeGameContainer()" style="background-color: #007BFF; color: white; width: 5vw; height: 3vh; border-radius:50px;">Ok</button>
-            </div>`
+            <div style="display:flex; flex-direction: column; justify-content: flex-start; align-items:center; color:black;font-weight: bold; height: 40vh; padding: 0vh 5vw 0vh 0vw">
+                <h1 style="color: #FFD700; font-size: 5em">Errado!</h1>
+                <div>   
+                    <div>
+                        <h2>Pontos:</h2>
+                        <h3 style="color: #FFD700;"> + 0</h3>
+                    </div>
+                    <div>
+                    <h2>Pontuação atual:<br>
+                        ${total}
+                    </h2>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content: space-around; width: 6vw;">
+                <button onclick="closeMyPopUp()" style="background-color: red; color: white; border-radius: 50%; padding: .5vh .5vw;">❌</button>
+                <button class="myOptions" onclick="NextQuestion()" style="border-radius: 50%; text-decoration: none; padding: .5vh .5vw; text-align: center"><span>&#10148;</span></button> 
+                </div>
+            </div>
+        </div>
+      
+            `
       countPoints(acertou)
-      closeMyPopUp();
    }
 }
 
-let closeGameContainer = () => {
+let NextQuestion = () => {
     myCOC.style.display = 'none'
-    containerGaming.style.display = 'flex'
-    containerGaming.style.flexDirection = 'column'
-    myLeaderboardBtn.style.display = 'flex'
-    myLeaderboardBtn.style.justifyContent = 'center'
+    gamificacaoContainer.style.display = 'block'
+    carregarImagens()
 }
 
 let closeMyPopUp = () => {
-   document.getElementById('myPopup').style.display = 'none';
+   myCOC.style.display = 'none';
+   gamificacaoContainer.style.display = 'none'
+   containerGaming.style.display = 'flex';
 }
 const myLeaderboardBtn = document.getElementById('myLeaderboardBtn')
 myLeaderboardBtn.addEventListener('click', async () => {
@@ -316,4 +285,4 @@ document.getElementById('closeLeaderboardBtn').addEventListener('click', () => {
 
 window.closePopUp = closePopUp
 window.closeMyPopUp = closeMyPopUp
-window.closeGameContainer = closeGameContainer
+window.NextQuestion = NextQuestion
