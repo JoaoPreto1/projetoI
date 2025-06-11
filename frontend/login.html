@@ -1,172 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
   <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: white; 
-    color: #333; 
-    margin: 0;
-    padding: 0;
-}
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      
+      background-size: 50px 50px;
+      background-color: #ffffff;
+    }
 
-.containerGeral{
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    width: 100vw;
-    height:100vh;
-}
-.containerDoLogin{
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    width: 65vw;
-    height:70vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 10px;
-}
+    .login-card {
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      background: #fff;
+    }
 
-.container {
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 8px;
-    width: 20vw;
-    height:45vh;
-    margin:0 3vw 0 0;
-    padding: 0 0 0 3vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-#loginForm{
-    padding:2.7vh 1.56vw;
-    width: 20vw;
-    height:45vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.containerDeImagemDeFundo{
-    background-image: url('../images/2.webp');
-    border-radius: 10px;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-    width: 40vw;
-    height: 68vh;
-    padding:2.7vh 1.5vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .login-img {
+      background-image: url('../images/2.webp');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+    }
 
+    .form-container {
+      padding: 3rem;
+    }
 
-h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 30px;
-}
+    h2 {
+      font-size: 2rem;
+    }
 
+    input[type="email"],
+    input[type="password"] {
+      font-size: 1.05rem;
+      padding: 0.75rem;
+    }
 
-input[type="email"],
-input[type="password"] {
-    background-color: rgba(255, 255, 255, 0.5);
-    border: .1px solid #007bff; 
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 12px;
-    width: 100%;
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease;
-}
+    button[type="submit"] {
+      padding: 0.75rem;
+      font-size: 1.1rem;
+    }
 
+    #error-message {
+      font-size: 1rem;
+      color: #dc3545;
+    }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #007bff; 
-    outline: none;
-}
+    p a {
+      color: #007bff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
+    p a:hover {
+      color: #0056b3;
+    }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+    @media (max-width: 767.98px) {
+      .login-img {
+        border-radius: 12px 12px 0 0;
+        min-height: 200px;
+      }
 
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-
-#error-message {
-    text-align: center;
-    font-size: 1rem;
-    color: #dc3545;
-    margin-top: 15px;
-}
-
-
-p {
-    text-align: center;
-    color: #333;
-}
-
-p a {
-    color: #007bff;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-p a:hover {
-    color: #0056b3;
-}
-
-    </style>
+      .form-container {
+        padding: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="containerGeral">
-    <div class="containerDoLogin">
-      <div class="containerDeImagemDeFundo"></div>
-      <div class="container">
-        <form id="loginForm">
-          <h2 class="text-center mb-4">Entrar na Conta</h2>
+  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row justify-content-center w-100 px-3">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+        <div class="row g-0 login-card">
+          
+          <div class="col-md-6 login-img d-none d-md-block"></div>
 
-          <div class="mb-3">
-            <label for="email" class="form-label fw-bold">Email</label>
-            <input type="email" class="form-control" id="email" required>
+          
+          <div class="col-12 col-md-6 form-container">
+            <form id="loginForm">
+              <h2 class="text-center mb-4">Entrar na Conta</h2>
+
+              <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label fw-bold">Senha</label>
+                <input type="password" class="form-control" id="password" required />
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Entrar</button>
+
+              <div id="error-message" class="text-danger text-center mt-3"></div>
+
+              <p class="mt-3 text-center fw-bold">
+                Ainda não tem uma conta? <a href="register.html">Crie uma aqui</a>
+              </p>
+            </form>
           </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label fw-bold">Senha</label>
-            <input type="password" class="form-control" id="password" required>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-100">Entrar</button>
-          <div id="error-message" class="text-danger mt-3"></div>
-          <p class="mt-3 text-center fw-bold">Ainda não tem uma conta? <a href="register.html">Crie uma aqui</a></p>
-        </form>
+        </div>
       </div>
     </div>
   </div>
+
   <script type="module" src="../js/Views/loginView.js" defer></script>
 </body>
 </html>

@@ -1,101 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Administrador</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            text-align: center;
-            padding-top: 80px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel do Administrador</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f4f8;
+      padding-top: 90px;
+    }
 
-        h2 {
-            color: #333;
-            margin-bottom: 30px;
-        }
+    .navbar {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+    .admin-container {
+      max-width: 700px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
 
-        .btn-large {
-            width: 48%;
-            padding: 15px;
-            font-size: 1.2rem;
-        }
+    h2 {
+      color: #004085;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
 
-        .btn-bottom {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.2rem;
-        }
+    .btn-admin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      font-size: 1.1rem;
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
 
-        #logoutButton, #backButton {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background-color: #dc3545;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            z-index: 1050;
-        }
+    .btn-admin i {
+      font-size: 1.3rem;
+    }
 
-        #logoutButton:hover {
-            background-color: #a71d2a;
-        }
+    .btn-admin:hover {
+      transform: scale(1.02);
+    }
 
-        #backButton {
-            right: auto;
-            left: 15px;
-            background-color: #007bff;
-        }
+    .top-buttons {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      gap: 10px;
+      z-index: 1050;
+    }
 
-        #backButton:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    .top-buttons button {
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    #logoutButton {
+      background-color: #dc3545;
+    }
+
+    #logoutButton:hover {
+      background-color: #bd2130;
+    }
+
+    #backButton {
+      background-color: #007bff;
+    }
+
+    #backButton:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 576px) {
+      .btn-admin {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .top-buttons {
+        flex-direction: column;
+        right: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Admin Panel</a>
-        </div>
-    </nav>
-
-    <button id="backButton">Voltar</button>
-    <button id="logoutButton">Logout</button>
-
-    <div class="container mt-5">
-        <h2>Bem-vindo, Administrador</h2>
-
-        <div class="btn-group">
-            <a href="gerir_caminhos.html" class="btn btn-primary btn-large">Gerir Caminhos</a>
-            <a href="gerir_utilizadores.html" class="btn btn-warning btn-large">Gerir Utilizadores</a>
-        </div>
-
-        <a href="gerir_etapas.html" class="btn btn-success btn-bottom">Gerir Etapas</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Painel do Administrador</a>
     </div>
+  </nav>
 
-    <script src="../js/Views/adminView.js" defer></script>
+  <div class="top-buttons">
+    <button id="backButton"><i class="fas fa-arrow-left"></i> Voltar</button>
+    <button id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
 
+  <div class="admin-container mt-4 text-center">
+    <h2><i class="fas fa-user-shield me-2"></i>Bem-vindo, Administrador</h2>
+
+    <a href="gerir_caminhos.html" class="btn btn-primary btn-admin">
+      <i class="fas fa-route"></i> Gerir Caminhos
+    </a>
+
+    <a href="gerir_utilizadores.html" class="btn btn-warning btn-admin text-dark">
+      <i class="fas fa-users-cog"></i> Gerir Utilizadores
+    </a>
+
+    <a href="gerir_etapas.html" class="btn btn-success btn-admin">
+      <i class="fas fa-map-marked-alt"></i> Gerir Etapas
+    </a>
+  </div>
+
+  <script src="../js/Views/adminView.js" defer></script>
 </body>
 </html>

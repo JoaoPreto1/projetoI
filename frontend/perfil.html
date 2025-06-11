@@ -1,75 +1,138 @@
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil do Utilizador</title>
 
-    <style>
-        body {
-            background-color: #f4f4f4;
-        }
-        .profile-container {
-            max-width: 500px;
-            margin: 100px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .profile-container i{
-            width: 4vw;
-            height: 3vh;
-            font-size: 2rem;
-        }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            border: 4px solid #007bff;
-        }
-        .profile-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .logout-btn {
-            background-color: #dc3545;
-            color: white;
-            font-weight: bold;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .logout-btn:hover {
-            background-color: #c82333;
-        }
-        #myIconProfile{
-            width: 2vw;
-            height: 1vh;
-        }
-    </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    body {
+      background-color: #f4f4f4;
+      padding-top: 100px;
+    }
+
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid #007bff;
+      margin-bottom: 10px;
+    }
+
+    .profile-name {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .profile-email {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .section-title {
+      font-weight: 600;
+      color: #004c97;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .history-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .achievements-badge {
+      background-color: #004c97;
+      color: white;
+      border-radius: 20px;
+      padding: 8px 16px;
+      display: inline-block;
+      margin: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .logout-btn {
+      margin-top: 2rem;
+      background-color: #dc3545;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="home.html">Caminhos de Santiago</a>
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">Caminhos de Santiago</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="explorar.html">Explorar Caminhos</a></li>
+          <li class="nav-item"><a class="nav-link" href="formulario.html">Planear Caminho</a></li>
+          <li class="nav-item"><a class="nav-link" href="gaming.html">Conhecer</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+          <li class="nav-item">
+            <a id="loginButton" class="btn btn-light text-primary ms-3" href="login.html">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <div class="profile-container">
-        <i class="fab">&#xf368;</i>
-        <p class="profile-name" id="userEmail">Bem-vindo, Usuário</p>
-        <p class="profile-name" id="userRate">Bem-vindo, Usuário</p>
-        <button id="logoutButton" class="logout-btn">Sair</button>
+   <div class="profile-container">
+    <div class="profile-header">
+      <img src="/images/3.png" alt="Foto de Perfil" class="profile-img" />
+      <p class="profile-name" id="userName">Nome do Utilizador</p>
+      <p class="profile-email" id="userEmail">email@exemplo.com</p>
+      <p id="userRate" class="text-muted"></p>
     </div>
 
-    <script type="module" src="../js/Views/perfilView.js" defer></script>
+    <div>
+      <h5 class="section-title"><i class="fas fa-hiking me-2"></i>Histórico de Caminhadas</h5>
+      <ul class="list-unstyled history-list" id="caminhadasHistorico">
+        
+      </ul>
+    </div>
+
+    <div>
+      <h5 class="section-title"><i class="fas fa-award me-2"></i>Conquistas</h5>
+      <div id="conquistasContainer">
+        
+      </div>
+    </div>
+
+    <button id="logoutButton" class="logout-btn">Sair</button>
+  </div>
+
+  <script type="module" src="../js/Views/perfilView.js" defer></script>
 </body>
 </html>
