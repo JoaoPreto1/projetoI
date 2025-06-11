@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 loginButton.outerHTML = `
                     <a id="profileIcon" class="nav-link" href="perfil.html">
-                        <img src="user-icon.png" alt="Perfil" style="width: 35px; height: 35px; border-radius: 50%;">
+                        <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
                     </a>
                 `;
             }

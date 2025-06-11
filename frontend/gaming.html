@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gamificação de Santiago</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
 
@@ -181,10 +182,9 @@
 }
 
 #containerOfContainer{
-  position: relative;
   display: none;
   width: 100vw;
-  height: 91.2vh;
+  height: 93vh;
   justify-content: center;
   align-items: center;
   background-color: white;  
@@ -194,11 +194,22 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 91.3vh;
+  height: 93vh;
   margin: 0;
   padding: 0;
   background-color: #f2f2f2;
   z-index: -99;
+}
+
+@media (max-width: 1920px){
+  #gamificacaoContainer{
+    width: 100vw;
+    height: 90.3vh;
+  }
+  #containerOfContainer{
+    width: 100vw;
+    height: 90.6vh;
+  }
 }
 
 #myFlex{
@@ -295,9 +306,7 @@
           </button>
         </div>
     </div>  
-    <div id="containerOfContainer">
-      <div id="myPopUpContainer"></div>
-    </div>
+    <div id="containerOfContainer"></div>
     
     <div id="gamificacaoContainer"></div>
     
