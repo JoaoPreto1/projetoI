@@ -25,15 +25,15 @@ initBtn.addEventListener('click', async () => {
  
  const gamificacaoContainer = document.getElementById('gamificacaoContainer')
  const carregarImagens = async () => {
-    gamificacaoContainer.style.display = 'block'
+    gamificacaoContainer.style.display = 'flex'
     try {
         const myImg = await CalculateImages()
         const myAltAnswers = await calculateMyAltAnswers(myImg.id)
         myAltAnswers.push(myImg)
         shuffleArray(myAltAnswers)
         const card = `
-        <div id="newDiv"style="z-index: 1000; width: 99.8vw; height: 91.2vh; left: 50%; transform(-50%); background-color: #f2f2f2;display:flex; justify-content: center">
-            <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:98vw; height: 90vh; border: 0px solid black; padding:0; background-color:u7.u white;">
+        <div id="newDiv"style="z-index: 1000; width: 100vw; left: 50%; transform(-50%); height: 90vh; background-color: #f2f2f2; display:flex; justify-content: center; align-items: center;">
+            <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:98vw; height: 85vh; border: 0px solid black; padding:0; background-color:u7.u white;">
                 <div id="myClosePopUpContainer" style="display:flex; justify-content: space-between; align-items: center; width:98vw; height: 15vh; padding: 0vh .5vw 2vh 0vw; border:0px; background-color: white; text-align:center;">
                     <div style="display:flex; justify-content: flex-start; align-items:center; background-color: white;">
                         <div style="background-color: #007BFF; width: 5vw; height: 8vh; border-top-right-radius: 20px; border-bottom-right-radius:20px;"></div>
@@ -78,6 +78,7 @@ let myCOC = document.getElementById('containerOfContainer')
 let containerGaming = document.getElementById('containerGaming')
 let closePopUp = async (id, rightId) =>  {
     gamificacaoContainer.innerHTML = '';
+    gamificacaoContainer.style.display= 'none';
     const myObj = await getTheObjGame(rightId)
     let acertou = true
     let urGuessObj = await getTheObjGame(id)
@@ -169,7 +170,7 @@ let closeMyPopUp = () => {
 const myLeaderboardBtn = document.getElementById('myLeaderboardBtn')
 myLeaderboardBtn.addEventListener('click', async () => {
     containerGaming.style.display = 'none'
-    const myDiv = document.getElementById('myLeaderboardContainer')
+    const myDiv = document.getElementById('myleaderboardContainerP')
     myDiv.style.display = 'flex'
     myDiv.style.flexDirection = 'column'
     const users = obterUtilizadores()
@@ -277,7 +278,7 @@ document.getElementById('RateOrder').addEventListener('click', async () => {
 })
 
 document.getElementById('closeLeaderboardBtn').addEventListener('click', () => {
-    const myDiv = document.getElementById('myLeaderboardContainer')
+    const myDiv = document.getElementById('myleaderboardContainerP')
     myDiv.style.display = 'none'
     containerGaming.style.display = 'flex'
     containerGaming.style.flexDirection = 'column'

@@ -83,12 +83,18 @@
     background-color: white;
     color: #FFD700;
   }
-
+  
   .leaderboardBtn i {
     font-size: 18px;
   }
-  #myLeaderboardContainer {
+  #myleaderboardContainerP{
+    width: 100vw;
     display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  #myLeaderboardContainer {
+    display: flex;
     flex-direction: column;
     position: relative;
     padding: 20px;
@@ -96,9 +102,9 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 128, 0.2);
     width: 60vw;
-    height: 80vh;
-    margin: 10vh 10vw;
+    height: 75vh;
     padding-top: 5vh;
+    margin: 6vh 0vw 0vh 0vw;
   }
 
   #myLeaderboardTable {
@@ -177,11 +183,22 @@
 #containerOfContainer{
   position: relative;
   display: none;
-  width: 99.8vw;
-  height: 91vh;
+  width: 100vw;
+  height: 91.2vh;
   justify-content: center;
   align-items: center;
   background-color: white;  
+}
+#gamificacaoContainer{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 91.3vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  z-index: -99;
 }
 
 #myFlex{
@@ -191,10 +208,7 @@
 #containerButtons{
   display: flex;
   justify-content: center;
-}
-.gamificacaoContainer{
-  width: 99vw;
-  height: 94vh;
+  align-items: center;
 }
 .myOptions{
   box-shadow: none;
@@ -225,6 +239,10 @@
   border: 8px solid;
   border-image: linear-gradient(to right,#FFD700, #007BFF) 1;
 }
+#myLeaderboardBtn{
+  padding: 2.5vh 1.5vw;
+}
+
 </style>
 </head>
 <body>
@@ -248,25 +266,25 @@
             </div>
         </div>
     </nav>
-    <div id="leaderboardBtnContainer">
-    </div>    
-    <div id="myLeaderboardContainer">
-      <div id="myFlex" style="width: 2vw; height: 2vh">
-          <button id="closeLeaderboardBtn">✖</button>
-        </div>  
-        <table id="myLeaderboardTable">
-          <thead id="myTh">
-            <tr id="myHRow">
-              <th><button id="NameOrder">Nome de Utilizador</button></th>
-              <th><button id="PontosOrder">Pontos</button></th>
-              <th><button id="TotalOrder">Total</button></th>
-              <th><button id="RateOrder">Taxa de Acerto</button></th>
-            </tr>
-          </thead>
-          <tbody id="myTableBody">
-          </tbody>
-        </table>
-      </div>    
+    <div id="myleaderboardContainerP">
+      <div id="myLeaderboardContainer">
+        <div id="myFlex" style="width: 2vw; height: 2vh">
+            <button id="closeLeaderboardBtn">✖</button>
+          </div>  
+          <table id="myLeaderboardTable">
+            <thead id="myTh">
+              <tr id="myHRow">
+                <th><button id="NameOrder">Nome de Utilizador</button></th>
+                <th><button id="PontosOrder">Pontos</button></th>
+                <th><button id="TotalOrder">Total</button></th>
+                <th><button id="RateOrder">Taxa de Acerto</button></th>
+              </tr>
+            </thead>
+            <tbody id="myTableBody">
+            </tbody>
+          </table>
+        </div>    
+    </div>
       
       <div id="containerGaming">
         <h1>Bem-vindo ao Caminho de Santiago!</h1>
