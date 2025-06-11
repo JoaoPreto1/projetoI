@@ -32,7 +32,7 @@ initBtn.addEventListener('click', async () => {
         myAltAnswers.push(myImg)
         shuffleArray(myAltAnswers)
         const card = `
-        <div id="newDiv"style="z-index: 1000; width: 99.6vw; height: 94.3vh; left: 50%; transform(-50%); background-color: #f2f2f2;display:flex; justify-content: center">
+        <div id="newDiv"style="z-index: 1000; width: 99.8vw; height: 91.2vh; left: 50%; transform(-50%); background-color: #f2f2f2;display:flex; justify-content: center">
             <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:98vw; height: 90vh; border: 0px solid black; padding:0; background-color:u7.u white;">
                 <div id="myClosePopUpContainer" style="display:flex; justify-content: space-between; align-items: center; width:98vw; height: 15vh; padding: 0vh .5vw 2vh 0vw; border:0px; background-color: white; text-align:center;">
                     <div style="display:flex; justify-content: flex-start; align-items:center; background-color: white;">
@@ -43,7 +43,7 @@ initBtn.addEventListener('click', async () => {
                 </div>
                 <div id="MyPopUpContainer" style="display:flex; flex-direction: flex; align-items:center; justify-content: space-around; width:98vw; padding: 2vh 2vw 10vh 6vw;  background-color: white;">   
                     <div>
-                        <img src="${myImg.url}" style= "width:36vw; height:60vh; loading="lazy">
+                        <img src="${myImg.url}" style= "width:36vw; height:60vh;">
                     </div>
                     <div style="display:flex; padding: 2vh 2vw; flex-direction: column; justify-content: space-around; width: 50vw; height: 50vh">  
                         <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw;" onclick="closePopUp(${myAltAnswers[0].id}, ${myImg.id})">${myAltAnswers[0].nome}</button>
