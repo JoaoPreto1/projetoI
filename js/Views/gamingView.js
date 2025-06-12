@@ -16,10 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
             }
         });
+
 const initBtn = document.querySelector('#initBtn');
+const mybackground = document.getElementById('mybackground');
 
 initBtn.addEventListener('click', async () => {
     containerGaming.style.display = 'none'
+    mybackground.style.display = 'none'
     carregarImagens()
  })
  
@@ -165,11 +168,12 @@ let NextQuestion = () => {
 let closeMyPopUp = () => {
    myCOC.style.display = 'none';
    gamificacaoContainer.style.display = 'none'
+   mybackground.style.display = 'block'
    containerGaming.style.display = 'flex';
 }
 const myLeaderboardBtn = document.getElementById('myLeaderboardBtn')
 myLeaderboardBtn.addEventListener('click', async () => {
-    containerGaming.style.display = 'none'
+    containerGaming.style.display = 'none';
     const myDiv = document.getElementById('myleaderboardContainerP')
     myDiv.style.display = 'flex';
     const users = obterUtilizadores()
@@ -278,9 +282,8 @@ document.getElementById('RateOrder').addEventListener('click', async () => {
 
 document.getElementById('closeLeaderboardBtn').addEventListener('click', () => {
     const myDiv = document.getElementById('myleaderboardContainerP')
-    myDiv.style.display = 'none'
-    containerGaming.style.display = 'flex'
-    containerGaming.style.flexDirection = 'column'
+    myDiv.style.display = 'none';
+    containerGaming.style.display = 'flex';
 })
 
 window.closePopUp = closePopUp

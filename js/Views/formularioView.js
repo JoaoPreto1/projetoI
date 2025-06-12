@@ -1,6 +1,22 @@
 import { filtrarCaminho, nDias, mostrarDetalhes } from '../models/CaminhoModel.js';
 import {changePath} from '../models/userModel.js';
 
+
+document.addEventListener("DOMContentLoaded", function () {
+            const loginButton = document.getElementById("loginButton");
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    
+            if (user) {
+                
+                loginButton.outerHTML = `
+                    <a id="profileIcon" class="nav-link" href="perfil.html">
+                        <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
+                    </a>
+                `;
+            }
+        });
+
+
 document.getElementById('formCaminho').addEventListener('submit', async function(event) {
   event.preventDefault();
 

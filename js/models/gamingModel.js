@@ -122,7 +122,9 @@ export let calculateMyAltAnswers = async (id) => {
     for(let i = 0; i< 3; i++){
         let decider = randomNumb(0, max)
         let theChosenOne = updatedImgs.find(Img => Img.id == decider);
-        updatedImgs = updatedImgs.filter(Img => Img.id !== decider);
+        let updatedImgs1 = updatedImgs.filter(Img => Img.id != decider);
+        updatedImgs = updatedImgs1
+        console.log(updatedImgs1)
         myAltAnswers.push(theChosenOne)
     }
     return myAltAnswers
