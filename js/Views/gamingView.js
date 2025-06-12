@@ -32,8 +32,8 @@ initBtn.addEventListener('click', async () => {
         myAltAnswers.push(myImg)
         shuffleArray(myAltAnswers)
         const card = `
-        <div id="newDiv"style="z-index: 1000; width: 100vw; left: 50%; transform(-50%); height: 90vh; background-color: #f2f2f2; display:flex; justify-content: center; align-items: center;">
-            <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; position: fixed; width:98vw; height: 85vh; border: 0px solid black; padding:0; background-color:u7.u white;">
+        <div id="newDiv" style="z-index: 1000; width: 100vw; left: 50%; transform(-50%); height: 90vh; background-color: #f2f2f2; display:flex; justify-content: center; align-items: center;">
+            <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; width:98vw; height: 85vh; border: 0px solid black; padding:0; background-color:u7.u white;">
                 <div id="myClosePopUpContainer" style="display:flex; justify-content: space-between; align-items: center; width:98vw; height: 15vh; padding: 0vh .5vw 2vh 0vw; border:0px; background-color: white; text-align:center;">
                     <div style="display:flex; justify-content: flex-start; align-items:center; background-color: white;">
                         <div style="background-color: #007BFF; width: 5vw; height: 8vh; border-top-right-radius: 20px; border-bottom-right-radius:20px;"></div>
@@ -171,8 +171,7 @@ const myLeaderboardBtn = document.getElementById('myLeaderboardBtn')
 myLeaderboardBtn.addEventListener('click', async () => {
     containerGaming.style.display = 'none'
     const myDiv = document.getElementById('myleaderboardContainerP')
-    myDiv.style.display = 'flex'
-    myDiv.style.flexDirection = 'column'
+    myDiv.style.display = 'flex';
     const users = obterUtilizadores()
     users.shift()
     users.sort((a, b) => b.pontos - a.pontos);
