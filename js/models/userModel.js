@@ -1,4 +1,18 @@
 import {obterUtilizadores, salvarUtilizadores} from '../models/gerirUserModel.js'
+
+class User {
+  constructor(id, nome, email, password, tipo, percurso, pontos, total){
+    this.id = id;
+    this.nome = nome;
+    this.email = email;
+    this.password = password;
+    this.tipo = tipo;
+    this.percurso = percurso;
+    this.pontos = pontos;
+    this.total = total;
+  }
+}
+
 const ADMIN_USER = {
   id: 1,
   nome: "admin",
@@ -51,16 +65,8 @@ export let changePath = async (nome) => {
    const pontos = user.pontos
    const total = user.total
    let utilizadores = obterUtilizadores().filter(u => u.id !== id);
-    const editedUser = {
-        id : id,
-        nome: name,
-        email: email,
-        password: password,
-        tipo : tipo,
-        percurso: nome,
-        pontos: pontos,
-        total : total
-    }
+    const editedUser = new User (id, name, email, password, tipo, nome, pontos, total)
+
     utilizadores.push(editedUser);
     salvarUtilizadores(utilizadores);
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
@@ -74,34 +80,18 @@ export let countPoints = (acertou) => {
    const password = user.password
    const percurso = user.percurso
    const tipo = user.tipo
-   const pontos = user.pontos
+   const pontos = parseInt(user.pontos)
    const total = user.total
    let utilizadores = obterUtilizadores().filter(u => u.id !== id);
+   const pontosN = pontos + 1;
+   const totalN = parseInt(total) +1;
     if(acertou){
-      const editedUser = {
-        id : id,
-        nome: name,
-        email: email,
-        password: password,
-        tipo : tipo,
-        percurso: percurso,
-        pontos: parseInt(pontos) + 1,
-        total : parseInt(total) + 1
-    }
+      const editedUser = new User(id, name, email, password, tipo, percurso,pontosN,totalN)
     utilizadores.push(editedUser);
     salvarUtilizadores(utilizadores);
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
     } else {
-      const editedUser = {
-        id : id,
-        nome: name,
-        email: email,
-        password: password,
-        tipo : tipo,
-        percurso: percurso,
-        pontos: parseInt(pontos),
-        total : parseInt(total) + 1
-    }
+      const editedUser = new User(id, name, email, password, tipo, percurso,pontos,totalN)
     utilizadores.push(editedUser);
     salvarUtilizadores(utilizadores);
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));

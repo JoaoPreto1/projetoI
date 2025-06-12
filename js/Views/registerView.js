@@ -62,18 +62,23 @@
         
         // Definir role 
         const tipo = email === "admin@gmail.com" ? "admin" : "user";
-        
-        
-        const novoUser = {
-            id : novoId,
-            nome: nome,
-            email: email,
-            password: password,
-            tipo : tipo,
-            percurso : percurso,
-            pontos : pontos,
-            total : total
+
+        class User {
+            constructor(id, nome, email, password, tipo, percurso, pontos, total){
+                this.id = id;
+                this.nome = nome;
+                this.email = email;
+                this.password = password;
+                this.tipo = tipo;
+                this.percurso = percurso;
+                this.pontos = pontos;
+                this.total = total;
+            }
         }
+
+        const novoUser = new User(novoId, nome, email, password, tipo, percurso, pontos, total)
+        console.log(novoUser)
+
         users.push(novoUser);
         localStorage.setItem('users', JSON.stringify(users));
 
