@@ -82,7 +82,7 @@ export let countPoints = (acertou) => {
    const tipo = user.tipo
    const pontos = parseInt(user.pontos)
    const total = user.total
-   let utilizadores = obterUtilizadores().filter(u => u.id !== id);
+   let utilizadores = obterUtilizadores().filter(u => u.id != id);
    const pontosN = pontos + 1;
    const totalN = parseInt(total) +1;
     if(acertou){

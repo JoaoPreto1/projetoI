@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
 
+  const loginButton = document.getElementById("loginButton");    
+    if (user) {
+      loginButton.outerHTML = `
+        <a id="profileIcon" class="nav-link" href="perfil.html">
+            <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
+        </a>
+      `;
+    }
+
   
   document.getElementById("userName").innerText = user.nome;
   document.getElementById("userEmail").innerText = user.email;

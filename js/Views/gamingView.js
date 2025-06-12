@@ -23,7 +23,7 @@ const mybackground = document.getElementById('mybackground');
 initBtn.addEventListener('click', async () => {
     containerGaming.style.display = 'none'
     mybackground.style.display = 'none'
-    carregarImagens()
+    await carregarImagens()
  })
  
  const gamificacaoContainer = document.getElementById('gamificacaoContainer')
@@ -31,7 +31,8 @@ initBtn.addEventListener('click', async () => {
     gamificacaoContainer.style.display = 'flex'
     try {
         const myImg = await CalculateImages()
-        const myAltAnswers = await calculateMyAltAnswers(myImg.id)
+        const id = myImg.id
+        const myAltAnswers = await calculateMyAltAnswers(id)
         myAltAnswers.push(myImg)
         shuffleArray(myAltAnswers)
         const card = `
@@ -49,10 +50,10 @@ initBtn.addEventListener('click', async () => {
                         <img src="${myImg.url}" style= "width:36vw; height:60vh;">
                     </div>
                     <div style="display:flex; padding: 2vh 2vw; flex-direction: column; justify-content: space-around; width: 50vw; height: 50vh">  
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw;" onclick="closePopUp(${myAltAnswers[0].id}, ${myImg.id})">${myAltAnswers[0].nome}</button>
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[1].id} , ${myImg.id})">${myAltAnswers[1].nome}</button>
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[2].id}, ${myImg.id})">${myAltAnswers[2].nome}</button>
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[3].id}, ${myImg.id})">${myAltAnswers[3].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw;" onclick="closePopUp(${myAltAnswers[0].id}, ${id})">${myAltAnswers[0].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[1].id} , ${id})">${myAltAnswers[1].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[2].id}, ${id})">${myAltAnswers[2].nome}</button>
+                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[3].id}, ${id})">${myAltAnswers[3].nome}</button>
                     </div>
                 </div>
             </div>
@@ -159,10 +160,10 @@ let closePopUp = async (id, rightId) =>  {
    }
 }
 
-let NextQuestion = () => {
+let NextQuestion = async () => {
     myCOC.style.display = 'none'
     gamificacaoContainer.style.display = 'block'
-    carregarImagens()
+    await carregarImagens()
 }
 
 let closeMyPopUp = () => {
