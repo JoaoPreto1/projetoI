@@ -119,13 +119,7 @@ let closePopUp = async (id, rightId) =>  {
       
       `
       countPoints(acertou)
-   }else if (urGuess === '') {
-    myCOC.style.display = 'block'
-    myCOC.innerHTML = `<p style="background-color: #cce5ff; font-size: 2em">Só porque não sabes a resposta, nao quer dizer que nao possas adivinhar :p</p>
-            <div>
-            <button onclick="closeGameContainer()" style="background-color: #007BFF; color: white; width: 5vw; height: 3vh; border-radius:50px;">Ok</button>
-            </div>`
-    } else {
+   } else {
         acertou = !acertou;
         const url = await getGifs(acertou)
         const pontos = getPoints()
