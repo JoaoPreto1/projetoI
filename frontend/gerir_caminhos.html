@@ -57,6 +57,11 @@
 
   <div class="container">
     <h2 class="my-4">Lista de Caminhos</h2>
+
+    <div class="mb-3 text-end">
+      <button class="btn btn-success" onclick="abrirModalAdicionar()">➕ Adicionar Caminho</button>
+    </div>
+
     <div id="caminhosContainer" class="row g-4"></div>
   </div>
 
@@ -117,7 +122,6 @@
                 <div class="mt-auto d-flex flex-wrap gap-1">
                   <button class="btn btn-warning btn-sm btn-action" onclick="editarCaminho('${caminho.id}')">✏️ Editar</button>
                   <button class="btn btn-danger btn-sm btn-action" onclick="removerCaminho('${caminho.id}')">❌ Remover</button>
-                  <button class="btn btn-success btn-sm" onclick="abrirModalAdicionar()">➕ Adicionar Caminho</button>
                 </div>
               </div>
             </div>
