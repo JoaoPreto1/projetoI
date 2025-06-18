@@ -41,7 +41,7 @@ export async function carregarCaminhos() {
   }
 }
 
-export let guardarVariante = async (id, nome, descricao, distancia) => {
+export let guardarVariante = async (id, novoId, nome, descricao, distancia) => {
   class CaminhoNew{
     constructor(id, nome, distancia, dificuldade, descricao, latitude, longitude, variantes){
       this.id = id,
@@ -54,21 +54,47 @@ export let guardarVariante = async (id, nome, descricao, distancia) => {
       this.variantes = variantes
     }
   }
-  const varianteN = {id, nome, descricao, distancia}
-  console.log(varianteN)
-  let intId = Math.floor(id)
-  console.log(intId)
-  let caminho = await mostrarDetalhes(intId)
-  caminho.variantes.push(varianteN);
-  const caminhoE = new CaminhoNew(caminho.id, caminho.nome, caminho.distancia, caminho.dificuldade, caminho.descricao, caminho.latitude, caminho.longitude, caminho.variantes)
-  console.log(caminhoE)
-  let caminhos = await carregarCaminhos()
-  caminhos = caminhos.filter(c => c.id != intId)
-  caminhos.push(caminhoE)
-  caminhos.sort((a, b) => a.id - b.id);
-  await fetch(`http://localhost:3000/caminhos/${intId}`, {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(caminhoE)
-  }); 
+  const varianteN = {id : novoId, nome, descricao, distancia}
+  try{
+    let caminho = await mostrarDetalhes(id)
+    console.log(caminho)
+    caminho.variantes.push(varianteN);
+    const caminhoE = new CaminhoNew(caminho.id, caminho.nome, caminho.distancia, caminho.dificuldade, caminho.descricao, caminho.latitude, caminho.longitude, caminho.variantes)
+    console.log(caminhoE)
+    await fetch(`http://localhost:3000/caminhos/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(caminhoE)
+    }); 
+  } catch(err){
+    console.error(err)
+  }
+}
+
+export let deleteVariante = async (id) => {
+  const stId = Math.floor(id)
+  try {
+    const caminho = await mostrarDetalhes(stId);
+    if (!caminho) {
+      console.error("Caminho não encontrado");
+      return;
+    }
+
+    const variantesAtualizadas = caminho.variantes.filter(v => v.id != id);
+
+    const caminhoAtualizado = {
+      ...caminho,
+      variantes: variantesAtualizadas
+    };
+
+    
+    await fetch(`http://localhost:3000/caminhos/${stId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(caminhoAtualizado)
+    });
+
+  } catch (error) {
+    console.error("Erro ao remover variante:", error);
+  }
 }

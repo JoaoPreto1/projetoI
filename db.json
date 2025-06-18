@@ -1,7 +1,7 @@
 {
   "caminhos": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Caminho Francês",
       "distancia": "800 km",
       "dificuldade": "Moderado",
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Caminho Português",
       "distancia": "600 km",
       "dificuldade": "Fácil",
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Caminho Primitivo",
       "distancia": "300 km",
       "dificuldade": "Difícil",
@@ -88,223 +88,223 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Caminho da Costa",
       "distancia": "280 km",
       "dificuldade": "Moderado",
       "descricao": "Litoral português e espanhol, com belas vistas do oceano.",
       "latitude": 43.2569,
       "longitude": -2.9234,
-      "variantes" : []
+      "variantes": []
     },
     {
-      "id": 5,
+      "id": "5",
       "nome": "Caminho Sarracênico",
       "distancia": "400 km",
       "dificuldade": "Difícil",
       "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada.",
       "latitude": 43.0546,
       "longitude": -6.5736,
-      "variantes" : []
+      "variantes": []
     },
     {
-      "id": 6,
+      "id": "6",
       "nome": "Caminho de Fisterra",
       "distancia": "90 km",
       "dificuldade": "Fácil",
       "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
       "latitude": 42.9071,
       "longitude": -9.2625,
-      "variantes" : []
+      "variantes": []
     },
     {
-      "id": 7,
+      "id": "7",
       "nome": "Caminho da Via de la Plata",
       "distancia": "1000 km",
       "dificuldade": "Difícil",
       "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
       "latitude": 37.3886,
       "longitude": -5.9823,
-      "variantes" : []
+      "variantes": []
     }
   ],
-  "gamificacao" : [
-      {
-        "id" : 0,
-        "nome": "Ponte de Lima",
-        "url": "https://www.cm-pontedelima.pt/thumbs/cmpontedelima/uploads/writer_file/image/2000/pontedelima_fot._manuel_teixeira_1_1024_2500.jpg"
-      },
-      {
-        "id" : 1,
-        "nome" : "Catedral de Santiago de Compostela",
-        "url" : "https://www.caminodesantiago.gal/osdam/filestore/7/1/7/5/9_5e4b5b6a70ef8b7/71759scr_5f1b870eaf3cc5b.jpg"
-      },
-      {
-        "id" : 2,
-        "nome" : "Igreja de Santa Maria",
-        "url" : "https://www.santiagoturismo.com/files/full/SantaMariadoCamio01.jpg"
-      },
-      {
-        "id" : 3,
-        "nome" : "Santuário de Santa María Real do Cebreiro",
-        "url" : "https://www.caminodesantiago.gal/osdam/filestore/8/4/2/5/7_29ee7d1c1344f65/84257scr_6c787c096c0cbcf.jpg"
-      },
-      {
-        "id" : 4,
-        "nome" : "Igreja Paroquial de São João de Fonfría",
-        "url" : "https://www.caminodesantiago.gal/osdam/filestore/1/1/2/7/0/5_bf0eb771c7702bf/112705scr_a5c68a92f6700d6.jpg"
-      },
-      {
-        "id" : 5,
-        "nome" : "Igreja Paroquial de Santiago de Triacastela",
-        "url" : "https://www.turismo.gal/imaxes/mdaw/mdy4/~edisp/~extract/TURGA068976~1~staticrendition/tg_carrusel_cabecera_grande.jpg"
-      },
-      {
-        "id" : 6,
-        "nome" : "Castelo de Ponferrada",
-        "url" : "https://www.spain.info/export/sites/segtur/.content/imagenes/cabeceras-grandes/castilla-leon/castillo-templario-ponferrada-s309994019.jpg"
-      },
-      {
-        "id" : 7,
-        "nome" : "Castelo Cornatel",
-        "url" : "https://upload.wikimedia.org/wikipedia/commons/8/81/Vista_del_castillo_de_Cornatel.jpg"
-      },
-      {
-        "id" : 8,
-        "nome" : "Basílica de Nossa Senhora do Carvalho",
-        "url" : "https://www.turismocastillayleon.com/cm/images?locale=pt_PT&idMmedia=267723"
-      },
-      {
-        "id" : 9,
-        "nome" : "Alto de Mezquiriz",
-        "url" : "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrvqixv2W3EeI4xowsvDx-QpM1LsUg-gRWDUcRHo5ytPcDLrPDtIBqd0FKYZ1uk67_roAD-85sN_PnXXrCskCPFFHnFQoIvg-6sgtpy2_BhYrBWPji81AgBdnCZHqIVGwWmBAiwHA=w408-h544-k-no"
-      },
-      {
-        "id" : 10,
-        "nome" : "Alto do Erro",
-        "url" : "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npGB4w7t_x-S6Wkp2xxOMLbQyOXsExdQ1YRmhVK9KBmMFXBWHJoOoEhqzCT_Slk27bKFQr-tOE5oNs2oGAviNtTo0ByXyheV11PbFKN40AFh0IVGIiWgAV2uSn_WoH3HU4qIDy_bA=w408-h306-k-no"
-      },
-      {
-        "id" : 11,
-        "nome" : "Forte Alfonso XII",
-        "nome2" : "San Cristóbal",
-        "url" : "https://www.navarrafilmindustry.com/wp-content/uploads/2022/08/2016032718583018252.jpg"
-      },
-      {
-        "id" : 12,
-        "nome" : "Castelo de Sarria",
-        "url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/TORRE_DA_FORTALEZA_DE_SARRIA.jpg/1200px-TORRE_DA_FORTALEZA_DE_SARRIA.jpg"
-      },
-      {
-        "id" : 13,
-        "nome" : "Ponte da Áspera",
-        "url" : "https://vivecamino.com/img/gal/aspera-bridge,-image-from-wikimedia-commons_10938_p.jpg"
-      },
-      {
-        "id" : 14,
-        "nome" : "Ponte Nova de Portomarin",
-        "url" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/20/86/51/caption.jpg?w=1200&h=-1&s=1"
-      },
-      {
-        "id" : 15,
-        "nome" : "Sé do Porto",
-        "url" : "https://cdn.visitportugal.com/sites/default/files/styles/encontre_detalhe_poi_destaque/public/mediateca/Porto_SeCatedral_660x371.jpg?itok=Vifwfxmr"
-      },
-      {
-        "id" : 16,
-        "nome" : "Igreja Paroquial de Santo Ildefonso",
-        "url" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/8c/ee/d7/fachada-em-azulejo-da.jpg?w=1200&h=1200&s=1"
-      },
-      {
-        "id" : 17,
-        "nome" : "Torre dos Clérigos",
-        "url" : "https://imperdivel.pt/wp-content/uploads/2023/04/Igreja-e-Torre-dos-Cl%C3%A9rigos.jpg"
-      },
-      {
-        "id" : 18,
-        "nome" : "Museu do Traje de Viana do Castelo",
-        "url" : "https://www.cm-viana-castelo.pt/wp-content/uploads/2022/12/fachada_mt21-1.jpg"
-      },
-      {
-        "id" : 19,
-        "nome" : "Forte de São João Baptista de Esposende",
-        "url" : "https://upload.wikimedia.org/wikipedia/commons/6/68/Aerial_photograph_of_Esposende_2019_%282%29.jpg"
-      },
-      {
-        "id": 20,
-        "nome" : "Quinta da Malafaia",
-        "url" : "https://quintadamalafaia.pt/wp-content/uploads/2017/01/03-DSC_0042.jpg"
-      },
-      {
-        "id" : 21,
-        "nome" : "Sé Catedral de Viseu",
-        "url" : "https://upload.wikimedia.org/wikipedia/commons/1/15/S%C3%A9_de_Viseu_%282%29_%28cropped%29.jpg"
-      },
-      {
-        "id" : 22,
-        "nome" : "Capela de Bassar",
-        "url" : "https://s0.wklcdn.com/image_15/452313/100086882/65141856Master.jpg"
-      },
-      {
-        "id" : 23,
-        "nome" : "Capela Santo António da Serra",
-        "url" : "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no9Ejzp_xP-Z5KInf0N4RO9xlm9-6tMQ1xR7MLhGfA9r3KD9dxVrA-3TJHptzu34H4V50xZmaNWDUL1yZJT-kS4FTF5US3SVD5GDFHRKTPBcMkbF9YHJ_YEzNxikEC7YIlPBpEc=s680-w680-h510-rw"
-      },
-      {
-        "id" : 24,
-        "nome" : "Capela de Santa Bárbara",
-        "url" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/65/71/a2/vista-della-chiesetta.jpg?w=900&h=500&s=1"
-      },
-      {
-        "id" : 25,
-        "nome" : "Cementerio de Lastra",
-        "url" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/65/71/a2/vista-della-chiesetta.jpg?w=900&h=500&s=1"
-      },
-      {
-        "id" : 26,
-        "nome" : "Igreja de São Miguel do Caminho",
-        "url": "https://www.senditur.com/multimedia/uploads/images/Localidades/Espa%C3%B1a/Castilla%20y%20Le%C3%B3n/Le%C3%B3n/San%20Miguel%20del%20Camino/iGLESIA.jpg"
-      },
-      {
-        "id" : 27,
-        "nome" : "Muralha Romana de Lugo",
-        "url" : "https://www.info4camper.com/fotos/visitar/es/large/photos-8745-12953-muralha_romana_de_lugo.jpg"
-      },
-      {
-        "id" : 28,
-        "nome" : "Ponte Velha de Lugo",
-        "url" : "https://d2exd72xrrp1s7.cloudfront.net/www/000/1k6/x4/x4xmd3lx7voshmfj64hhqffk47g9tl6o-uhi50873964/0?width=768&height=576&crop=true"
-      },
-      {
-        "id" : 29,
-        "nome" : "Igreja de Santa Maria de Silvela",
-        "url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Silvelaigrexa.jpg/960px-Silvelaigrexa.jpg"
-      }
+  "gamificacao": [
+    {
+      "id": "0",
+      "nome": "Ponte de Lima",
+      "url": "https://www.cm-pontedelima.pt/thumbs/cmpontedelima/uploads/writer_file/image/2000/pontedelima_fot._manuel_teixeira_1_1024_2500.jpg"
+    },
+    {
+      "id": "1",
+      "nome": "Catedral de Santiago de Compostela",
+      "url": "https://www.caminodesantiago.gal/osdam/filestore/7/1/7/5/9_5e4b5b6a70ef8b7/71759scr_5f1b870eaf3cc5b.jpg"
+    },
+    {
+      "id": "2",
+      "nome": "Igreja de Santa Maria",
+      "url": "https://www.santiagoturismo.com/files/full/SantaMariadoCamio01.jpg"
+    },
+    {
+      "id": "3",
+      "nome": "Santuário de Santa María Real do Cebreiro",
+      "url": "https://www.caminodesantiago.gal/osdam/filestore/8/4/2/5/7_29ee7d1c1344f65/84257scr_6c787c096c0cbcf.jpg"
+    },
+    {
+      "id": "4",
+      "nome": "Igreja Paroquial de São João de Fonfría",
+      "url": "https://www.caminodesantiago.gal/osdam/filestore/1/1/2/7/0/5_bf0eb771c7702bf/112705scr_a5c68a92f6700d6.jpg"
+    },
+    {
+      "id": "5",
+      "nome": "Igreja Paroquial de Santiago de Triacastela",
+      "url": "https://www.turismo.gal/imaxes/mdaw/mdy4/~edisp/~extract/TURGA068976~1~staticrendition/tg_carrusel_cabecera_grande.jpg"
+    },
+    {
+      "id": "6",
+      "nome": "Castelo de Ponferrada",
+      "url": "https://www.spain.info/export/sites/segtur/.content/imagenes/cabeceras-grandes/castilla-leon/castillo-templario-ponferrada-s309994019.jpg"
+    },
+    {
+      "id": "7",
+      "nome": "Castelo Cornatel",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Vista_del_castillo_de_Cornatel.jpg"
+    },
+    {
+      "id": "8",
+      "nome": "Basílica de Nossa Senhora do Carvalho",
+      "url": "https://www.turismocastillayleon.com/cm/images?locale=pt_PT&idMmedia=267723"
+    },
+    {
+      "id": "9",
+      "nome": "Alto de Mezquiriz",
+      "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrvqixv2W3EeI4xowsvDx-QpM1LsUg-gRWDUcRHo5ytPcDLrPDtIBqd0FKYZ1uk67_roAD-85sN_PnXXrCskCPFFHnFQoIvg-6sgtpy2_BhYrBWPji81AgBdnCZHqIVGwWmBAiwHA=w408-h544-k-no"
+    },
+    {
+      "id": "10",
+      "nome": "Alto do Erro",
+      "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npGB4w7t_x-S6Wkp2xxOMLbQyOXsExdQ1YRmhVK9KBmMFXBWHJoOoEhqzCT_Slk27bKFQr-tOE5oNs2oGAviNtTo0ByXyheV11PbFKN40AFh0IVGIiWgAV2uSn_WoH3HU4qIDy_bA=w408-h306-k-no"
+    },
+    {
+      "id": "11",
+      "nome": "Forte Alfonso XII",
+      "nome2": "San Cristóbal",
+      "url": "https://www.navarrafilmindustry.com/wp-content/uploads/2022/08/2016032718583018252.jpg"
+    },
+    {
+      "id": "12",
+      "nome": "Castelo de Sarria",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/TORRE_DA_FORTALEZA_DE_SARRIA.jpg/1200px-TORRE_DA_FORTALEZA_DE_SARRIA.jpg"
+    },
+    {
+      "id": "13",
+      "nome": "Ponte da Áspera",
+      "url": "https://vivecamino.com/img/gal/aspera-bridge,-image-from-wikimedia-commons_10938_p.jpg"
+    },
+    {
+      "id": "14",
+      "nome": "Ponte Nova de Portomarin",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/20/86/51/caption.jpg?w=1200&h=-1&s=1"
+    },
+    {
+      "id": "15",
+      "nome": "Sé do Porto",
+      "url": "https://cdn.visitportugal.com/sites/default/files/styles/encontre_detalhe_poi_destaque/public/mediateca/Porto_SeCatedral_660x371.jpg?itok=Vifwfxmr"
+    },
+    {
+      "id": "16",
+      "nome": "Igreja Paroquial de Santo Ildefonso",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/8c/ee/d7/fachada-em-azulejo-da.jpg?w=1200&h=1200&s=1"
+    },
+    {
+      "id": "17",
+      "nome": "Torre dos Clérigos",
+      "url": "https://imperdivel.pt/wp-content/uploads/2023/04/Igreja-e-Torre-dos-Cl%C3%A9rigos.jpg"
+    },
+    {
+      "id": "18",
+      "nome": "Museu do Traje de Viana do Castelo",
+      "url": "https://www.cm-viana-castelo.pt/wp-content/uploads/2022/12/fachada_mt21-1.jpg"
+    },
+    {
+      "id": "19",
+      "nome": "Forte de São João Baptista de Esposende",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Aerial_photograph_of_Esposende_2019_%282%29.jpg"
+    },
+    {
+      "id": "20",
+      "nome": "Quinta da Malafaia",
+      "url": "https://quintadamalafaia.pt/wp-content/uploads/2017/01/03-DSC_0042.jpg"
+    },
+    {
+      "id": "21",
+      "nome": "Sé Catedral de Viseu",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/S%C3%A9_de_Viseu_%282%29_%28cropped%29.jpg"
+    },
+    {
+      "id": "22",
+      "nome": "Capela de Bassar",
+      "url": "https://s0.wklcdn.com/image_15/452313/100086882/65141856Master.jpg"
+    },
+    {
+      "id": "23",
+      "nome": "Capela Santo António da Serra",
+      "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no9Ejzp_xP-Z5KInf0N4RO9xlm9-6tMQ1xR7MLhGfA9r3KD9dxVrA-3TJHptzu34H4V50xZmaNWDUL1yZJT-kS4FTF5US3SVD5GDFHRKTPBcMkbF9YHJ_YEzNxikEC7YIlPBpEc=s680-w680-h510-rw"
+    },
+    {
+      "id": "24",
+      "nome": "Capela de Santa Bárbara",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/65/71/a2/vista-della-chiesetta.jpg?w=900&h=500&s=1"
+    },
+    {
+      "id": "25",
+      "nome": "Cementerio de Lastra",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/65/71/a2/vista-della-chiesetta.jpg?w=900&h=500&s=1"
+    },
+    {
+      "id": "26",
+      "nome": "Igreja de São Miguel do Caminho",
+      "url": "https://www.senditur.com/multimedia/uploads/images/Localidades/Espa%C3%B1a/Castilla%20y%20Le%C3%B3n/Le%C3%B3n/San%20Miguel%20del%20Camino/iGLESIA.jpg"
+    },
+    {
+      "id": "27",
+      "nome": "Muralha Romana de Lugo",
+      "url": "https://www.info4camper.com/fotos/visitar/es/large/photos-8745-12953-muralha_romana_de_lugo.jpg"
+    },
+    {
+      "id": "28",
+      "nome": "Ponte Velha de Lugo",
+      "url": "https://d2exd72xrrp1s7.cloudfront.net/www/000/1k6/x4/x4xmd3lx7voshmfj64hhqffk47g9tl6o-uhi50873964/0?width=768&height=576&crop=true"
+    },
+    {
+      "id": "29",
+      "nome": "Igreja de Santa Maria de Silvela",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Silvelaigrexa.jpg/960px-Silvelaigrexa.jpg"
+    }
   ],
-    "gifs" :[
-       {
-        "id" : 1,
-        "url" : "https://upload.wikimedia.org/wikipedia/commons/a/a9/Popping_dancer.gif"
-       },
-       {
-        "id" : 2,
-        "url" : "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXJubDA3ZzFmMjhnZDI5MWx5ZXI1Z3hrNjEyM21lNnhld2VxcXN6YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13hxeOYjoTWtK8/giphy.gif"
-       },
-       {
-        "id" : 3,
-        "url" : "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXFueG5jcXk4aWdtc24yb2gyNTV5b3J0MmtmYTQyZ3BjdjcwbWlvOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3V0lsGtTMSB5YNgc/giphy.gif"
-       },
-       {
-        "id" : 4,
-        "url" : "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDhsNXRlbGFpbGV6eWI3dmV2NWc0MHM4ZDI0emRxcG4ydjI0dWRnbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OPU6wzx8JrHna/giphy.gif"
-       },
-       {
-        "id" : 5,
-        "url" : "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGFtZ2Nxbnk1Y2hrN3l1anNucHdsNnlwcjRwYWptN3Z5dWxhdjNxMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8UGoOaR1lA1uaAN892/giphy.gif"
-       },
-       {
-        "id" : 6,
-        "url" : "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGhnOGo3bjFkdTdiZ3Q5ZzJib251dW9yYTc1MTAxOTluNHg2bnEwYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LAFShX32UwUj6/giphy.gif"
-       }
-    ]
+  "gifs": [
+    {
+      "id": "1",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Popping_dancer.gif"
+    },
+    {
+      "id": "2",
+      "url": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXJubDA3ZzFmMjhnZDI5MWx5ZXI1Z3hrNjEyM21lNnhld2VxcXN6YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13hxeOYjoTWtK8/giphy.gif"
+    },
+    {
+      "id": "3",
+      "url": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXFueG5jcXk4aWdtc24yb2gyNTV5b3J0MmtmYTQyZ3BjdjcwbWlvOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3V0lsGtTMSB5YNgc/giphy.gif"
+    },
+    {
+      "id": "4",
+      "url": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDhsNXRlbGFpbGV6eWI3dmV2NWc0MHM4ZDI0emRxcG4ydjI0dWRnbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OPU6wzx8JrHna/giphy.gif"
+    },
+    {
+      "id": "5",
+      "url": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGFtZ2Nxbnk1Y2hrN3l1anNucHdsNnlwcjRwYWptN3Z5dWxhdjNxMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8UGoOaR1lA1uaAN892/giphy.gif"
+    },
+    {
+      "id": "6",
+      "url": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGhnOGo3bjFkdTdiZ3Q5ZzJib251dW9yYTc1MTAxOTluNHg2bnEwYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LAFShX32UwUj6/giphy.gif"
+    }
+  ]
 }

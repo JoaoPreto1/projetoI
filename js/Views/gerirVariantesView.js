@@ -1,13 +1,13 @@
-import { carregarCaminhos, mostrarDetalhes, guardarVariante } from "../models/CaminhoModel.js";
+import { carregarCaminhos, mostrarDetalhes, guardarVariante, deleteVariante } from "../models/CaminhoModel.js";
 
 // Declaração de variáveis
-const etapasBody = document.getElementById('etapasBody');
+const etapasBody = document.getElementById('variantesBody');
 const addVarianteBtn = document.getElementById('addVarianteBtn');
 const formularioVariantes = document.getElementById('formularioVariantes');
 const formularioVarianteEdit = document.getElementById('formularioVarianteEdit');
 const guardarAddVarianteBtn = document.getElementById('guardarAddVarianteBtn');
 
-let carregarEtapas = async () => {
+let carregarVariantes = async () => {
     const caminhos = await carregarCaminhos();
     for(let caminho of caminhos){
         if(caminho.variantes){
@@ -20,7 +20,7 @@ let carregarEtapas = async () => {
             <td>${v.distancia}</td>
             <td>
                 <button class="btn btn-warning btn-sm me-2" onclick="abrirformulárioEdit(${v.id}, '${v.nome}', '${v.descricao}', '${v.distancia}')">✏️</button>
-                <button class="btn btn-danger btn-sm" id="deleteUserBtn">❌</button>
+                <button class="btn btn-danger btn-sm" id="deleteVarianteBtn" onclick="deleteVarianteView(${v.id}, '${v.nome}')">❌</button>
             </td>
             </tr>
             `
@@ -31,7 +31,7 @@ let carregarEtapas = async () => {
     }
 }
 document.addEventListener('DOMContentLoaded', async () => {
-    await carregarEtapas();
+    await carregarVariantes();
 })
 
 let abrirformulárioEdit = (id, nome, descricao, distancia) => {
@@ -77,16 +77,28 @@ guardarAddVarianteBtn.addEventListener('click', async () => {
     const nome = document.getElementById('nome').value.trim();
     const descricao = document.getElementById('descricao').value.trim();
     const distancia = document.getElementById('distancia').value.trim();
-    const caminhoSelected = await mostrarDetalhes(id);
-    if(caminhoSelected.variantes.length > 0){
-        const i = parseInt(caminhoSelected.variantes.length) - 1
-        const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
-        await guardarVariante(novoId, nome, descricao, distancia);
-    }
+    try{
+        const caminhoSelected = await mostrarDetalhes(id);
+        if(caminhoSelected.variantes.length > 0){
+            const i = parseInt(caminhoSelected.variantes.length) - 1
+            const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
+            await guardarVariante(id, novoId, nome, descricao, distancia);
+        }
+    } catch(err){
+        console.error(err)
+    }  
     // fecharFormulário()
     // fecharEditFormulario()
     // await carregarEtapas();
 })
 
+let deleteVarianteView = async (id, nome) => {
+    if(confirm('Quer mesmo apagar esta variante?')){
+        await deleteVariante(id);
+        alert(`Variante ${nome} apagada com sucesso!`)
+    }
+}
+
 window.abrirformulárioEdit = abrirformulárioEdit;
 window.fecharEditFormulario = fecharEditFormulario;
+window.deleteVarianteView = deleteVarianteView;
