@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestão de Utilizadores</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  
+  <style>
+    body { padding-top: 70px; background-color: #f8f9fa; }
+    .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; color: blue; }
+    .form-popup { display: none; }
+  </style>
+</head>
+<body>
+ <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Administração de Caminhos</span>
+      <div>
+          <a id="voltar" class="nav-link btn btn-light text-primary px-3" href="admin.html" style="color: white !important;">voltar</a>
+          <a id="logOut" class="nav-link btn btn-light text-primary px-3" href="login.html" style="color: white !important;">Logout</a>       
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3>Lista de Variantes</h3>
+      <button class="btn btn-success" id="addVarianteBtn">➕ Adicionar Variante</button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Distância</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="etapasBody">
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  <form class="container form-popup" id="formularioVariantes">
+    <div class="card shadow p-4">
+      <h4 id="formTitle">Adicionar Variante</h4>
+      <div class="mb-2">
+          <label for="varianteId">Escolha a caminho queres adicionar a variante!</label>
+          <select name="idSelect" id="varianteId"></select>
+      </div>  
+      <div class="mb-2">
+        <input class="form-control" id="nome" placeholder="Nome">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="descricao" placeholder="escreve uma pequena descricao do caminho">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="distancia" placeholder="distancia percorrida">
+      </div>
+      <button class="btn btn-primary" id="guardarAddVarianteBtn">💾 Guardar</button>
+      <button class="btn btn-secondary" id="closeAddVarianteBtn">Cancelar</button>
+    </div>
+</form>
+  <div class="container form-popup" id="formularioVarianteEdit">
+    <div class="card shadow p-4">
+      <h4 id="formTitle">Editar Variante</h4>
+      <input type="number" id="VarianteIdE" placeholder="Id">
+      <div class="mb-2">
+        <input class="form-control" id="nomeE" placeholder="Nome completo">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="descricaoE" placeholder="Descricao da variante">
+      </div>
+      <div class="mb-2">
+        <input class="form-control" id="distanciaE" placeholder="distância da variante">
+      </div>
+      <button class="btn btn-primary" onclick="editarUtilizadorView()">💾 Editar</button>
+      <button class="btn btn-secondary" onclick="fecharEditFormulario()">Cancelar</button>
+    </div>
+  </div>
+
+  <script type="module" src="../js/Views/gerirEtapasView.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -88,7 +88,8 @@
           const card = document.createElement('div');
           card.className = 'col-md-6 col-lg-4';
 
-          const variantes = caminho.variantes ? caminho.variantes.map(v => `
+
+          const variantes = caminho.variantes.length > 0 ? caminho.variantes.map(v => `
             <li class="list-group-item">
               <strong>${v.nome}</strong> (${v.distancia})<br>
               <small>${v.descricao}</small>

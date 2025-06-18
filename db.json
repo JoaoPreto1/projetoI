@@ -94,7 +94,8 @@
       "dificuldade": "Moderado",
       "descricao": "Litoral português e espanhol, com belas vistas do oceano.",
       "latitude": 43.2569,
-      "longitude": -2.9234
+      "longitude": -2.9234,
+      "variantes" : []
     },
     {
       "id": 5,
@@ -103,7 +104,8 @@
       "dificuldade": "Difícil",
       "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada.",
       "latitude": 43.0546,
-      "longitude": -6.5736
+      "longitude": -6.5736,
+      "variantes" : []
     },
     {
       "id": 6,
@@ -112,7 +114,8 @@
       "dificuldade": "Fácil",
       "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
       "latitude": 42.9071,
-      "longitude": -9.2625
+      "longitude": -9.2625,
+      "variantes" : []
     },
     {
       "id": 7,
@@ -121,7 +124,8 @@
       "dificuldade": "Difícil",
       "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
       "latitude": 37.3886,
-      "longitude": -5.9823
+      "longitude": -5.9823,
+      "variantes" : []
     }
   ],
   "gamificacao" : [
