@@ -114,7 +114,7 @@ function iniciarCaminho(nome, lat, lng) {
 }
 
 
-function percorrerCaminho(nome, variante) {
+async function percorrerCaminho(nome, variante) {
     changePath(nome);
     const modal = bootstrap.Modal.getInstance(document.getElementById('caminhoModal'));
     modal.hide();
@@ -126,6 +126,7 @@ function percorrerCaminho(nome, variante) {
     document.getElementById("variantesContainer").innerHTML = "";
     initLeafletMapFromStorage(nome);
     novoModal.show();
+    await CarregarCaminhosView()
 }
 
 function initLeafletMapFromStorage(nome) {

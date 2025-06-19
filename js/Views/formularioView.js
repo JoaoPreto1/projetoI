@@ -22,7 +22,6 @@ let carregarLocaisPartida = async () => {
   const caminhos = await carregarCaminhos();
   for(let i = 0; i < caminhos.length; i++){
     caminhos[i].localPartida;
-    console.log(caminhos[i].localPartida)
     let row = `
     <option value="${caminhos[i].id}">${caminhos[i].localPartida}</option>
     `
@@ -36,7 +35,7 @@ localPartida.addEventListener('change', async (e) => {
   const selectedValue = await e.target.value;
   const caminho = await mostrarDetalhes(selectedValue);
 
-  if(caminho.nome == 'Santiago de Compostela'){
+  if(caminho.localPartida == 'Santiago de Compostela'){
     let rows = `
     <option value="Fisterra" selected>Fisterra</option>
     `
@@ -44,7 +43,7 @@ localPartida.addEventListener('change', async (e) => {
     let row = `
     <option value="${caminho.dificuldade}" selected>${caminho.dificuldade}</option>
     `
-    destino.innerHTML = rows
+    destino.innerHTML = rows;
     nivelDificuldade.innerHTML = row;
   } else if(caminho.nome == '') {
     let rows =`
@@ -84,8 +83,6 @@ document.getElementById('formCaminho').addEventListener('submit', async function
     dificuldade: document.getElementById("nivelDificuldade").value,
     transporte: document.querySelector('input[name="transporte"]:checked').value
   };
-
-  console.log(preferencias)
 
   try {
     const melhoresCaminhos = await filtrarCaminho(preferencias);
