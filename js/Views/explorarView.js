@@ -49,11 +49,20 @@ let mostrarDetalhesView = async (id) => {
 
         document.getElementById("detalhesModalLabel").innerText = caminho.nome;
 
+        let textinho = caminho.descricao[1].indexOf('.')
+        let textinhoPequeno = caminho.descricao[1].substring(0, textinho + 1)
         document.getElementById("detalhesDescricao").innerHTML = `
             <p style="color: #212529"><strong>Distância:</strong> ${caminho.distancia}</p>
             <p style="color: #212529"><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
-            <p style="color: #212529"><strong>Descrição:</strong> ${caminho.descricao}</p>
+            <p style="color:black" id="antesVerMais"><strong>Descrição:</strong> ${textinhoPequeno} <span style="color:blue; text-decoration:none; cursor: pointer;" id="verMais">ver mais...</span></p>
         `;
+        const antesVerMais = document.getElementById('antesVerMais');
+        const verMais = document.getElementById('verMais');
+
+        verMais.addEventListener('click', async () => {
+            verMais.style.display = 'none';
+            antesVerMais.innerHTML = `<strong>Descrição:</strong> ${caminho.descricao[1]}`
+        })
 
         document.getElementById("variantesContainer").innerHTML = `
             <div class="d-flex justify-content-between mt-3">
