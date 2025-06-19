@@ -22,7 +22,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   
   document.getElementById("userName").innerText = user.nome;
   document.getElementById("userEmail").innerText = user.email;
-  document.getElementById("userRate").innerText = `Taxa de acerto: ${await hitRate()}`;
+  if(await hitRate() == 'NaN%'){
+    document.getElementById("userRate").innerText = `Taxa de acerto: 0%`;
+  } else {
+    document.getElementById("userRate").innerText = `Taxa de acerto: ${await hitRate()}`;
+  }
 
   const historico = user.historico;
   if(historico.length == 0 || !historico){
