@@ -35,7 +35,7 @@ let CarregarCaminhosView = async () => {
                                 <li><i class="bi bi-signpost-2"></i> <strong>Distância:</strong> ${c.distancia}</li>
                                 <li><i class="bi bi-activity"></i> <strong>Dificuldade:</strong> ${c.dificuldade}</li>
                             </ul>
-                            <p class="card-text">${c.descricao}</p>
+                            <p class="card-text">${c.descricao[0]}</p>
                         </div>
                         <div class="card-footer bg-white border-top-0 text-center">
                             <a href="#" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
@@ -58,9 +58,9 @@ let mostrarDetalhesView = async (id) => {
 
         const descricaoEl = document.getElementById("detalhesDescricao");
         descricaoEl.innerHTML = `
-            <p><strong>Distância:</strong> ${caminho.distancia}</p>
-            <p><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
-            <p><strong>Descrição:</strong> ${caminho.descricao}</p>
+            <p style="color:black"><strong>Distância:</strong> ${caminho.distancia}</p>
+            <p style="color:black"><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
+            <p style="color:black"><strong>Descrição:</strong> ${caminho.descricao[1]}</p>
         `;
 
         const variantesEl = document.getElementById("variantesContainer");

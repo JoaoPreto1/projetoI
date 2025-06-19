@@ -1,8 +1,9 @@
-import { filtrarCaminho, nDias, mostrarDetalhes } from '../models/CaminhoModel.js';
+import { filtrarCaminho, nDias, mostrarDetalhes, carregarCaminhos } from '../models/CaminhoModel.js';
 import {changePath} from '../models/userModel.js';
 
-
-document.addEventListener("DOMContentLoaded", function () {
+const localPartida = document.getElementById('localPartida');
+const destino = document.getElementById('destino');
+document.addEventListener("DOMContentLoaded", async function () {
             const loginButton = document.getElementById("loginButton");
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
     
@@ -14,8 +15,44 @@ document.addEventListener("DOMContentLoaded", function () {
                     </a>
                 `;
             }
-        });
-
+            await carregarLocaisPartida()
+          });
+let carregarLocaisPartida = async () => {
+  const caminhos = await carregarCaminhos();
+  for(let i = 0; i < caminhos.length; i++){
+    caminhos[i].localPartida;
+    console.log(caminhos[i].localPartida)
+    let row = `
+    <option value="${caminhos[i].localPartida}">${caminhos[i].localPartida}</option>
+    `
+    localPartida.innerHTML += row;
+  }
+}
+            
+localPartida.addEventListener('change', async (e) => {
+  destino.innerHTML = '';
+  const selectedValue = await e.target.value;
+  if(selectedValue == 'Santiago de Compostela'){
+    let rows = `
+    <option value="">Selecione...</option>
+    <option value="Fisterra">Fisterra</option>
+    `
+    destino.innerHTML = rows
+  } else if(selectedValue == '') {
+    let rows =`
+    <option value="">Selecione...</option>
+    <option value="Santiago de Compostela" >Santiago Compostela</option>
+    <option value="Fisterra">Fisterra</option>
+    `
+    localPartida.innerHTML = rows
+  } else {
+    let rows = `
+    <option value="">Selecione...</option>
+    <option value="Santiago de Compostela">Santiago de Compostela</option>
+    `
+    destino.innerHTML = rows
+  }
+})
 
 document.getElementById('formCaminho').addEventListener('submit', async function(event) {
   event.preventDefault();
@@ -45,7 +82,7 @@ document.getElementById('formCaminho').addEventListener('submit', async function
             <h5 class="card-title">${caminho.nome}</h5>
             <p><strong>Numero de dias:</strong> ${Ndias}</p>
             <p><strong>Distância:</strong> ${caminho.distancia}</p>
-            <p><strong>Descrição:</strong> ${caminho.descricao}</p>
+            <p><strong>Descrição:</strong> ${caminho.descricao[0]}</p>
             <a href="#" class="btn btn-primary" onclick="mostrarDetalhesView(${caminho.id})">Detalhes</a>
           </div>
         </div>
@@ -68,7 +105,7 @@ window.mostrarDetalhesView = async (id) => {
       <h5>${caminho.nome}</h5>
       <p><strong>Distância:</strong> ${caminho.distancia}</p>
       <p><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
-      <p><strong>Descrição:</strong> ${caminho.descricao}</p>
+      <p><strong>Descrição:</strong> ${caminho.descricao[1]}</p>
     `;
 
     if (caminho.variantes?.length) {

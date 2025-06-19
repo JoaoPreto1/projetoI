@@ -78,22 +78,11 @@ guardarAddVarianteBtn.addEventListener('click', async () => {
     const descricao = document.getElementById('descricao').value.trim();
     const distancia = document.getElementById('distancia').value.trim();
     try{
-        const caminhoSelected = await mostrarDetalhes(id);
-        const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
-        const res = await guardarVariante(caminhoSelected, novoId, nome, descricao, distancia)
-        if (res == true) {
-            alert("✅ Variante adicionada com sucesso!");
-            fecharFormulário()
-            await carregarVariantes();
-        } else if(res){
-            alert("✅ Variante adicionada com sucesso!");
-            fecharFormulário()
-            await carregarVariantes();
-        }else {
-            alert("❌ Erro ao adicionar a variante.");
-            fecharFormulário()
-            await carregarVariantes();
-        }
+    const caminhoSelected = await mostrarDetalhes(id);
+    const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
+    await guardarVariante(caminhoSelected, novoId, nome, descricao, distancia);
+    fecharFormulário();
+    await carregarVariantes();
     }catch(err){
         console.error(err);
     }  

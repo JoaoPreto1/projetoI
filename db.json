@@ -4,8 +4,12 @@
       "id": "1",
       "nome": "Caminho Francês",
       "distancia": "800 km",
+      "localPartida" : "Saint-Jean-Pied-de-Port",
       "dificuldade": "Moderado",
-      "descricao": "O mais popular, atravessa a Espanha de leste a oeste.",
+      "descricao": [
+        "O mais popular, atravessa a Espanha de leste a oeste.",
+        "Etapa 1, Saint-Jean-Pied-de-Port a Roncesvalles, esta etapa marca o início oficial do Caminho Francês e é uma das mais desafiantes. Atravessa os Pirenéus, com subidas exigentes e paisagens montanhosas inesquecíveis. É também o momento simbólico de deixar França e entrar em Espanha. Etapa 2, Roncesvalles a Pamplona, depois do esforço inicial, esta etapa oferece um terreno mais suave e leva à primeira grande cidade do caminho. Pamplona é famosa pelas suas tradições, cultura e a catedral gótica. Etapa 4, Logroño a Nájera, entrando na região vinícola de La Rioja, esta etapa mostra vinhedos intermináveis, belas paisagens rurais e vilas com forte ligação ao Caminho de Santiago. Etapa 7, Burgos a Hornillos del Camino, ao sair de Burgos, com a sua impressionante catedral, inicia-se a travessia da Meseta. É o começo de uma fase interior e solitária, onde o silêncio do caminho se torna protagonista. Etapa 10, León a Hospital de Órbigo, León é uma das maiores cidades do Caminho, cheia de história e arte. Ao deixá-la, os peregrinos passam pela famosa ponte medieval de Hospital de Órbigo, um dos marcos mais bonitos do percurso. Etapa 12, Astorga a Rabanal del Camino, nesta etapa inicia-se a subida para as montanhas de León. Astorga, com o Palácio Episcopal de Gaudí, marca a transição entre a planície e as serras. Etapa 13, Rabanal del Camino a Ponferrada, uma das etapas mais emblemáticas, passando pela Cruz de Ferro (Cruz de Hierro), onde os peregrinos deixam uma pedra como símbolo de libertação. O caminho segue até Ponferrada, com o seu castelo templário. Etapa 15, O Cebreiro a Triacastela, entrada oficial na Galiza. O Cebreiro é uma aldeia mágica, com casas de pedra e lendas antigas. A descida até Triacastela revela a beleza verde da região. Etapa 16, Sarria a Portomarín, Sarria é o ponto de partida mais comum entre os peregrinos que querem obter a Compostela. Esta etapa é movimentada, mas rica em natureza e tradições. Etapa 18, Arzúa a Santiago de Compostela, as últimas caminhadas conduzem por bosques, pequenas aldeias e trilhos tranquilos, até à entrada triunfal em Santiago. A chegada à catedral é o momento culminante de toda a peregrinação."
+      ],
       "latitude": 42.8782,
       "longitude": -8.5448,
       "variantes": [
@@ -39,8 +43,12 @@
       "id": "2",
       "nome": "Caminho Português",
       "distancia": "600 km",
+      "localPartida" : "Lisboa",
       "dificuldade": "Fácil",
-      "descricao": "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa.",
+      "descricao": [
+        "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa.",
+        "Etapa 1, Lisboa a Alverca do Ribatejo, início do Caminho Português junto à Sé de Lisboa, seguindo por zonas urbanas e ribeirinhas até Alverca. Etapa 2, Alverca do Ribatejo a Vila Franca de Xira, etapa curta com paisagens do estuário do Tejo e ruas históricas. Etapa 3, Vila Franca de Xira a Azambuja, o caminho atravessa campos agrícolas e pequenas localidades ribatejanas. Etapa 4, Azambuja a Santarém, subida até à cidade gótica de Santarém, com miradouros sobre o Tejo. Etapa 5, Santarém a Golegã, etapa plana pelo Ribatejo, passando por campos de cultivo até à vila dos cavalos. Etapa 6, Golegã a Tomar, o caminho segue até à cidade dos Templários, com destaque para o Convento de Cristo. Etapa 7, Tomar a Alvaiázere, percurso mais rural, com subidas e descidas suaves e zonas florestais. Etapa 8, Alvaiázere a Ansião, curta e tranquila, com pequenas aldeias e paisagens agrícolas. Etapa 9, Ansião a Rabaçal, o caminho segue entre oliveiras, eucaliptos e muros de pedra. Etapa 10, Rabaçal a Coimbra, chegada à cidade universitária, cheia de história e cultura. Etapa 11, Coimbra a Mealhada, etapa com paisagens agrícolas e possibilidade de provar o famoso leitão da Mealhada. Etapa 12, Mealhada a Águeda, passagem por localidades tranquilas e zonas vinícolas da Bairrada. Etapa 13, Águeda a Albergaria-a-Velha, continuação por trilhos florestais e aldeias tradicionais. Etapa 14, Albergaria-a-Velha a Oliveira de Azeméis, o caminho alterna entre natureza e zonas urbanas. Etapa 15, Oliveira de Azeméis a Grijó, etapa de transição para a aproximação ao Porto. Etapa 16, Grijó ao Porto, entrada na cidade do Porto pela zona de Vila Nova de Gaia e chegada à Sé. Etapa 17, Porto a Vilarinho, despedida da cidade grande e regresso ao ambiente mais rural. Etapa 18, Vilarinho a Barcelos, etapa longa com passagem por belas aldeias e a cidade histórica de Barcelos. Etapa 19, Barcelos a Ponte de Lima, uma das mais belas etapas, com montes, campos e a ponte medieval de Lima. Etapa 20, Ponte de Lima a Rubiães, etapa exigente com subida à Serra da Labruja, um dos desafios físicos do caminho. Etapa 21, Rubiães a Valença, descida suave até à fronteira, com chegada à cidade muralhada de Valença. Etapa 22, Valença a O Porriño, entrada na Galiza, com passagem pela ponte internacional sobre o rio Minho. Etapa 23, O Porriño a Redondela, o caminho segue por bosques e pequenas vilas galegas. Etapa 24, Redondela a Santiago de Compostela, nas últimas etapas passa-se por Pontevedra, Caldas de Reis e Padrón, até chegar à Praça do Obradoiro e à Catedral, onde termina a peregrinação."
+      ],
       "latitude": 41.1579,
       "longitude": -8.6291,
       "variantes": [
@@ -68,8 +76,12 @@
       "id": "3",
       "nome": "Caminho Primitivo",
       "distancia": "300 km",
+      "localPartida": "Oviedo",
       "dificuldade": "Difícil",
-      "descricao": "A rota mais antiga e desafiadora, através de montanhas.",
+      "descricao": [
+        "A rota mais antiga e desafiadora, através de montanhas.",
+        "Etapa 1, Oviedo a San Juan de Villapañada, início do Caminho Primitivo na Catedral de Oviedo, com paisagens verdes e passagem por pequenas aldeias asturianas. Etapa 2, San Juan de Villapañada a Salas, etapa curta e tranquila, com subidas suaves e belas vistas sobre o campo. Etapa 3, Salas a Tineo, o caminho começa a ganhar altitude, atravessando bosques e zonas montanhosas. Etapa 4, Tineo a Pola de Allande, etapa exigente com longos trechos de montanha e paisagens impressionantes. Etapa 5, Pola de Allande a Berducedo, subida ao Puerto del Palo, um dos pontos mais altos do caminho, seguido de uma descida até Berducedo. Etapa 6, Berducedo a Grandas de Salime, descida íngreme até a barragem de Salime, com vistas espetaculares, e depois subida até Grandas. Etapa 7, Grandas de Salime a A Fonsagrada, entrada oficial na Galiza, com trilhos rurais e serras que exigem esforço, mas recompensam com natureza intocada. Etapa 8, A Fonsagrada a O Cádavo Baleira, percurso montanhoso, passando por aldeias tradicionais galegas e bosques densos. Etapa 9, O Cádavo Baleira a Lugo, descida até à cidade muralhada de Lugo, rica em história romana e com ótima estrutura para peregrinos. Etapa 10, Lugo a San Romao da Retorta, saída de Lugo por trilhos rurais, atravessando campos e aldeias em ambiente tranquilo. Etapa 11, San Romao da Retorta a Melide, etapa de transição em que o Caminho Primitivo se une ao Caminho Francês, aumentando o fluxo de peregrinos. Etapa 12, Melide a Santiago de Compostela, últimas etapas por bosques e trilhos suaves, com chegada emocionante à Catedral de Santiago, onde termina esta rota ancestral e desafiadora."
+      ],
       "latitude": 43.3614,
       "longitude": -5.8494,
       "variantes": [
@@ -91,8 +103,12 @@
       "id": "4",
       "nome": "Caminho da Costa",
       "distancia": "280 km",
+      "localPartida" : "Porto",
       "dificuldade": "Moderado",
-      "descricao": "Litoral português e espanhol, com belas vistas do oceano.",
+      "descricao": [
+        "Litoral português e espanhol, com belas vistas do oceano.",
+        "Etapa 1, Porto a Labruge, início do Caminho da Costa junto à Sé do Porto, seguindo junto ao oceano por passadiços de madeira e praias até Labruge. Etapa 2, Labruge a Póvoa de Varzim, etapa costeira agradável, passando por vilas piscatórias e pequenas igrejas. Etapa 3, Póvoa de Varzim a Marinhas, o caminho continua junto ao mar, com belas paisagens e passagem por Esposende. Etapa 4, Marinhas a Viana do Castelo, percurso entre zonas costeiras e florestas, terminando na cidade de Viana, com o Santuário de Santa Luzia como destaque. Etapa 5, Viana do Castelo a Vila Praia de Âncora, caminho tranquilo com vista para o mar e passagem por várias praias. Etapa 6, Vila Praia de Âncora a A Guarda, última etapa em Portugal com travessia de barco (ou ponte) até à Galiza, entrando oficialmente em Espanha. Etapa 7, A Guarda a Oia, percurso costeiro com vista constante para o Atlântico e um ambiente calmo e espiritual. Etapa 8, Oia a Baiona, o caminho afasta-se um pouco do mar e entra em zona mais urbana, com chegada à cidade histórica de Baiona. Etapa 9, Baiona a Vigo, etapa mais longa e urbana, com vistas sobre a Ria de Vigo e chegada à maior cidade da Galiza. Etapa 10, Vigo a Redondela, o caminho volta a ganhar tranquilidade, seguindo trilhos interiores até Redondela, onde se junta ao Caminho Central. Etapa 11, Redondela a Pontevedra, trilho entre bosques e pequenas aldeias, com chegada à charmosa cidade de Pontevedra. Etapa 12, Pontevedra a Santiago de Compostela, nas últimas etapas o caminho atravessa Caldas de Reis e Padrón, até culminar na majestosa chegada à Catedral de Santiago, completando esta rota junto ao mar."
+      ],
       "latitude": 43.2569,
       "longitude": -2.9234,
       "variantes": []
@@ -101,8 +117,12 @@
       "id": "5",
       "nome": "Caminho Sarracênico",
       "distancia": "400 km",
+      "localPartida" : "Almería",
       "dificuldade": "Difícil",
-      "descricao": "Rota através das montanhas do norte de Espanha, menos frequentada.",
+      "descricao": [
+        "Rota através das montanhas do norte de Espanha, menos frequentada.",
+        "Etapa 1, Almería a Rioja, início do Caminho Sarraceno pela costa mediterrânea, com paisagens áridas e aldeias históricas. Etapa 3, Rioja a Huércal-Overa, percurso por terreno mediterrânico e pequenas povoações, com vistas para o mar. Etapa 5, Huércal-Overa a Vera, passagem por zonas agrícolas e património andaluz. Etapa 7, Vera a Mojácar, chegada à vila costeira de Mojácar, com ruas brancas e vista para o mar. Etapa 9, Mojácar a Carboneras, percurso costeiro com praias e faróis que marcam o caminho. Etapa 11, Carboneras a Níjar, passagem pelo Parque Natural de Cabo de Gata-Níjar, zona protegida com paisagens vulcânicas. Etapa 12, Níjar a Almería, aproximação à cidade com história mourisca e portuária. Etapa 13, Almería a Adra, travessia de áreas rurais e marítimas, entrando na região da Andaluzia ocidental. Etapa 14, Adra a Motril, passagem por pequenas cidades costeiras e plantações de frutas subtropicais. Etapa 16, Motril a Granada, etapa final que abandona a costa e sobe até à histórica cidade de Granada, com a Alhambra como ponto culminante."
+      ],
       "latitude": 43.0546,
       "longitude": -6.5736,
       "variantes": []
@@ -111,8 +131,12 @@
       "id": "6",
       "nome": "Caminho de Fisterra",
       "distancia": "90 km",
+      "localPartida" : "Santiago de Compostela",
       "dificuldade": "Fácil",
-      "descricao": "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
+      "descricao": [
+        "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
+        "Etapa 1, Santiago de Compostela a Negreira, início do Caminho de Fisterra saindo da Catedral de Santiago, passando por bosques, ribeiros e a emblemática Ponte Maceira, até à vila de Negreira. Etapa 2, Negreira a Olveiroa, etapa longa e rural, atravessando aldeias isoladas, campos e montes, com destaque para o ambiente calmo e tradicional da Galiza profunda. Etapa 3, Olveiroa a Cee, o percurso aproxima-se da costa, com belas vistas e descida até à vila de Cee, onde os peregrinos veem o mar pela primeira vez nesta rota. Etapa 4, Cee a Fisterra, etapa final ao longo da costa atlântica, com passagem por Corcubión e chegada ao mítico Cabo Finisterra, onde muitos peregrinos encerram simbolicamente o seu caminho diante do oceano."
+      ],
       "latitude": 42.9071,
       "longitude": -9.2625,
       "variantes": []
@@ -121,8 +145,12 @@
       "id": "7",
       "nome": "Caminho da Via de la Plata",
       "distancia": "1000 km",
+      "localPartida" : "Sevilha",
       "dificuldade": "Difícil",
-      "descricao": "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
+      "descricao": [
+        "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",
+        "Etapa 1, Sevilla a Guillena, início do Caminho da Via de la Plata junto à Catedral de Sevilha, atravessando bairros históricos e campos andaluzes até à vila de Guillena. Etapa 9, Torremejía a Mérida, curta e simbólica, com chegada à cidade romana de Mérida, onde se pode visitar o teatro romano, a ponte sobre o Guadiana e outros vestígios clássicos. Etapa 11, Alcuéscar a Cáceres, percurso longo mas recompensador, culminando na cidade Património Mundial, com centro medieval e muralhas impressionantes. Etapa 15, Carcaboso a Aldeanueva del Camino, uma das etapas mais longas, atravessando paisagens vastas e solitárias da Extremadura até zonas mais montanhosas. Etapa 19, San Pedro de Rozados a Salamanca, descida tranquila até Salamanca, cidade universitária e cultural, com uma das catedrais mais emblemáticas do percurso. Etapa 21, El Cubo de la Tierra del Vino a Zamora, etapa de transição até à cidade de Zamora, com o seu casario antigo e belas igrejas românicas. Etapa 23, Montamarta a Granja de Moreruela, marco importante do caminho onde se pode optar por seguir em direção a Astorga (via Sanabria) ou Ourense (via caminho Sanabrês). Etapa 27, La Bañeza a Astorga, entrada na cidade onde a Via de la Plata se junta ao Caminho Francês, com destaque para a catedral e o Palácio de Gaudí. Etapa 31, Villafranca del Bierzo a O Cebreiro, etapa exigente e memorável pela subida até à aldeia lendária de O Cebreiro, porta de entrada na Galiza. Etapa 38, Monte do Gozo a Santiago de Compostela, última e simbólica etapa, culminando com a chegada à Catedral de Santiago, onde termina esta longa e mítica peregrinação."
+      ],
       "latitude": 37.3886,
       "longitude": -5.9823,
       "variantes": []
