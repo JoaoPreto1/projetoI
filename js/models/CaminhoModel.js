@@ -21,15 +21,22 @@ export async function mostrarDetalhes(caminhoId) {
 
     if (!res.ok) {
       console.error(`ID não encontrado: ${caminhoId}`);
-      throw new Error("Caminho não encontrado");
+      return null; // important!
     }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Erro ao buscar caminho:", error);
-    return null;
+     let caminho;
+    try {
+      caminho = await res.json();
+    } catch (jsonErr) {
+      console.error("Erro ao converter JSON:", jsonErr);
+      throw jsonErr;  // rethrow to catch below
+    }
+    return caminho;
+  } catch (err) {
+    console.error("Erro ao buscar caminho:", err);
+    return null; // explicitly return null or false
   }
 }
+
 
 export async function carregarCaminhos() {
   try {
@@ -41,35 +48,44 @@ export async function carregarCaminhos() {
   }
 }
 
-export let guardarVariante = async (id, novoId, nome, descricao, distancia) => {
-  class CaminhoNew{
-    constructor(id, nome, distancia, dificuldade, descricao, latitude, longitude, variantes){
-      this.id = id,
-      this.nome = nome,
-      this.distancia = distancia,
-      this.dificuldade = dificuldade,
-      this.descricao = descricao,
-      this.latitude = latitude,
-      this.longitude = longitude,
-      this.variantes = variantes
+export let guardarVariante = async (obj, novoId, nome, descricao, distancia) => {
+  const varianteN = { id: novoId, nome, descricao, distancia };
+
+  try {
+    let variantesT = obj.variantes;
+    variantesT.push(varianteN)
+
+    const res = await fetch(`http://localhost:3000/caminhos/${obj.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ variantes: variantesT })
+    });
+
+    if (!res.ok) {
+      const msg = await res.text();
+      console.warn(`Resposta inesperada: ${res.status} - ${msg}`);
+      return true;
     }
+
+    // Verifica se a resposta tem conteúdo antes de tentar ler o JSON
+    const contentType = res.headers.get("content-type");
+    let dataAtualizada = null;
+
+    if (contentType && contentType.includes("application/json")) {
+      dataAtualizada = await res.json();
+    } else {
+      console.warn("Resposta sem JSON, mas aparentemente OK.");
+      dataAtualizada = true;
+    }
+
+    return dataAtualizada;
+  } catch (err) {
+    console.error("Erro em guardarVariante:", err);
+    return false;
   }
-  const varianteN = {id : novoId, nome, descricao, distancia}
-  try{
-    let caminho = await mostrarDetalhes(id)
-    console.log(caminho)
-    caminho.variantes.push(varianteN);
-    const caminhoE = new CaminhoNew(caminho.id, caminho.nome, caminho.distancia, caminho.dificuldade, caminho.descricao, caminho.latitude, caminho.longitude, caminho.variantes)
-    console.log(caminhoE)
-    await fetch(`http://localhost:3000/caminhos/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify(caminhoE)
-    }); 
-  } catch(err){
-    console.error(err)
-  }
-}
+};
+
+
 
 export let deleteVariante = async (id) => {
   const stId = Math.floor(id)

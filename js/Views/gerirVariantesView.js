@@ -63,7 +63,7 @@ addVarianteBtn.addEventListener('click', async (e) => {
     document.getElementById('distancia').value = '';
 
     const caminhos = await carregarCaminhos();
-    caminhos.forEach(caminho => {
+    await caminhos.forEach(caminho => {
         let option = `
         <option value="${caminho.id}">${caminho.nome}</option>
         `
@@ -79,17 +79,24 @@ guardarAddVarianteBtn.addEventListener('click', async () => {
     const distancia = document.getElementById('distancia').value.trim();
     try{
         const caminhoSelected = await mostrarDetalhes(id);
-        if(caminhoSelected.variantes.length > 0){
-            const i = parseInt(caminhoSelected.variantes.length) - 1
-            const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
-            await guardarVariante(id, novoId, nome, descricao, distancia);
+        const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
+        const res = await guardarVariante(caminhoSelected, novoId, nome, descricao, distancia)
+        if (res == true) {
+            alert("✅ Variante adicionada com sucesso!");
+            fecharFormulário()
+            await carregarVariantes();
+        } else if(res){
+            alert("✅ Variante adicionada com sucesso!");
+            fecharFormulário()
+            await carregarVariantes();
+        }else {
+            alert("❌ Erro ao adicionar a variante.");
+            fecharFormulário()
+            await carregarVariantes();
         }
-    } catch(err){
-        console.error(err)
+    }catch(err){
+        console.error(err);
     }  
-    // fecharFormulário()
-    // fecharEditFormulario()
-    // await carregarEtapas();
 })
 
 let deleteVarianteView = async (id, nome) => {
