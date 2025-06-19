@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 loginButton.outerHTML = `
                     <a id="profileIcon" class="nav-link" href="perfil.html">
-                        <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
+                        <i style="width: 2.5vw; height: 2.4vh; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
                     </a>
                 `;
             }
@@ -32,7 +32,9 @@ initBtn.addEventListener('click', async () => {
     try {
         const myImg = await calculateImages()
         const id = await myImg.id
-        const myAltAnswers = await calculateMyAltAnswers(id)
+        console.log(id)
+        const myAltAnswers = await calculateMyAltAnswers(id);
+        console.log(myAltAnswers)
         myAltAnswers.push(myImg)
         await shuffleArray(myAltAnswers)
         const card = `

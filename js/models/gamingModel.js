@@ -117,18 +117,10 @@ export let calculateMyAltAnswers = async (id) => {
     const res = await fetch('http://localhost:3000/gamificacao');
     const myImgs = await res.json();
     let updatedImgs = myImgs.filter(Img => Img.id !== id);
-    let max = updatedImgs.length
-    let myAltAnswers = []
-    for(let i = 0; i< 3; i++){
-        let decider = randomNumb(0, max)
-        let theChosenOne = updatedImgs.find(Img => Img.id == decider);
-        let updatedImgs1 = updatedImgs.filter(Img => Img.id != decider);
-        updatedImgs = updatedImgs1
-        console.log(updatedImgs1)
-        myAltAnswers.push(theChosenOne)
-    }
-    return myAltAnswers
-}
+    const shuffled = updatedImgs.sort(() => 0.5 - Math.random());
+    const myAltAnswers = shuffled.slice(0, 3);
+    return myAltAnswers;
+};
 
 export let shuffleArray = async (array) => {
     for(let i = array.length - 1; i > -1; i--){

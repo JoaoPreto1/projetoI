@@ -7,7 +7,7 @@ export let getGifs = async (acertou) => {
         if(acertou == true){
             const min = 1
             const max = 3
-            let decider = randomNumb(min, max)
+            let decider = await randomNumb(min, max)
             for (let i = 0; i < max; i++){
                 if(parseInt(myGifs[i].id) == decider){
                     return myGifs[i].url
@@ -16,7 +16,7 @@ export let getGifs = async (acertou) => {
         } else {
             const min = 4
             const max = 6
-            let decider = randomNumb(min, max)
+            let decider = await randomNumb(min, max)
             for (let i = 3; i < max; i++){
                 if(myGifs[i].id == decider){
                     return myGifs[i].url
