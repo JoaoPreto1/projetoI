@@ -3,6 +3,7 @@ import {changePath} from '../models/userModel.js';
 
 const localPartida = document.getElementById('localPartida');
 const destino = document.getElementById('destino');
+const nivelDificuldade = document.getElementById('nivelDificuldade');
 document.addEventListener("DOMContentLoaded", async function () {
             const loginButton = document.getElementById("loginButton");
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -23,7 +24,7 @@ let carregarLocaisPartida = async () => {
     caminhos[i].localPartida;
     console.log(caminhos[i].localPartida)
     let row = `
-    <option value="${caminhos[i].localPartida}">${caminhos[i].localPartida}</option>
+    <option value="${caminhos[i].id}">${caminhos[i].localPartida}</option>
     `
     localPartida.innerHTML += row;
   }
@@ -31,26 +32,44 @@ let carregarLocaisPartida = async () => {
             
 localPartida.addEventListener('change', async (e) => {
   destino.innerHTML = '';
+  nivelDificuldade.innerHTML = '';
   const selectedValue = await e.target.value;
-  if(selectedValue == 'Santiago de Compostela'){
+  const caminho = await mostrarDetalhes(selectedValue);
+
+  if(caminho.nome == 'Santiago de Compostela'){
     let rows = `
-    <option value="">Selecione...</option>
-    <option value="Fisterra">Fisterra</option>
+    <option value="Fisterra" selected>Fisterra</option>
+    `
+
+    let row = `
+    <option value="${caminho.dificuldade}" selected>${caminho.dificuldade}</option>
     `
     destino.innerHTML = rows
-  } else if(selectedValue == '') {
+    nivelDificuldade.innerHTML = row;
+  } else if(caminho.nome == '') {
     let rows =`
     <option value="">Selecione...</option>
     <option value="Santiago de Compostela" >Santiago Compostela</option>
     <option value="Fisterra">Fisterra</option>
     `
-    localPartida.innerHTML = rows
+
+    let row = `
+    <option value="">Selecione...</option>
+    <option value="Fácil">Fácil</option>
+    <option value="Moderado">Moderado</option>
+    <option value="Difícil">Difícil</option> 
+    `
+    localPartida.innerHTML = rows;
+    nivelDificuldade.innerHTML = row;
   } else {
     let rows = `
-    <option value="">Selecione...</option>
-    <option value="Santiago de Compostela">Santiago de Compostela</option>
+    <option value="Santiago de Compostela" selected>Santiago de Compostela</option>
     `
-    destino.innerHTML = rows
+    let row = `
+    <option value="${caminho.dificuldade}" selected>${caminho.dificuldade}</option>
+    `
+    destino.innerHTML = rows;
+    nivelDificuldade.innerHTML = row;
   }
 })
 
@@ -65,6 +84,8 @@ document.getElementById('formCaminho').addEventListener('submit', async function
     dificuldade: document.getElementById("nivelDificuldade").value,
     transporte: document.querySelector('input[name="transporte"]:checked').value
   };
+
+  console.log(preferencias)
 
   try {
     const melhoresCaminhos = await filtrarCaminho(preferencias);

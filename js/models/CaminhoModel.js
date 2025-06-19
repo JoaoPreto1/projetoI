@@ -2,10 +2,7 @@ export let filtrarCaminho = async (preferencias) => {
   let response = await fetch('http://localhost:3000/caminhos');
   let caminhos = await response.json();
 
-  const caminhosD = caminhos.filter(caminho =>
-    caminho.dificuldade.toLowerCase() === preferencias.dificuldade.toLowerCase()
-  );
-  return caminhosD.filter(c => c.localPartida.toLowerCase() == preferencias.partida.toLowerCase())
+  return await caminhos.filter(c => c.id == preferencias.partida)
 };
 
 export let nDias = (transporte, distancia) => {
