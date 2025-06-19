@@ -23,7 +23,7 @@
                 tipo: "admin",
                 percurso : "Ainda por escolher",
                 pontos : 0,
-                total: 0
+                total: 0,
             });
 
             localStorage.setItem('users', JSON.stringify(users));
@@ -41,6 +41,7 @@
         const percurso = 'Ainda por escolher';
         const pontos = 0;
         const total = 0;
+        const historico = [];
 
         errorMessageDiv.innerHTML = '';
 
@@ -64,7 +65,7 @@
         const tipo = email === "admin@gmail.com" ? "admin" : "user";
 
         class User {
-            constructor(id, nome, email, password, tipo, percurso, pontos, total){
+            constructor(id, nome, email, password, tipo, percurso, pontos, total, historico){
                 this.id = id;
                 this.nome = nome;
                 this.email = email;
@@ -73,10 +74,11 @@
                 this.percurso = percurso;
                 this.pontos = pontos;
                 this.total = total;
+                this.historico = historico;
             }
         }
 
-        const novoUser = new User(novoId, nome, email, password, tipo, percurso, pontos, total)
+        const novoUser = new User(novoId, nome, email, password, tipo, percurso, pontos, total, historico)
         console.log(novoUser)
 
         users.push(novoUser);

@@ -4,7 +4,7 @@
       "id": "1",
       "nome": "Caminho Francês",
       "distancia": "800 km",
-      "localPartida" : "Saint-Jean-Pied-de-Port",
+      "localPartida": "Saint-Jean-Pied-de-Port",
       "dificuldade": "Moderado",
       "descricao": [
         "O mais popular, atravessa a Espanha de leste a oeste.",
@@ -43,7 +43,7 @@
       "id": "2",
       "nome": "Caminho Português",
       "distancia": "600 km",
-      "localPartida" : "Lisboa",
+      "localPartida": "Lisboa",
       "dificuldade": "Fácil",
       "descricao": [
         "Percurso tradicional a partir de Portugal, passando por Porto e Lisboa.",
@@ -103,7 +103,7 @@
       "id": "4",
       "nome": "Caminho da Costa",
       "distancia": "280 km",
-      "localPartida" : "Porto",
+      "localPartida": "Porto",
       "dificuldade": "Moderado",
       "descricao": [
         "Litoral português e espanhol, com belas vistas do oceano.",
@@ -115,9 +115,9 @@
     },
     {
       "id": "5",
-      "nome": "Caminho Sarracênico",
+      "nome": "Caminho Sarraceno",
       "distancia": "400 km",
-      "localPartida" : "Almería",
+      "localPartida": "Almería",
       "dificuldade": "Difícil",
       "descricao": [
         "Rota através das montanhas do norte de Espanha, menos frequentada.",
@@ -131,7 +131,7 @@
       "id": "6",
       "nome": "Caminho de Fisterra",
       "distancia": "90 km",
-      "localPartida" : "Santiago de Compostela",
+      "localPartida": "Santiago de Compostela",
       "dificuldade": "Fácil",
       "descricao": [
         "Rota que leva os peregrinos até o ponto final do Caminho de Santiago em Fisterra.",
@@ -145,7 +145,7 @@
       "id": "7",
       "nome": "Caminho da Via de la Plata",
       "distancia": "1000 km",
-      "localPartida" : "Sevilha",
+      "localPartida": "Sevilha",
       "dificuldade": "Difícil",
       "descricao": [
         "Uma das rotas mais longas do Caminho de Santiago, começando em Sevilha.",

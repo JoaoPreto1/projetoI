@@ -1,7 +1,7 @@
 import {obterUtilizadores, salvarUtilizadores} from '../models/gerirUserModel.js'
 
 class User {
-  constructor(id, nome, email, password, tipo, percurso, pontos, total){
+  constructor(id, nome, email, password, tipo, percurso, pontos, total, historico){
     this.id = id;
     this.nome = nome;
     this.email = email;
@@ -10,6 +10,7 @@ class User {
     this.percurso = percurso;
     this.pontos = pontos;
     this.total = total;
+    this.historico = historico;
   }
 }
 
@@ -22,6 +23,7 @@ const ADMIN_USER = {
   percurso: "Ainda por escolher",
   pontos: 0,
   total: 0,
+  historico : [],
 };
 
 
@@ -64,8 +66,10 @@ export let changePath = async (nome) => {
    const tipo = user.tipo
    const pontos = user.pontos
    const total = user.total
+   const historico = user.historico
+   historico.push(nome)
    let utilizadores = obterUtilizadores().filter(u => u.id !== id);
-    const editedUser = new User (id, name, email, password, tipo, nome, pontos, total)
+    const editedUser = new User (id, name, email, password, tipo, nome, pontos, total, historico)
 
     utilizadores.push(editedUser);
     salvarUtilizadores(utilizadores);
@@ -82,16 +86,17 @@ export let countPoints = (acertou) => {
    const tipo = user.tipo
    const pontos = parseInt(user.pontos)
    const total = user.total
+   const historico = user.historico
    let utilizadores = obterUtilizadores().filter(u => u.id != id);
    const pontosN = pontos + 1;
    const totalN = parseInt(total) +1;
     if(acertou){
-      const editedUser = new User(id, name, email, password, tipo, percurso,pontosN,totalN)
+      const editedUser = new User(id, name, email, password, tipo, percurso,pontosN,totalN, historico)
     utilizadores.push(editedUser);
     salvarUtilizadores(utilizadores);
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
     } else {
-      const editedUser = new User(id, name, email, password, tipo, percurso,pontos,totalN)
+      const editedUser = new User(id, name, email, password, tipo, percurso,pontos,totalN, historico)
     utilizadores.push(editedUser);
     salvarUtilizadores(utilizadores);
     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
