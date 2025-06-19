@@ -58,7 +58,7 @@ export let getLoggedInPoints = async () => {
 }
 
 export let changePath = async (nome) => {
-   const user = JSON.parse(localStorage.getItem("loggedInUser"))
+   const user = await JSON.parse(localStorage.getItem("loggedInUser"))
    const id = user.id
    const name = user.nome
    const email = user.email
@@ -67,7 +67,9 @@ export let changePath = async (nome) => {
    const pontos = user.pontos
    const total = user.total
    const historico = user.historico
-   historico.push(nome)
+   if (!historico.includes(nome)) {
+    historico.push(nome);
+    }
    let utilizadores = obterUtilizadores().filter(u => u.id !== id);
     const editedUser = new User (id, name, email, password, tipo, nome, pontos, total, historico)
 
