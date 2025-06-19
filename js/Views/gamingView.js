@@ -1,4 +1,4 @@
-import {hitRateLeaderBoard, CalculateImages, getTheObjGame, calculateMyAltAnswers, shuffleArray} from '../models/gamingModel.js'
+import {hitRateLeaderBoard, calculateImages, getTheObjGame, calculateMyAltAnswers, shuffleArray} from '../models/gamingModel.js'
 import {countPoints, getPoints} from '../models/userModel.js'
 import {obterUtilizadores} from '../models/gerirUserModel.js'
 import {getGifs} from '../models/gifsModels.js'
@@ -30,11 +30,11 @@ initBtn.addEventListener('click', async () => {
  const carregarImagens = async () => {
     gamificacaoContainer.style.display = 'flex'
     try {
-        const myImg = await CalculateImages()
+        const myImg = await calculateImages()
         const id = await myImg.id
         const myAltAnswers = await calculateMyAltAnswers(id)
         myAltAnswers.push(myImg)
-        shuffleArray(myAltAnswers)
+        await shuffleArray(myAltAnswers)
         const card = `
         <div id="newDiv" style="z-index: 1000; width: 100vw; left: 50%; transform(-50%); height: 90vh; background-color: #f2f2f2; display:flex; justify-content: center; align-items: center;">
             <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; width:98vw; height: 85vh; border: 0px solid black; padding:0; background-color:u7.u white;">

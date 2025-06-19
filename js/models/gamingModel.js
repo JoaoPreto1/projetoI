@@ -25,7 +25,7 @@ export let getImage = async () => {
     return myImg
 }
 
-export let CalculateImages = async () => {
+export let calculateImages = async () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     let percurso = user.percurso
     let res = await fetch('http://localhost:3000/gamificacao')
