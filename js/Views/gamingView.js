@@ -1,4 +1,4 @@
-import {hitRateLeaderBoard, CalculateImages, getTheObjGame, calculateMyAltAnswers, shuffleArray} from '../models/gamingModel.js'
+import {hitRateLeaderBoard, calculateImages, getTheObjGame, calculateMyAltAnswers, shuffleArray} from '../models/gamingModel.js'
 import {countPoints, getPoints} from '../models/userModel.js'
 import {obterUtilizadores} from '../models/gerirUserModel.js'
 import {getGifs} from '../models/gifsModels.js'
@@ -30,11 +30,11 @@ initBtn.addEventListener('click', async () => {
  const carregarImagens = async () => {
     gamificacaoContainer.style.display = 'flex'
     try {
-        const myImg = await CalculateImages()
-        const id = myImg.id
+        const myImg = await calculateImages()
+        const id = await myImg.id
         const myAltAnswers = await calculateMyAltAnswers(id)
         myAltAnswers.push(myImg)
-        shuffleArray(myAltAnswers)
+        await shuffleArray(myAltAnswers)
         const card = `
         <div id="newDiv" style="z-index: 1000; width: 100vw; left: 50%; transform(-50%); height: 90vh; background-color: #f2f2f2; display:flex; justify-content: center; align-items: center;">
             <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; width:98vw; height: 85vh; border: 0px solid black; padding:0; background-color:u7.u white;">
@@ -90,7 +90,7 @@ let closePopUp = async (id, rightId) =>  {
     myCOC.style.display = 'flex'
    if( urGuess.toLowerCase() === myObj.nome.toLowerCase() ){
       const url = await getGifs(acertou)
-      const pontos = getPoints()
+      const pontos = await getPoints()
       const total = parseInt(pontos) + 1
       myCOC.innerHTML = `
         <div id="myIdDiv">
@@ -122,7 +122,7 @@ let closePopUp = async (id, rightId) =>  {
    } else {
         acertou = !acertou;
         const url = await getGifs(acertou)
-        const pontos = getPoints()
+        const pontos = await getPoints()
         const total = parseInt(pontos)
         myCOC.innerHTML = `
         <div id="myIdDiv">
@@ -156,7 +156,6 @@ let closePopUp = async (id, rightId) =>  {
 
 let NextQuestion = async () => {
     myCOC.style.display = 'none'
-    gamificacaoContainer.style.display = 'block'
     await carregarImagens()
 }
 
@@ -171,7 +170,7 @@ myLeaderboardBtn.addEventListener('click', async () => {
     containerGaming.style.display = 'none';
     const myDiv = document.getElementById('myleaderboardContainerP')
     myDiv.style.display = 'flex';
-    const users = obterUtilizadores()
+    const users = await obterUtilizadores()
     users.shift()
     users.sort((a, b) => b.pontos - a.pontos);
     const myTBody = document.getElementById('myTableBody')
@@ -191,7 +190,7 @@ myLeaderboardBtn.addEventListener('click', async () => {
 })
 
 document.getElementById('NameOrder').addEventListener('click', async () => {
-    const users = obterUtilizadores()
+    const users = await obterUtilizadores()
     users.shift()
     users.sort((a, b) => a.nome.localeCompare(b.nome));
     const myTBody = document.getElementById('myTableBody')
@@ -209,7 +208,7 @@ document.getElementById('NameOrder').addEventListener('click', async () => {
     myTBody.innerHTML = rows
     })
 document.getElementById('TotalOrder').addEventListener('click', async () => {
-    const users = obterUtilizadores()
+    const users = await obterUtilizadores()
     users.shift()
     users.sort((a, b) => b.total - a.total);
     const myTBody = document.getElementById('myTableBody')
@@ -227,7 +226,7 @@ document.getElementById('TotalOrder').addEventListener('click', async () => {
     myTBody.innerHTML = rows
 })
 document.getElementById('PontosOrder').addEventListener('click', async () => {
-    const users = obterUtilizadores()
+    const users = await obterUtilizadores()
     users.shift()
     users.sort((a, b) => b.pontos - a.pontos);
     const myTBody = document.getElementById('myTableBody')
@@ -246,7 +245,7 @@ document.getElementById('PontosOrder').addEventListener('click', async () => {
 })
 
 document.getElementById('RateOrder').addEventListener('click', async () => {
-    const users = obterUtilizadores()
+    const users = await obterUtilizadores()
     users.shift()
 
     const usersWithRate = [];

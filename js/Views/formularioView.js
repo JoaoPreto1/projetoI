@@ -1,8 +1,10 @@
-import { filtrarCaminho, nDias, mostrarDetalhes } from '../models/CaminhoModel.js';
+import { filtrarCaminho, nDias, mostrarDetalhes, carregarCaminhos } from '../models/CaminhoModel.js';
 import {changePath} from '../models/userModel.js';
 
-
-document.addEventListener("DOMContentLoaded", function () {
+const localPartida = document.getElementById('localPartida');
+const destino = document.getElementById('destino');
+const nivelDificuldade = document.getElementById('nivelDificuldade');
+document.addEventListener("DOMContentLoaded", async function () {
             const loginButton = document.getElementById("loginButton");
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
     
@@ -14,8 +16,62 @@ document.addEventListener("DOMContentLoaded", function () {
                     </a>
                 `;
             }
-        });
+            await carregarLocaisPartida()
+          });
+let carregarLocaisPartida = async () => {
+  const caminhos = await carregarCaminhos();
+  for(let i = 0; i < caminhos.length; i++){
+    caminhos[i].localPartida;
+    console.log(caminhos[i].localPartida)
+    let row = `
+    <option value="${caminhos[i].id}">${caminhos[i].localPartida}</option>
+    `
+    localPartida.innerHTML += row;
+  }
+}
+            
+localPartida.addEventListener('change', async (e) => {
+  destino.innerHTML = '';
+  nivelDificuldade.innerHTML = '';
+  const selectedValue = await e.target.value;
+  const caminho = await mostrarDetalhes(selectedValue);
 
+  if(caminho.nome == 'Santiago de Compostela'){
+    let rows = `
+    <option value="Fisterra" selected>Fisterra</option>
+    `
+
+    let row = `
+    <option value="${caminho.dificuldade}" selected>${caminho.dificuldade}</option>
+    `
+    destino.innerHTML = rows
+    nivelDificuldade.innerHTML = row;
+  } else if(caminho.nome == '') {
+    let rows =`
+    <option value="">Selecione...</option>
+    <option value="Santiago de Compostela" >Santiago Compostela</option>
+    <option value="Fisterra">Fisterra</option>
+    `
+
+    let row = `
+    <option value="">Selecione...</option>
+    <option value="Fácil">Fácil</option>
+    <option value="Moderado">Moderado</option>
+    <option value="Difícil">Difícil</option> 
+    `
+    localPartida.innerHTML = rows;
+    nivelDificuldade.innerHTML = row;
+  } else {
+    let rows = `
+    <option value="Santiago de Compostela" selected>Santiago de Compostela</option>
+    `
+    let row = `
+    <option value="${caminho.dificuldade}" selected>${caminho.dificuldade}</option>
+    `
+    destino.innerHTML = rows;
+    nivelDificuldade.innerHTML = row;
+  }
+})
 
 document.getElementById('formCaminho').addEventListener('submit', async function(event) {
   event.preventDefault();
@@ -28,6 +84,8 @@ document.getElementById('formCaminho').addEventListener('submit', async function
     dificuldade: document.getElementById("nivelDificuldade").value,
     transporte: document.querySelector('input[name="transporte"]:checked').value
   };
+
+  console.log(preferencias)
 
   try {
     const melhoresCaminhos = await filtrarCaminho(preferencias);
@@ -45,7 +103,7 @@ document.getElementById('formCaminho').addEventListener('submit', async function
             <h5 class="card-title">${caminho.nome}</h5>
             <p><strong>Numero de dias:</strong> ${Ndias}</p>
             <p><strong>Distância:</strong> ${caminho.distancia}</p>
-            <p><strong>Descrição:</strong> ${caminho.descricao}</p>
+            <p><strong>Descrição:</strong> ${caminho.descricao[0]}</p>
             <a href="#" class="btn btn-primary" onclick="mostrarDetalhesView(${caminho.id})">Detalhes</a>
           </div>
         </div>
@@ -68,7 +126,7 @@ window.mostrarDetalhesView = async (id) => {
       <h5>${caminho.nome}</h5>
       <p><strong>Distância:</strong> ${caminho.distancia}</p>
       <p><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
-      <p><strong>Descrição:</strong> ${caminho.descricao}</p>
+      <p><strong>Descrição:</strong> ${caminho.descricao[1]}</p>
     `;
 
     if (caminho.variantes?.length) {

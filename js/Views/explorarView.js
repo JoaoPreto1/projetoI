@@ -22,19 +22,22 @@ let CarregarCaminhosView = async () => {
     container.innerHTML = "";
 
     Caminhos.forEach(c => {
-        const card = `
-            <div class="col-md-6 col-lg-4">
-                <div class="card caminho-card h-100 d-flex flex-column justify-content-between">
-                    <div class="card-body">
-                        <h5 class="card-title">${c.nome}</h5>
-                        <ul class="list-unstyled card-info">
-                            <li><strong>Distância:</strong> ${c.distancia}</li>
-                            <li><strong>Dificuldade:</strong> ${c.dificuldade}</li>
-                        </ul>
-                        <p class="card-text">${c.descricao}</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="#" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
+        try {
+            const card = `
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card caminho-card h-100 d-flex flex-column justify-content-between">
+                        <div class="card-body">
+                            <h5 class="card-title">${c.nome}</h5>
+                            <ul class="list-unstyled card-info">
+                                <li><i class="bi bi-signpost-2"></i> <strong>Distância:</strong> ${c.distancia}</li>
+                                <li><i class="bi bi-activity"></i> <strong>Dificuldade:</strong> ${c.dificuldade}</li>
+                            </ul>
+                            <p class="card-text">${c.descricao[0]}</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0 text-center">
+                            <a href="#" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,10 +52,11 @@ let mostrarDetalhesView = async (id) => {
 
         document.getElementById("detalhesModalLabel").innerText = caminho.nome;
 
-        document.getElementById("detalhesDescricao").innerHTML = `
-            <p style="color: #212529"><strong>Distância:</strong> ${caminho.distancia}</p>
-            <p style="color: #212529"><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
-            <p style="color: #212529"><strong>Descrição:</strong> ${caminho.descricao}</p>
+        const descricaoEl = document.getElementById("detalhesDescricao");
+        descricaoEl.innerHTML = `
+            <p style="color:black"><strong>Distância:</strong> ${caminho.distancia}</p>
+            <p style="color:black"><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
+            <p style="color:black"><strong>Descrição:</strong> ${caminho.descricao[1]}</p>
         `;
 
         document.getElementById("variantesContainer").innerHTML = `
