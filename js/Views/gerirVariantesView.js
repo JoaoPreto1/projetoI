@@ -1,4 +1,4 @@
-import { carregarCaminhos, mostrarDetalhes, guardarVariante, deleteVariante } from "../models/CaminhoModel.js";
+import { carregarCaminhos, mostrarDetalhes, guardarVariante, deleteVariante, editarVariante } from "../models/CaminhoModel.js";
 
 // Declaração de variáveis
 const etapasBody = document.getElementById('variantesBody');
@@ -95,6 +95,18 @@ let deleteVarianteView = async (id, nome) => {
     }
 }
 
+let editarVarianteView = async () => {
+    const VarianteIdE = document.getElementById('VarianteIdE').value;
+    const nomeE = document.getElementById('nomeE').value;
+    const descricaoE = document.getElementById('descricaoE').value;
+    const distanciaE = document.getElementById('distanciaE').value;
+    let obj = {VarianteIdE, nomeE, descricaoE, distanciaE}
+    let idInt = Math.floor(VarianteIdE) 
+    await editarVariante(idInt, obj);
+    await carregarVariantes();
+}
+
 window.abrirformulárioEdit = abrirformulárioEdit;
 window.fecharEditFormulario = fecharEditFormulario;
 window.deleteVarianteView = deleteVarianteView;
+window.editarVarianteView = editarVarianteView;

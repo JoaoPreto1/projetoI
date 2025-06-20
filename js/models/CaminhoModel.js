@@ -112,3 +112,25 @@ export let deleteVariante = async (id) => {
     console.error("Erro ao remover variante:", error);
   }
 }
+
+export let editarVariante = async (id, obj) => {
+  let res = await mostrarDetalhes(id);
+  let variantesId = await res.variantes
+  console.log(obj)
+  try{
+    let variante = variantesId.find(v=> v.id == obj.VarianteIdE);
+    if(variante){
+    variante.nome = obj.nomeE;
+    variante.descricao = obj.descricaoE;
+    variante.distancia = obj.distanciaE;
+    }
+    console.log(variantesId[1])
+    const res = await fetch(`http://localhost:3000/caminhos/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ variantes: variantesId })
+    });
+  } catch(err){
+    console.error(err)
+  }
+}
