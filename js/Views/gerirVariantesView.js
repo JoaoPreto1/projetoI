@@ -8,6 +8,7 @@ const formularioVarianteEdit = document.getElementById('formularioVarianteEdit')
 const guardarAddVarianteBtn = document.getElementById('guardarAddVarianteBtn');
 
 let carregarVariantes = async () => {
+    etapasBody.innerHTML = '';
     const caminhos = await carregarCaminhos();
     for(let caminho of caminhos){
         if(caminho.variantes){
@@ -72,15 +73,24 @@ addVarianteBtn.addEventListener('click', async (e) => {
     })
 })
 
+class Variante {
+    constructor(id, nome, descricao, distancia){
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.distancia = distancia;
+    }
+}
 guardarAddVarianteBtn.addEventListener('click', async () => {
     const id = document.getElementById('varianteId').value;
     const nome = document.getElementById('nome').value.trim();
     const descricao = document.getElementById('descricao').value.trim();
     const distancia = document.getElementById('distancia').value.trim();
     try{
-    const caminhoSelected = await mostrarDetalhes(id);
-    const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
-    await guardarVariante(caminhoSelected, novoId, nome, descricao, distancia);
+        const caminhoSelected = await mostrarDetalhes(id);
+        const novoId = parseFloat(`${caminhoSelected.id}.${caminhoSelected.variantes.length + 1}`);
+        let novaVariante = new Variante(novoId, nome, descricao, distancia)
+    await guardarVariante(caminhoSelected, novaVariante);
     fecharFormulário();
     await carregarVariantes();
     }catch(err){
@@ -100,7 +110,7 @@ let editarVarianteView = async () => {
     const nomeE = document.getElementById('nomeE').value;
     const descricaoE = document.getElementById('descricaoE').value;
     const distanciaE = document.getElementById('distanciaE').value;
-    let obj = {VarianteIdE, nomeE, descricaoE, distanciaE}
+    let obj = new Variante(VarianteIdE, nomeE, descricaoE, distanciaE);
     let idInt = Math.floor(VarianteIdE) 
     await editarVariante(idInt, obj);
     await carregarVariantes();

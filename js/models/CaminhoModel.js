@@ -46,8 +46,8 @@ export async function carregarCaminhos() {
   }
 }
 
-export let guardarVariante = async (obj, novoId, nome, descricao, distancia) => {
-  const varianteN = { id: novoId, nome, descricao, distancia };
+export let guardarVariante = async (obj, obj1) => {
+  const varianteN = obj1;
 
   try {
     let variantesT = obj.variantes;
@@ -118,11 +118,11 @@ export let editarVariante = async (id, obj) => {
   let variantesId = await res.variantes
   console.log(obj)
   try{
-    let variante = variantesId.find(v=> v.id == obj.VarianteIdE);
+    let variante = variantesId.find(v=> v.id == obj.id);
     if(variante){
-    variante.nome = obj.nomeE;
-    variante.descricao = obj.descricaoE;
-    variante.distancia = obj.distanciaE;
+    variante.nome = obj.nome;
+    variante.descricao = obj.descricao;
+    variante.distancia = obj.distancia;
     }
     console.log(variantesId[1])
     const res = await fetch(`http://localhost:3000/caminhos/${id}`, {
