@@ -4,283 +4,246 @@ import {obterUtilizadores} from '../models/gerirUserModel.js'
 import {getGifs} from '../models/gifsModels.js'
 
 document.addEventListener("DOMContentLoaded", function () {
-            const loginButton = document.getElementById("loginButton");
-            const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    
-            if (user) {
-                
-                loginButton.outerHTML = `
-                    <a id="profileIcon" class="nav-link" href="perfil.html">
-                        <i style="width: 2.5vw; height: 2.4vh; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
-                    </a>
-                `;
-            }
-        });
+    const loginButton = document.getElementById("loginButton");
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (user && loginButton) {
+        loginButton.outerHTML = `
+            <a id="profileIcon" class="nav-link" href="perfil.html">
+                <i class="fas fa-user-circle me-1"></i> Perfil
+            </a>
+        `;
+    }
+});
 
 const initBtn = document.querySelector('#initBtn');
 const mybackground = document.getElementById('mybackground');
 
 initBtn.addEventListener('click', async () => {
-    containerGaming.style.display = 'none'
-    mybackground.style.display = 'none'
-    await carregarImagens()
- })
+    containerGaming.style.display = 'none';
+    mybackground.style.display = 'none';
+    await carregarImagens();
+});
  
- const gamificacaoContainer = document.getElementById('gamificacaoContainer')
- const carregarImagens = async () => {
-    gamificacaoContainer.style.display = 'flex'
+const gamificacaoContainer = document.getElementById('gamificacaoContainer');
+const carregarImagens = async () => {
+    gamificacaoContainer.style.display = 'flex';
     try {
-        const myImg = await calculateImages()
-        const id = await myImg.id
-        console.log(id)
+        const myImg = await calculateImages();
+        if (!myImg) return;
+        const id = myImg.id;
         const myAltAnswers = await calculateMyAltAnswers(id);
-        console.log(myAltAnswers)
-        myAltAnswers.push(myImg)
-        await shuffleArray(myAltAnswers)
+        myAltAnswers.push(myImg);
+        await shuffleArray(myAltAnswers);
+        
         const card = `
-        <div id="newDiv" style="z-index: 1000; width: 100vw; left: 50%; transform(-50%); height: 90vh; background-color: #f2f2f2; display:flex; justify-content: center; align-items: center;">
-            <div id="myPopup" style="display: flex; flex-direction: column; justify-content: center; width:98vw; height: 85vh; border: 0px solid black; padding:0; background-color:u7.u white;">
-                <div id="myClosePopUpContainer" style="display:flex; justify-content: space-between; align-items: center; width:98vw; height: 15vh; padding: 0vh .5vw 2vh 0vw; border:0px; background-color: white; text-align:center;">
-                    <div style="display:flex; justify-content: flex-start; align-items:center; background-color: white;">
-                        <div style="background-color: #007BFF; width: 5vw; height: 8vh; border-top-right-radius: 20px; border-bottom-right-radius:20px;"></div>
-                        <h1 style="color:black; padding: 0vh 0vw 0vh 1vw; margin:0; text-align:center;">Adivinha o que está na imagem!</h1>
+        <div id="newDiv" class="d-flex align-items-center justify-content-center p-3 w-100 h-100">
+            <div id="myPopup" class="card border-0 shadow-lg p-4 bg-white" style="max-width: 900px; width: 95vw; border-radius: 20px;">
+                <div id="myClosePopUpContainer" class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill"><i class="fas fa-camera me-1"></i> Pergunta</span>
+                        <h4 class="mb-0 fw-bold" style="color: var(--primary);">Adivinha o local desta imagem!</h4>
                     </div>
-                    <button id="myCloseBtn" onclick="closeMyPopUp()" style="background-color:#007BFF; color:#FFD700; font-size: .7em; text-align:center; padding: 1vh 1vw; border-radius: 50%; cursor: pointer;">X</button>
+                    <button id="myCloseBtn" onclick="closeMyPopUp()" class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">✕</button>
                 </div>
-                <div id="MyPopUpContainer" style="display:flex; flex-direction: flex; align-items:center; justify-content: space-around; width:98vw; padding: 2vh 2vw 10vh 6vw;  background-color: white;">   
-                    <div>
-                        <img src="${myImg.url}" style= "width:36vw; height:60vh;">
+                <div id="MyPopUpContainer" class="row g-4 align-items-center">   
+                    <div class="col-md-6 text-center">
+                        <img src="${myImg.url}" class="img-fluid rounded-4 shadow-sm" style="max-height: 380px; width: 100%; object-fit: cover;">
                     </div>
-                    <div style="display:flex; padding: 2vh 2vw; flex-direction: column; justify-content: space-around; width: 50vw; height: 50vh">  
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw;" onclick="closePopUp(${myAltAnswers[0].id}, ${id})">${myAltAnswers[0].nome}</button>
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[1].id} , ${id})">${myAltAnswers[1].nome}</button>
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[2].id}, ${id})">${myAltAnswers[2].nome}</button>
-                        <button class="myOptions" style="text-align: start; width: 45vw; height: 6vh; font-weight: bold; border-radius:10px; padding: .3vh 1vw" onclick="closePopUp(${myAltAnswers[3].id}, ${id})">${myAltAnswers[3].nome}</button>
+                    <div class="col-md-6 d-flex flex-column gap-2">  
+                        <button class="btn btn-outline-primary text-start fw-bold p-3 rounded-3 myOptions" onclick="closePopUp(${myAltAnswers[0].id}, ${id})">A. ${myAltAnswers[0].nome}</button>
+                        <button class="btn btn-outline-primary text-start fw-bold p-3 rounded-3 myOptions" onclick="closePopUp(${myAltAnswers[1].id}, ${id})">B. ${myAltAnswers[1].nome}</button>
+                        <button class="btn btn-outline-primary text-start fw-bold p-3 rounded-3 myOptions" onclick="closePopUp(${myAltAnswers[2].id}, ${id})">C. ${myAltAnswers[2].nome}</button>
+                        <button class="btn btn-outline-primary text-start fw-bold p-3 rounded-3 myOptions" onclick="closePopUp(${myAltAnswers[3].id}, ${id})">D. ${myAltAnswers[3].nome}</button>
                     </div>
                 </div>
             </div>
         </div> 
         `;
         gamificacaoContainer.innerHTML = card;
-        const myCloseBtn = document.querySelector('#myCloseBtn');
-    
-        myCloseBtn.addEventListener('mouseenter', () =>{
-            myCloseBtn.style.backgroundColor = '#e32717';
-            myCloseBtn.style.color = 'white';
-        })
-    
-        myCloseBtn.addEventListener('mouseleave', () =>{
-            myCloseBtn.style.backgroundColor = '#007BFF';
-             myCloseBtn.style.color = '#FFD700';
-        });
     } catch (err) {
-        console.error("Erro ao carregar os caminhos:", err)
+        console.error("Erro ao carregar o quiz:", err);
     }
-}
+};
 
-
-
-let myCOC = document.getElementById('containerOfContainer')
-let containerGaming = document.getElementById('containerGaming')
+let myCOC = document.getElementById('containerOfContainer');
+let containerGaming = document.getElementById('containerGaming');
 let closePopUp = async (id, rightId) =>  {
     gamificacaoContainer.innerHTML = '';
-    gamificacaoContainer.style.display= 'none';
-    const myObj = await getTheObjGame(rightId)
-    let acertou = true
-    let urGuessObj = await getTheObjGame(id)
-    let urGuess = urGuessObj.nome
-    myCOC.style.display = 'flex'
-   if( urGuess.toLowerCase() === myObj.nome.toLowerCase() ){
-      const url = await getGifs(acertou)
-      const pontos = await getPoints()
-      const total = parseInt(pontos) + 1
+    gamificacaoContainer.style.display = 'none';
+    const myObj = await getTheObjGame(rightId);
+    let acertou = true;
+    let urGuessObj = await getTheObjGame(id);
+    let urGuess = urGuessObj ? urGuessObj.nome : '';
+    myCOC.style.display = 'flex';
+    
+    if( urGuess.toLowerCase() === myObj.nome.toLowerCase() ){
+      const url = await getGifs(acertou);
+      const pontos = await getPoints();
+      const total = parseInt(pontos || 0) + 1;
       myCOC.innerHTML = `
-        <div id="myIdDiv">
-            <div style="height: 40vh; display: flex; justify-content: center">
-                <img src=${url} alt="dancing gif">
+        <div id="myIdDiv" class="card border-0 shadow-lg p-4 p-md-5 text-center bg-white" style="max-width: 520px; width: 92vw; border-radius: 24px;">
+            <div class="d-flex justify-content-center mb-3">
+                <img src="${url}" alt="comemoração" class="img-fluid rounded-4 shadow-sm" style="max-height: 220px; object-fit: contain;">
             </div>
-            <div style="display:flex; flex-direction: column; justify-content: flex-start; align-items:center; color:black;font-weight: bold; height: 40vh; padding: 0vh 5vw 0vh 0vw">
-                <h1 style="color: #FFD700; font-size: 5em">Correto!</h1>
-                <div>   
-                    <div>
-                        <h2>Pontos:</h2>
-                        <h3 style="color: #FFD700;"> + 1</h3>
-                    </div>
-                    <div>
-                    <h2>Pontuação atual:<br>
-                        ${total}
-                    </h2>
-                    </div>
-                </div>
-                <div style="display:flex; justify-content: space-around; width: 6vw;">
-                <button onclick="closeMyPopUp()" style="background-color: red; color: white; border-radius: 50%; padding: .5vh .5vw;">❌</button>
-                <button class="myOptions" onclick="NextQuestion()" style="border-radius: 50%; text-decoration: none; padding: .5vh .5vw; text-align: center"><span>&#10148;</span></button> 
-                </div>
+            <h2 class="fw-bold text-success mb-2"><i class="fas fa-check-circle me-2"></i>Correto!</h2>
+            <div class="my-3 p-3 bg-light rounded-3">
+                <span class="badge bg-success px-3 py-2 rounded-pill fw-semibold mb-2">+ 1 Ponto</span>
+                <h5 class="text-muted mb-0">Pontuação total: <strong class="text-dark">${total}</strong></h5>
+            </div>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+                <button onclick="closeMyPopUp()" class="btn btn-outline-secondary px-4 py-2">Sair</button>
+                <button class="btn btn-primary px-4 py-2" onclick="NextQuestion()">Próxima Pergunta <i class="fas fa-arrow-right ms-1"></i></button> 
             </div>
         </div>
-      
-      `
-      countPoints(acertou)
-   } else {
+      `;
+      countPoints(acertou);
+    } else {
         acertou = !acertou;
-        const url = await getGifs(acertou)
-        const pontos = await getPoints()
-        const total = parseInt(pontos)
+        const url = await getGifs(acertou);
+        const pontos = await getPoints();
+        const total = parseInt(pontos || 0);
         myCOC.innerHTML = `
-        <div id="myIdDiv">
-            <div style="height: 40vh; display: flex; justify-content: center">
-                <img src=${url} alt="dancing gif">
+        <div id="myIdDiv" class="card border-0 shadow-lg p-4 p-md-5 text-center bg-white" style="max-width: 520px; width: 92vw; border-radius: 24px;">
+            <div class="d-flex justify-content-center mb-3">
+                <img src="${url}" alt="erro" class="img-fluid rounded-4 shadow-sm" style="max-height: 220px; object-fit: contain;">
             </div>
-            <div style="display:flex; flex-direction: column; justify-content: flex-start; align-items:center; color:black;font-weight: bold; height: 40vh; padding: 0vh 5vw 0vh 0vw">
-                <h1 style="color: #FFD700; font-size: 5em">Errado!</h1>
-                <div>   
-                    <div>
-                        <h2>Pontos:</h2>
-                        <h3 style="color: #FFD700;"> + 0</h3>
-                    </div>
-                    <div>
-                    <h2>Pontuação atual:<br>
-                        ${total}
-                    </h2>
-                    </div>
-                </div>
-                <div style="display:flex; justify-content: space-around; width: 6vw;">
-                <button onclick="closeMyPopUp()" style="background-color: red; color: white; border-radius: 50%; padding: .5vh .5vw;">❌</button>
-                <button class="myOptions" onclick="NextQuestion()" style="border-radius: 50%; text-decoration: none; padding: .5vh .5vw; text-align: center"><span>&#10148;</span></button> 
-                </div>
+            <h2 class="fw-bold text-danger mb-2"><i class="fas fa-times-circle me-2"></i>Incorreto!</h2>
+            <div class="my-3 p-3 bg-light rounded-3">
+                <p class="text-muted small mb-1">A resposta correta era: <strong class="text-dark">${myObj.nome}</strong></p>
+                <h5 class="text-muted mb-0">Pontuação total: <strong class="text-dark">${total}</strong></h5>
+            </div>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+                <button onclick="closeMyPopUp()" class="btn btn-outline-secondary px-4 py-2">Sair</button>
+                <button class="btn btn-primary px-4 py-2" onclick="NextQuestion()">Tentar Novamente <i class="fas fa-arrow-right ms-1"></i></button> 
             </div>
         </div>
-      
-            `
-      countPoints(acertou)
-   }
-}
+        `;
+        countPoints(acertou);
+    }
+};
 
 let NextQuestion = async () => {
-    myCOC.style.display = 'none'
-    await carregarImagens()
-}
+    myCOC.style.display = 'none';
+    await carregarImagens();
+};
 
 let closeMyPopUp = () => {
    myCOC.style.display = 'none';
-   gamificacaoContainer.style.display = 'none'
-   mybackground.style.display = 'block'
+   gamificacaoContainer.style.display = 'none';
+   mybackground.style.display = 'flex';
    containerGaming.style.display = 'flex';
-}
-const myLeaderboardBtn = document.getElementById('myLeaderboardBtn')
+};
+
+const myLeaderboardBtn = document.getElementById('myLeaderboardBtn');
 myLeaderboardBtn.addEventListener('click', async () => {
     containerGaming.style.display = 'none';
-    const myDiv = document.getElementById('myleaderboardContainerP')
+    const myDiv = document.getElementById('myleaderboardContainerP');
     myDiv.style.display = 'flex';
-    const users = await obterUtilizadores()
-    users.shift()
+    let users = await obterUtilizadores();
+    users = users.filter(u => u.tipo !== 'admin');
     users.sort((a, b) => b.pontos - a.pontos);
-    const myTBody = document.getElementById('myTableBody')
+    const myTBody = document.getElementById('myTableBody');
     myTBody.style.color = 'black';
     let rows = "";
     for(let i = 0; i < users.length; i++){
-        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
+        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
         rows += `<tr>
-        <td>${users[i].nome}</td>
+        <td><strong>${users[i].nome}</strong></td>
         <td>${users[i].pontos}</td>
         <td>${users[i].total}</td>
         <td>${rate}</td>
-        </tr>
-        `
+        </tr>`;
     }
-    myTBody.innerHTML = rows
-})
+    myTBody.innerHTML = rows;
+});
 
 document.getElementById('NameOrder').addEventListener('click', async () => {
-    const users = await obterUtilizadores()
-    users.shift()
+    let users = await obterUtilizadores();
+    users = users.filter(u => u.tipo !== 'admin');
     users.sort((a, b) => a.nome.localeCompare(b.nome));
-    const myTBody = document.getElementById('myTableBody')
+    const myTBody = document.getElementById('myTableBody');
     let rows = "";
     for(let i = 0; i < users.length; i++){
-        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
+        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
         rows += `<tr>
-        <td>${users[i].nome}</td>
+        <td><strong>${users[i].nome}</strong></td>
         <td>${users[i].pontos}</td>
         <td>${users[i].total}</td>
         <td>${rate}</td>
-        </tr>
-        `
+        </tr>`;
     }
-    myTBody.innerHTML = rows
-    })
+    myTBody.innerHTML = rows;
+});
 document.getElementById('TotalOrder').addEventListener('click', async () => {
-    const users = await obterUtilizadores()
-    users.shift()
+    let users = await obterUtilizadores();
+    users = users.filter(u => u.tipo !== 'admin');
     users.sort((a, b) => b.total - a.total);
-    const myTBody = document.getElementById('myTableBody')
+    const myTBody = document.getElementById('myTableBody');
     let rows = "";
     for(let i = 0; i < users.length; i++){
-        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
+        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
         rows += `<tr>
-        <td>${users[i].nome}</td>
+        <td><strong>${users[i].nome}</strong></td>
         <td>${users[i].pontos}</td>
         <td>${users[i].total}</td>
         <td>${rate}</td>
-        </tr>
-        `
+        </tr>`;
     }
-    myTBody.innerHTML = rows
-})
+    myTBody.innerHTML = rows;
+});
+
 document.getElementById('PontosOrder').addEventListener('click', async () => {
-    const users = await obterUtilizadores()
-    users.shift()
+    let users = await obterUtilizadores();
+    users = users.filter(u => u.tipo !== 'admin');
     users.sort((a, b) => b.pontos - a.pontos);
-    const myTBody = document.getElementById('myTableBody')
+    const myTBody = document.getElementById('myTableBody');
     let rows = "";
     for(let i = 0; i < users.length; i++){
-        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total)
+        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
         rows += `<tr>
-        <td>${users[i].nome}</td>
+        <td><strong>${users[i].nome}</strong></td>
         <td>${users[i].pontos}</td>
         <td>${users[i].total}</td>
         <td>${rate}</td>
-        </tr>
-        `
+        </tr>`;
     }
-    myTBody.innerHTML = rows
-})
+    myTBody.innerHTML = rows;
+});
 
 document.getElementById('RateOrder').addEventListener('click', async () => {
-    const users = await obterUtilizadores()
-    users.shift()
+    let users = await obterUtilizadores();
+    users = users.filter(u => u.tipo !== 'admin');
 
     const usersWithRate = [];
-
     for (let i = 0; i < users.length; i++) {
-    const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
-    usersWithRate.push({
-        ...users[i],
-        rate: Number(rate.replace('%', ''))
-    });
+        const rate = await hitRateLeaderBoard(users[i].pontos, users[i].total);
+        usersWithRate.push({
+            ...users[i],
+            rate: Number(rate.replace('%', ''))
+        });
     }
 
     usersWithRate.sort((a, b) => b.rate - a.rate);
-    const myTBody = document.getElementById('myTableBody')
+    const myTBody = document.getElementById('myTableBody');
     let rows = "";
     for(let i = 0; i < usersWithRate.length; i++){
-        const rate = await hitRateLeaderBoard(usersWithRate[i].pontos, usersWithRate[i].total)
+        const rate = await hitRateLeaderBoard(usersWithRate[i].pontos, usersWithRate[i].total);
         rows += `<tr>
-        <td>${usersWithRate[i].nome}</td>
+        <td><strong>${usersWithRate[i].nome}</strong></td>
         <td>${usersWithRate[i].pontos}</td>
         <td>${usersWithRate[i].total}</td>
         <td>${rate}</td>
-        </tr>
-        `
+        </tr>`;
     }
-    myTBody.innerHTML = rows
-})
+    myTBody.innerHTML = rows;
+});
 
 document.getElementById('closeLeaderboardBtn').addEventListener('click', () => {
-    const myDiv = document.getElementById('myleaderboardContainerP')
+    const myDiv = document.getElementById('myleaderboardContainerP');
     myDiv.style.display = 'none';
     containerGaming.style.display = 'flex';
-})
+});
 
 window.closePopUp = closePopUp
 window.closeMyPopUp = closeMyPopUp

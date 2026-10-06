@@ -47,67 +47,67 @@ export function findUser(email, password) {
 }
 
 export let getLoggedInTotal = async () => {
-  const user = await JSON.parse(localStorage.getItem("loggedInUser"))
-  const total = user.total
-  return total
+  const user = JSON.parse(localStorage.getItem("loggedInUser"))
+  return user ? (user.total || 0) : 0
 } 
 
 export let getLoggedInPoints = async () => {
-  const user = await JSON.parse(localStorage.getItem("loggedInUser"))
-  return user.pontos
+  const user = JSON.parse(localStorage.getItem("loggedInUser"))
+  return user ? (user.pontos || 0) : 0
 }
 
 export let changePath = async (nome) => {
-   const user = await JSON.parse(localStorage.getItem("loggedInUser"))
+   const user = JSON.parse(localStorage.getItem("loggedInUser"))
+   if (!user) return
    const id = user.id
    const name = user.nome
    const email = user.email
    const password = user.password
    const tipo = user.tipo
-   const pontos = user.pontos
-   const total = user.total
-   const historico = user.historico
+   const pontos = user.pontos || 0
+   const total = user.total || 0
+   const historico = Array.isArray(user.historico) ? user.historico : []
    if (!historico.includes(nome)) {
-    historico.push(nome);
-    }
+     historico.push(nome);
+   }
    let utilizadores = obterUtilizadores().filter(u => u.id !== id);
-    const editedUser = new User (id, name, email, password, tipo, nome, pontos, total, historico)
+   const editedUser = new User(id, name, email, password, tipo, nome, pontos, total, historico)
 
-    utilizadores.push(editedUser);
-    salvarUtilizadores(utilizadores);
-    localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
+   utilizadores.push(editedUser);
+   salvarUtilizadores(utilizadores);
+   localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
 }
 
 export let countPoints = (acertou) => {
-  const user = JSON.parse(localStorage.getItem("loggedInUser"))
+   const user = JSON.parse(localStorage.getItem("loggedInUser"))
+   if (!user) return
    const id = user.id
    const name = user.nome
    const email = user.email
    const password = user.password
    const percurso = user.percurso
    const tipo = user.tipo
-   const pontos = parseInt(user.pontos)
-   const total = user.total
-   const historico = user.historico
+   const pontos = parseInt(user.pontos || 0)
+   const total = parseInt(user.total || 0)
+   const historico = Array.isArray(user.historico) ? user.historico : []
    let utilizadores = obterUtilizadores().filter(u => u.id != id);
    const pontosN = pontos + 1;
-   const totalN = parseInt(total) +1;
-    if(acertou){
-      const editedUser = new User(id, name, email, password, tipo, percurso,pontosN,totalN, historico)
-    utilizadores.push(editedUser);
-    salvarUtilizadores(utilizadores);
-    localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
-    } else {
-      const editedUser = new User(id, name, email, password, tipo, percurso,pontos,totalN, historico)
-    utilizadores.push(editedUser);
-    salvarUtilizadores(utilizadores);
-    localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
-    }
+   const totalN = total + 1;
+   if(acertou){
+     const editedUser = new User(id, name, email, password, tipo, percurso, pontosN, totalN, historico)
+     utilizadores.push(editedUser);
+     salvarUtilizadores(utilizadores);
+     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
+   } else {
+     const editedUser = new User(id, name, email, password, tipo, percurso, pontos, totalN, historico)
+     utilizadores.push(editedUser);
+     salvarUtilizadores(utilizadores);
+     localStorage.setItem("loggedInUser", JSON.stringify(editedUser));
+   }
 }
 
 export let getPoints = () => {
-const user = JSON.parse(localStorage.getItem("loggedInUser"))
-const total = user.pontos
-return total
+  const user = JSON.parse(localStorage.getItem("loggedInUser"))
+  return user ? (user.pontos || 0) : 0
 }
 

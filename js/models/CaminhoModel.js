@@ -14,12 +14,15 @@ export let nDias = (transporte, distancia) => {
 };
 
 export async function mostrarDetalhes(caminhoId) {
+  if (!caminhoId || isNaN(parseInt(caminhoId))) {
+    return null;
+  }
   try {
     const res = await fetch(`http://localhost:3000/caminhos/${parseInt(caminhoId)}`);
 
     if (!res.ok) {
-      console.error(`ID não encontrado: ${caminhoId}`);
-      return null; // important!
+      console.warn(`ID não encontrado: ${caminhoId}`);
+      return null;
     }
      let caminho;
     try {

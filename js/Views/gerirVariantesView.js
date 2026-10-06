@@ -10,21 +10,22 @@ const guardarAddVarianteBtn = document.getElementById('guardarAddVarianteBtn');
 let carregarVariantes = async () => {
     etapasBody.innerHTML = '';
     const caminhos = await carregarCaminhos();
+    if (!caminhos) return;
     for(let caminho of caminhos){
         if(caminho.variantes){
         caminho.variantes.forEach(v => {
             let row = `
             <tr>
-            <td>${v.id}</td>
+            <td><strong>${v.id}</strong></td>
             <td>${v.nome}</td>
             <td>${v.descricao}</td>
-            <td>${v.distancia}</td>
+            <td><span class="badge bg-light text-dark">${v.distancia}</span></td>
             <td>
-                <button class="btn btn-warning btn-sm me-2" onclick="abrirformulárioEdit(${v.id}, '${v.nome}', '${v.descricao}', '${v.distancia}')">✏️</button>
-                <button class="btn btn-danger btn-sm" id="deleteVarianteBtn" onclick="deleteVarianteView(${v.id}, '${v.nome}')">❌</button>
+                <button class="btn btn-outline-primary btn-sm me-1" onclick="abrirformulárioEdit(${v.id}, '${v.nome}', '${v.descricao}', '${v.distancia}')"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-outline-danger btn-sm" id="deleteVarianteBtn" onclick="deleteVarianteView(${v.id}, '${v.nome}')"><i class="fas fa-trash"></i></button>
             </td>
             </tr>
-            `
+            `;
             
             etapasBody.innerHTML += row;
         }); 
@@ -32,8 +33,14 @@ let carregarVariantes = async () => {
     }
 }
 document.addEventListener('DOMContentLoaded', async () => {
+    const logOutBtn = document.getElementById('logOut');
+    if (logOutBtn) {
+        logOutBtn.addEventListener('click', () => {
+            localStorage.removeItem("loggedInUser");
+        });
+    }
     await carregarVariantes();
-})
+});
 
 let abrirformulárioEdit = (id, nome, descricao, distancia) => {
     fecharFormulário()

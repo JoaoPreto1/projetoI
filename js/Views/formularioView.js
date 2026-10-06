@@ -9,10 +9,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
     
             if (user) {
-                
                 loginButton.outerHTML = `
                     <a id="profileIcon" class="nav-link" href="perfil.html">
-                        <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
+                        <i class="fas fa-user-circle me-1"></i> Perfil
                     </a>
                 `;
             }
@@ -20,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           });
 let carregarLocaisPartida = async () => {
   const caminhos = await carregarCaminhos();
+  if (!caminhos) return;
   for(let i = 0; i < caminhos.length; i++){
     caminhos[i].localPartida;
     let row = `
@@ -32,8 +32,14 @@ let carregarLocaisPartida = async () => {
 localPartida.addEventListener('change', async (e) => {
   destino.innerHTML = '';
   nivelDificuldade.innerHTML = '';
-  const selectedValue = await e.target.value;
+  const selectedValue = e.target.value;
+  if (!selectedValue) {
+    destino.innerHTML = '<option value="">Selecione...</option><option value="Santiago de Compostela">Santiago de Compostela</option><option value="Fisterra">Fisterra</option>';
+    nivelDificuldade.innerHTML = '<option value="">Selecione...</option><option value="Fácil">Fácil</option><option value="Moderado">Moderado</option><option value="Difícil">Difícil</option>';
+    return;
+  }
   const caminho = await mostrarDetalhes(selectedValue);
+  if (!caminho) return;
 
   if(caminho.localPartida == 'Santiago de Compostela'){
     let rows = `

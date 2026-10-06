@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (user) {
         loginButton.outerHTML = `
             <a id="profileIcon" class="nav-link" href="perfil.html">
-                <i style="width: 60px; height: 35px; border-radius: 50%;" class="fab">&#xf368 Perfil</i>
+                <i class="fas fa-user-circle me-1"></i> Perfil
             </a>
         `;
     }
@@ -19,9 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
 let CarregarCaminhosView = async () => {
     const Caminhos = await carregarCaminhos();
     const container = document.getElementById("caminhosContainer");
+    if (!container || !Caminhos) return;
     container.innerHTML = "";
 
     Caminhos.forEach(c => {
+        const descPreview = Array.isArray(c.descricao) ? c.descricao[0] : c.descricao;
         const card = `
             <div class="col-md-6 col-lg-4">
                 <div class="card caminho-card h-100 d-flex flex-column justify-content-between">
@@ -31,10 +33,10 @@ let CarregarCaminhosView = async () => {
                             <li><strong>Distância:</strong> ${c.distancia}</li>
                             <li><strong>Dificuldade:</strong> ${c.dificuldade}</li>
                         </ul>
-                        <p class="card-text">${c.descricao[0]}</p>
+                        <p class="card-text">${descPreview}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="#" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
+                        <a href="javascript:void(0)" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
                     </div>
                 </div>
             </div>
@@ -46,23 +48,28 @@ let CarregarCaminhosView = async () => {
 let mostrarDetalhesView = async (id) => {
     try {
         let caminho = await mostrarDetalhes(id);
+        if (!caminho) return;
 
         document.getElementById("detalhesModalLabel").innerText = caminho.nome;
 
-        let textinho = caminho.descricao[1].indexOf('.')
-        let textinhoPequeno = caminho.descricao[1].substring(0, textinho + 1)
+        const fullDesc = Array.isArray(caminho.descricao) ? (caminho.descricao[1] || caminho.descricao[0] || "") : caminho.descricao;
+        let textinho = fullDesc.indexOf('.');
+        let textinhoPequeno = textinho !== -1 ? fullDesc.substring(0, textinho + 1) : fullDesc;
+        
         document.getElementById("detalhesDescricao").innerHTML = `
             <p style="color: #212529"><strong>Distância:</strong> ${caminho.distancia}</p>
             <p style="color: #212529"><strong>Dificuldade:</strong> ${caminho.dificuldade}</p>
-            <p style="color:black" id="antesVerMais"><strong>Descrição:</strong> ${textinhoPequeno} <span style="color:blue; text-decoration:none; cursor: pointer;" id="verMais">ver mais...</span></p>
+            <p style="color:black" id="antesVerMais"><strong>Descrição:</strong> ${textinhoPequeno} ${textinho !== -1 ? '<span style="color:blue; text-decoration:none; cursor: pointer;" id="verMais">ver mais...</span>' : ''}</p>
         `;
         const antesVerMais = document.getElementById('antesVerMais');
         const verMais = document.getElementById('verMais');
 
-        verMais.addEventListener('click', async () => {
-            verMais.style.display = 'none';
-            antesVerMais.innerHTML = `<strong>Descrição:</strong> ${caminho.descricao[1]}`
-        })
+        if (verMais) {
+            verMais.addEventListener('click', async () => {
+                verMais.style.display = 'none';
+                antesVerMais.innerHTML = `<strong>Descrição:</strong> ${fullDesc}`;
+            });
+        }
 
         document.getElementById("variantesContainer").innerHTML = `
             <div class="d-flex justify-content-between mt-3">

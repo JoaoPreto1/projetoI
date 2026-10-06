@@ -29,8 +29,8 @@ let carregarUtilizadoresView = async () => {
         <td>${u.pontos}</td>
         <td>${u.total}</td>
         <td>
-        <button class="btn btn-warning btn-sm me-2" onclick="abrirformulárioEdit(${u.id}, '${u.nome}', '${u.email}','${u.password}', '${u.tipo}', '${u.percurso}', '${u.pontos}', '${u.total}')">✏️</button>
-        <button class="btn btn-danger btn-sm" id="deleteUserBtn" onclick="deleteUser(${u.id})">❌</button>
+        <button class="btn btn-outline-primary btn-sm me-1" onclick="abrirformulárioEdit(${u.id}, '${u.nome}', '${u.email}','${u.password}', '${u.tipo}', '${u.percurso}', '${u.pontos}', '${u.total}')"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-outline-danger btn-sm" id="deleteUserBtn" onclick="deleteUser(${u.id})"><i class="fas fa-trash"></i></button>
         </td>
         `;
         tbody.appendChild(tr);

@@ -5,197 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre - Caminhos de Santiago</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://kit.fontawesome.com/kit.js"></script>
-
-    
-    <style>
-         body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f7fa;
-    padding-top: 100px; 
-}
-
-        
-        .navbar {
-    background-color: #004c97;
-    padding: 15px 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    top: 0;
-}
-
-.navbar-brand {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.navbar-nav .nav-link {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #fff;
-    margin-right: 20px;
-    transition: 0.3s ease-in-out;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #ffcc00 !important;
-    text-decoration: underline;
-}
-
-.navbar-toggler {
-    border: none;
-    background-color: #ffcc00;
-}
-
-.navbar-toggler-icon {
-    background-color: #004c97;
-}
-        .card {
-            border: none;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        .card img {
-            border-radius: 10px 10px 0 0;
-            height: 200px;
-            object-fit: cover;
-        }
-        .card-body {
-            text-align: center;
-        }
-        .card-title {
-            color: #004c97;
-            font-weight: bold;
-        }
-        .info-section {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-footer {
-    background-color: #004c97;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
-    font-size: 1rem;
-}
-
-footer a {
-    color: #ffcc00;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-        
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-   <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="home.html">Caminhos de Santiago</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="home.html">Início</a></li>
-        <li class="nav-item"><a class="nav-link" href="explorar.html">Explorar Caminhos</a></li>
-        <li class="nav-item"><a class="nav-link" href="formulario.html">Planear Caminho</a></li>
-        <li class="nav-item"><a class="nav-link" href="gaming.html">Conhecer</a></li>
-        <li class="nav-item"><a class="nav-link" href="sobre.html" id="paginaAtiva">Sobre</a></li>
-        <li class="nav-item">
-          <a id="loginButton" class="btn btn-light text-primary ms-3" href="login.html">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<body style="padding-top: 86px;">
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">Caminhos de Santiago</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="explorar.html">Explorar Caminhos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="formulario.html">Planear Caminho</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gaming.html">Conhecer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre.html" id="paginaAtiva">Sobre</a></li>
+                    <li class="nav-item">
+                        <a id="loginButton" class="btn btn-light text-primary ms-lg-3 mt-2 mt-lg-0" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <div class="container">
-       <h2 class="text-center text-primary display-5 fw-bold mb-5">Os Caminhos de Santiago</h2>
-        <p class="text-center">O Caminho de Santiago é uma das peregrinações mais famosas do mundo, levando peregrinos de diferentes lugares até a Catedral de Santiago de Compostela, na Espanha.</p>
-        
-        <div class="row">
+    <header class="py-5 bg-white border-bottom shadow-xs mb-4">
+        <div class="container text-center">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2">História & Tradição</span>
+            <h1 class="display-5 fw-bold mb-3">Os Caminhos de Santiago</h1>
+            <p class="text-muted lead mx-auto" style="max-width: 720px;">
+                Uma das peregrinações mais antigas e célebres do mundo, unindo viajantes de todas as origens até à lendária Catedral de Santiago de Compostela.
+            </p>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row g-4 mb-5">
             <div class="col-md-4">
-                <div class="card">
-                    <img src="https://tse4.mm.bing.net/th?id=OIP.lDiU6ZAXJbqqsXzo_NLBoQHaEK&pid=Api" class="card-img-top" alt="Caminho Francês">
-                    <div class="card-body">
-                        <h5 class="card-title">Caminho Francês</h5>
-                        <p class="card-text">Começa em Saint-Jean-Pied-de-Port, na França, passando por Pamplona, Burgos e León.</p>
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.lDiU6ZAXJbqqsXzo_NLBoQHaEK&pid=Api" class="card-img-top" alt="Caminho Francês" style="height: 220px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="card-title fw-bold">Caminho Francês</h4>
+                        <p class="card-text text-muted">Começa em Saint-Jean-Pied-de-Port, na França, passando por Pamplona, Burgos e León.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
-                    <img src="https://tse2.mm.bing.net/th?id=OIP.TJSGKXKNN4gN3ZPgFd91GgHaNo&pid=Api" class="card-img-top" alt="Caminho Português">
-                    <div class="card-body">
-                        <h5 class="card-title">Caminho Português</h5>
-                        <p class="card-text">Parte de Lisboa ou Porto, atravessando Coimbra e Valença antes de chegar a Santiago.</p>
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.TJSGKXKNN4gN3ZPgFd91GgHaNo&pid=Api" class="card-img-top" alt="Caminho Português" style="height: 220px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="card-title fw-bold">Caminho Português</h4>
+                        <p class="card-text text-muted">Parte de Lisboa ou Porto, atravessando Coimbra e Valença antes de cruzar a fronteira até Santiago.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
-                    <img src="https://tse4.mm.bing.net/th?id=OIP.7bOFJ1KY3dPaVxwSmKFXFAHaEK&pid=Api" class="card-img-top" alt="Caminho do Norte">
-                    <div class="card-body">
-                        <h5 class="card-title">Caminho do Norte</h5>
-                        <p class="card-text">Segue pela costa norte da Espanha, passando por San Sebastián, Bilbao e Santander.</p>
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.7bOFJ1KY3dPaVxwSmKFXFAHaEK&pid=Api" class="card-img-top" alt="Caminho do Norte" style="height: 220px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="card-title fw-bold">Caminho do Norte</h4>
+                        <p class="card-text text-muted">Segue pela deslumbrante costa norte da Espanha, passando por San Sebastián, Bilbao e Santander.</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="info-section">
-            <h3 class="text-primary">História e Curiosidades</h3>
-            <p>O Caminho de Santiago tem raízes medievais e foi percorrido por milhões de peregrinos ao longo dos séculos. Seu símbolo icônico é a concha de vieira, utilizada pelos peregrinos como guia e lembrança da jornada.</p>
+        <div class="row g-4 mb-4">
+            <div class="col-lg-6">
+                <div class="card p-4 p-md-5 border-0 shadow-sm h-100" style="border-radius: 16px;">
+                    <h3 class="fw-bold mb-3" style="color: var(--primary);"><i class="fas fa-landmark me-2 text-primary"></i>História e Curiosidades</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        O Caminho de Santiago tem profundas raízes medievais e foi percorrido por milhões de peregrinos ao longo dos séculos. O seu símbolo icónico é a concha de vieira, utilizada pelos peregrinos como bússola espiritual, guia de trilho e lembrança da jornada transformadora.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card p-4 p-md-5 border-0 shadow-sm h-100" style="border-radius: 16px;">
+                    <h3 class="fw-bold mb-3" style="color: var(--primary);"><i class="fas fa-heartbeat me-2 text-danger"></i>Cuidados e Dicas</h3>
+                    <ul class="text-muted ps-3 mb-0" style="line-height: 1.8;">
+                        <li class="mb-2">Planeie bem a sua viagem, considerando a sua condição física e as distâncias diárias.</li>
+                        <li class="mb-2">Use calçado confortável e respirável para evitar bolhas e desconforto nos pés.</li>
+                        <li class="mb-2">Mantenha-se hidratado constantemente e leve lanches nutritivos para cada etapa.</li>
+                        <li>Respeite o ritmo natural do seu corpo e faça pausas sempre que necessário.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        
-        <div class="info-section">
-            <h3 class="text-primary">Cuidados e Dicas</h3>
-            <ul>
-                <li>Planeje bem sua viagem, considerando sua condição física e distâncias diárias.</li>
-                <li>Use calçados confortáveis e resistentes para evitar bolhas e dores nos pés.</li>
-                <li>Mantenha-se hidratado e leve alimentos leves para o caminho.</li>
-                <li>Respeite os limites do seu corpo e faça pausas quando necessário.</li>
-            </ul>
-        </div>
-    </div>
+    </main>
     
     <footer>
         <p>&copy; 2025 Caminhos de Santiago | <a href="sobre.html">Saiba mais</a></p>
     </footer>
-    
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
            const loginButton = document.getElementById("loginButton");
            const user = JSON.parse(localStorage.getItem("loggedInUser"));
    
-           if (user) {
-               
+           if (user && loginButton) {
                loginButton.outerHTML = `
                    <a id="profileIcon" class="nav-link" href="perfil.html">
-                       <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
+                       <i class="fas fa-user-circle me-1"></i> Perfil
                    </a>
                `;
            }

@@ -11,26 +11,22 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   const loginButton = document.getElementById("loginButton");    
-    if (user) {
-      loginButton.outerHTML = `
-        <a id="profileIcon" class="nav-link" href="perfil.html">
-            <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab" id="paginaAtiva">&#xf368 Perfil</i>
-        </a>
-      `;
-    }
-
-  
-  document.getElementById("userName").innerText = user.nome;
-  document.getElementById("userEmail").innerText = user.email;
-  if(await hitRate() == 'NaN%'){
-    document.getElementById("userRate").innerText = `Taxa de acerto: 0%`;
-  } else {
-    document.getElementById("userRate").innerText = `Taxa de acerto: ${await hitRate()}`;
+  if (user && loginButton) {
+    loginButton.outerHTML = `
+      <a id="profileIcon" class="nav-link" href="perfil.html">
+          <i class="fas fa-user-circle me-1"></i> Perfil
+      </a>
+    `;
   }
 
-  const historico = user.historico;
-  if(historico.length == 0 || !historico){
-    let row = '<li>Sem caminhadas registadas.</li>'
+  document.getElementById("userName").innerText = user.nome || "Utilizador";
+  document.getElementById("userEmail").innerText = user.email || "";
+  const rateVal = await hitRate();
+  document.getElementById("userRate").innerText = `Taxa de acerto: ${rateVal === 'NaN%' ? '0%' : rateVal}`;
+
+  const historico = Array.isArray(user.historico) ? user.historico : [];
+  if (historico.length === 0) {
+    let row = '<li class="text-muted">Sem caminhadas registadas.</li>'
     historicoList.innerHTML = row;
   } else {
     for(let caminho of historico){

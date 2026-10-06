@@ -3,134 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Painel do Administrador</title>
+  <title>Painel do Administrador - Caminhos de Santiago</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f1f4f8;
-      padding-top: 90px;
+      background-color: var(--bg-main);
+      padding-top: 86px;
     }
 
-    .navbar {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .admin-container {
-      max-width: 700px;
-      margin: auto;
+    .admin-card {
       background-color: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: #004085;
-      font-weight: bold;
-      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
     }
 
     .btn-admin {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px;
+      justify-content: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
       font-size: 1.1rem;
+      font-weight: 700;
       width: 100%;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-admin i {
-      font-size: 1.3rem;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-xs);
+      transition: all var(--transition-fast);
+      text-decoration: none;
     }
 
     .btn-admin:hover {
-      transform: scale(1.02);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
-    .top-buttons {
-      position: fixed;
-      top: 15px;
-      right: 15px;
+    .btn-admin i {
+      font-size: 1.5rem;
+      width: 48px;
+      height: 48px;
       display: flex;
-      gap: 10px;
-      z-index: 1050;
-    }
-
-    .top-buttons button {
-      padding: 8px 16px;
-      font-size: 0.95rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      color: #fff;
-    }
-
-    #logoutButton {
-      background-color: #dc3545;
-    }
-
-    #logoutButton:hover {
-      background-color: #bd2130;
-    }
-
-    #backButton {
-      background-color: #007bff;
-    }
-
-    #backButton:hover {
-      background-color: #0056b3;
-    }
-
-    @media (max-width: 576px) {
-      .btn-admin {
-        font-size: 1rem;
-        padding: 12px;
-      }
-
-      .top-buttons {
-        flex-direction: column;
-        right: 10px;
-      }
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Painel do Administrador</a>
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="admin.html">Painel de Controlo</a>
+      <div class="d-flex gap-2">
+        <button id="backButton" class="btn btn-light btn-sm text-primary fw-semibold px-3">
+          <i class="fas fa-home me-1"></i> Ir para o Site
+        </button>
+        <button id="logoutButton" class="btn btn-outline-light btn-sm fw-semibold px-3">
+          <i class="fas fa-sign-out-alt me-1"></i> Terminar Sessão
+        </button>
+      </div>
     </div>
   </nav>
 
-  <div class="top-buttons">
-    <button id="backButton"><i class="fas fa-arrow-left"></i> Voltar</button>
-    <button id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</button>
-  </div>
+  <main class="container my-5" style="max-width: 760px;">
+    <div class="admin-card text-center">
+      <div class="d-inline-flex align-items-center justify-content-center p-3 rounded-circle bg-primary bg-opacity-10 mb-3" style="width: 72px; height: 72px;">
+        <i class="fas fa-user-shield fa-2x text-primary"></i>
+      </div>
+      <h2 class="fw-bold mb-2">Administração Central</h2>
+      <p class="text-muted mb-4">Selecione uma das opções abaixo para gerir os recursos da plataforma.</p>
 
-  <div class="admin-container mt-4 text-center">
-    <h2><i class="fas fa-user-shield me-2"></i>Bem-vindo, Administrador</h2>
+      <div class="mt-4 text-start">
+        <a href="gerir_caminhos.html" class="btn-admin bg-white text-dark">
+          <i class="fas fa-route bg-primary bg-opacity-10 text-primary"></i>
+          <div>
+            <div class="fw-bold">Gerir Caminhos</div>
+            <div class="text-muted small fw-normal">Adicione, altere itinerários, coordenadas e descrições</div>
+          </div>
+        </a>
 
-    <a href="gerir_caminhos.html" class="btn btn-primary btn-admin">
-      <i class="fas fa-route"></i> Gerir Caminhos
-    </a>
+        <a href="gerir_utilizadores.html" class="btn-admin bg-white text-dark">
+          <i class="fas fa-users-cog bg-warning bg-opacity-25 text-warning"></i>
+          <div>
+            <div class="fw-bold">Gerir Utilizadores</div>
+            <div class="text-muted small fw-normal">Consulte contas registadas, níveis de acesso e histórico</div>
+          </div>
+        </a>
 
-    <a href="gerir_utilizadores.html" class="btn btn-warning btn-admin text-dark">
-      <i class="fas fa-users-cog"></i> Gerir Utilizadores
-    </a>
-
-    <a href="gerir_variantes.html" class="btn btn-success btn-admin">
-      <i class="fas fa-map-marked-alt"></i> Gerir Variantes
-    </a>
-  </div>
+        <a href="gerir_variantes.html" class="btn-admin bg-white text-dark">
+          <i class="fas fa-map-marked-alt bg-success bg-opacity-10 text-success"></i>
+          <div>
+            <div class="fw-bold">Gerir Variantes</div>
+            <div class="text-muted small fw-normal">Configure ramificações e rotas alternativas aos percursos</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
 
   <script src="../js/Views/adminView.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

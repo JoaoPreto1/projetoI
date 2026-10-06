@@ -8,26 +8,28 @@ export let randomNumb = async(min, max) => {
 export let hitRate = async () => {
     const pontos = await getLoggedInPoints()
     const total = await getLoggedInTotal()
-    const hitRate = 100 * parseInt(pontos) / parseInt(total);
-    return parseInt(hitRate) + '%'
+    if (!total || parseInt(total) === 0) return '0%'
+    const rate = (100 * parseInt(pontos || 0)) / parseInt(total);
+    return isNaN(rate) ? '0%' : Math.round(rate) + '%'
 }
 
 export let hitRateLeaderBoard = async (pontos, total) => {
-    const hitRate = 100 * parseInt(pontos) / parseInt(total);
-    return parseInt(hitRate) + '%'
+    if (!total || parseInt(total) === 0) return '0%'
+    const rate = (100 * parseInt(pontos || 0)) / parseInt(total);
+    return isNaN(rate) ? '0%' : Math.round(rate) + '%'
 }
 
 export let getImage = async () => {
     let res = await fetch("http://localhost:3000/gamificacao")
     let images = await res.json();
-    let decider = randomNumb(0,2);
+    let decider = await randomNumb(0,2);
     const myImg = images.find(img => parseInt(img.id) == decider)
-    return myImg
+    return myImg || images[0]
 }
 
 export let calculateImages = async () => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    let percurso = user.percurso
+    let percurso = user ? user.percurso : "Ainda por escolher"
     let res = await fetch('http://localhost:3000/gamificacao')
     let images = await res.json();
     let decider;
@@ -37,7 +39,7 @@ export let calculateImages = async () => {
         case "Ainda por escolher" : 
             decider = await randomNumb(0, max);
             myImg = await images.find(img => parseInt(img.id) == decider)
-            return myImg || null;
+            return myImg || images[0];
         case "Caminho Francês" : 
             decider = await randomNumb(3, 14)
             myImg = await images.find(img => parseInt(img.id) == decider)
@@ -103,7 +105,9 @@ export let calculateImages = async () => {
             myImg = await images.find(img => parseInt(img.id) == decider)
             return myImg || null;    
         default: 
-            return null
+            decider = await randomNumb(0, max);
+            myImg = await images.find(img => parseInt(img.id) == decider);
+            return myImg || images[0];
     }
 }
 

@@ -1,36 +1,34 @@
-        const myCheckbox = document.getElementById('TermosECondiçoes');
+document.addEventListener("DOMContentLoaded", function () {
+    const myCheckbox = document.getElementById('TermosECondiçoes');
+    const myRegisterBtn = document.getElementById('myRegisterBtn');
 
-        myCheckbox.addEventListener('click', () => {
-            if (myCheckbox.checked){
-                document.getElementById('myRegisterBtn').disabled = false;
-            } else {
-                document.getElementById('myRegisterBtn').disabled = true;
-            }
-        })
+    if (myCheckbox && myRegisterBtn) {
+        myCheckbox.addEventListener('change', () => {
+            myRegisterBtn.disabled = !myCheckbox.checked;
+        });
+    }
 
-        document.addEventListener("DOMContentLoaded", function () {
-        let users = JSON.parse(localStorage.getItem('users')) || [];
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const adminExists = users.find(user => user.id == 1);
 
-        const adminExists = users.find(user => user.id == 1);
+    if (!adminExists) {
+        users.push({
+            id : 1,
+            nome: "admin",
+            email: "admin@gmail.com",
+            password: "admin123",
+            tipo: "admin",
+            percurso : "Ainda por escolher",
+            pontos : 0,
+            total: 0,
+            historico : []
+        });
+        localStorage.setItem('users', JSON.stringify(users));
+    }
 
-        if (!adminExists) {
-            
-            users.push({
-                id : 1,
-                nome: "admin",
-                email: "admin@gmail.com",
-                password: "admin123",
-                tipo: "admin",
-                percurso : "Ainda por escolher",
-                pontos : 0,
-                total: 0,
-            });
-
-            localStorage.setItem('users', JSON.stringify(users));
-        }
-    });
-
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
+    const regForm = document.getElementById('registerForm');
+    if (regForm) {
+        regForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
         const nome = document.getElementById('nome').value;
@@ -86,4 +84,6 @@
 
         
         window.location.href = 'login.html';
-    });
+        });
+    }
+});

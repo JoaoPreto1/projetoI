@@ -3,7 +3,10 @@ function initHomePage() {
   fetch("../frontend/home.html")
     .then(response => response.text())
     .then(html => {
-      document.getElementById("app").innerHTML = html;
+      const appEl = document.getElementById("app");
+      if (appEl) {
+        appEl.innerHTML = html;
+      }
 
       const loader = document.querySelector(".loader-wrapper");
       loader.style.transition = "opacity 0.5s ease";
@@ -16,7 +19,7 @@ function initHomePage() {
       if (user && loginButton) {
         loginButton.outerHTML = `
           <a id="profileIcon" class="nav-link" href="perfil.html">
-            <i style="width: 60px; height: 35px; border-radius: 50%;" loading="lazy" class="fab">&#xf368 Perfil</i>
+            <i class="fas fa-user-circle me-1"></i> Perfil
           </a>`;
       }
     })

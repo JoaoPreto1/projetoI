@@ -1,0 +1,17 @@
+{
+  "name": "projetoi",
+  "version": "1.0.0",
+  "description": "Caminhos de Santiago",
+  "main": "index.html",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "json-server --watch db.json --port 3000",
+    "client": "live-server --port=5500 --open=frontend/home.html --cors"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "json-server": "^0.17.4",
+    "live-server": "^1.2.2"
+  }
+}
