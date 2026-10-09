@@ -43,34 +43,53 @@
                 Uma das peregrinações mais antigas e célebres do mundo, unindo viajantes de todas as origens até à lendária Catedral de Santiago de Compostela.
             </p>
         </div>
-    </header>
-
-    <main class="container my-5">
+    <    <main class="container my-5">
         <div class="row g-4 mb-5">
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="https://tse4.mm.bing.net/th?id=OIP.lDiU6ZAXJbqqsXzo_NLBoQHaEK&pid=Api" class="card-img-top" alt="Caminho Francês" style="height: 220px; object-fit: cover;">
+                <div class="card h-100 shadow-sm border-0 camino-card" style="border-radius: 18px;">
+                    <div class="position-relative overflow-hidden" style="border-radius: 18px 18px 0 0;">
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.lDiU6ZAXJbqqsXzo_NLBoQHaEK&pid=Api" class="card-img-top" alt="Caminho Francês" style="height: 220px; object-fit: cover; transition: transform 0.3s ease;">
+                        <span class="position-absolute top-0 end-0 m-3 badge bg-primary px-3 py-1 rounded-pill">Mais Popular</span>
+                    </div>
                     <div class="card-body p-4 text-center">
-                        <h4 class="card-title fw-bold">Caminho Francês</h4>
+                        <h4 class="card-title fw-bold" style="color: var(--primary);">Caminho Francês</h4>
                         <p class="card-text text-muted">Começa em Saint-Jean-Pied-de-Port, na França, passando por Pamplona, Burgos e León.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <span class="badge bg-light text-dark border">~780 km</span>
+                            <span class="badge badge-moderado">Moderado</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="https://tse2.mm.bing.net/th?id=OIP.TJSGKXKNN4gN3ZPgFd91GgHaNo&pid=Api" class="card-img-top" alt="Caminho Português" style="height: 220px; object-fit: cover;">
+                <div class="card h-100 shadow-sm border-0 camino-card" style="border-radius: 18px;">
+                    <div class="position-relative overflow-hidden" style="border-radius: 18px 18px 0 0;">
+                        <img src="https://tse2.mm.bing.net/th?id=OIP.TJSGKXKNN4gN3ZPgFd91GgHaNo&pid=Api" class="card-img-top" alt="Caminho Português" style="height: 220px; object-fit: cover; transition: transform 0.3s ease;">
+                        <span class="position-absolute top-0 end-0 m-3 badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold">Mais Histórico</span>
+                    </div>
                     <div class="card-body p-4 text-center">
-                        <h4 class="card-title fw-bold">Caminho Português</h4>
+                        <h4 class="card-title fw-bold" style="color: var(--primary);">Caminho Português</h4>
                         <p class="card-text text-muted">Parte de Lisboa ou Porto, atravessando Coimbra e Valença antes de cruzar a fronteira até Santiago.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <span class="badge bg-light text-dark border">~240 km (Porto)</span>
+                            <span class="badge badge-facil">Fácil</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="https://tse4.mm.bing.net/th?id=OIP.7bOFJ1KY3dPaVxwSmKFXFAHaEK&pid=Api" class="card-img-top" alt="Caminho do Norte" style="height: 220px; object-fit: cover;">
+                <div class="card h-100 shadow-sm border-0 camino-card" style="border-radius: 18px;">
+                    <div class="position-relative overflow-hidden" style="border-radius: 18px 18px 0 0;">
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.7bOFJ1KY3dPaVxwSmKFXFAHaEK&pid=Api" class="card-img-top" alt="Caminho do Norte" style="height: 220px; object-fit: cover; transition: transform 0.3s ease;">
+                        <span class="position-absolute top-0 end-0 m-3 badge bg-success px-3 py-1 rounded-pill">Costeiro</span>
+                    </div>
                     <div class="card-body p-4 text-center">
-                        <h4 class="card-title fw-bold">Caminho do Norte</h4>
+                        <h4 class="card-title fw-bold" style="color: var(--primary);">Caminho do Norte</h4>
                         <p class="card-text text-muted">Segue pela deslumbrante costa norte da Espanha, passando por San Sebastián, Bilbao e Santander.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <span class="badge bg-light text-dark border">~820 km</span>
+                            <span class="badge badge-dificil">Exigente</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,7 +97,7 @@
         
         <div class="row g-4 mb-4">
             <div class="col-lg-6">
-                <div class="card p-4 p-md-5 border-0 shadow-sm h-100" style="border-radius: 16px;">
+                <div class="card p-4 p-md-5 border-0 shadow-sm h-100" style="border-radius: 20px;">
                     <h3 class="fw-bold mb-3" style="color: var(--primary);"><i class="fas fa-landmark me-2 text-primary"></i>História e Curiosidades</h3>
                     <p class="text-muted" style="line-height: 1.8;">
                         O Caminho de Santiago tem profundas raízes medievais e foi percorrido por milhões de peregrinos ao longo dos séculos. O seu símbolo icónico é a concha de vieira, utilizada pelos peregrinos como bússola espiritual, guia de trilho e lembrança da jornada transformadora.
@@ -86,7 +105,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card p-4 p-md-5 border-0 shadow-sm h-100" style="border-radius: 16px;">
+                <div class="card p-4 p-md-5 border-0 shadow-sm h-100" style="border-radius: 20px;">
                     <h3 class="fw-bold mb-3" style="color: var(--primary);"><i class="fas fa-heartbeat me-2 text-danger"></i>Cuidados e Dicas</h3>
                     <ul class="text-muted ps-3 mb-0" style="line-height: 1.8;">
                         <li class="mb-2">Planeie bem a sua viagem, considerando a sua condição física e as distâncias diárias.</li>
@@ -100,7 +119,26 @@
     </main>
     
     <footer>
-        <p>&copy; 2025 Caminhos de Santiago | <a href="sobre.html">Saiba mais</a></p>
+        <div class="container">
+            <div class="row g-4 text-center text-md-start align-items-center">
+                <div class="col-md-6">
+                    <div class="footer-brand justify-content-center justify-content-md-start">Caminhos de Santiago</div>
+                    <p class="text-white-50 small mb-0">Plataforma informativa para apoio aos peregrinos e entusiastas das rotas jacobeias.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-links justify-content-center justify-content-md-end">
+                        <a href="home.html">Início</a>
+                        <a href="explorar.html">Explorar</a>
+                        <a href="formulario.html">Planear</a>
+                        <a href="gaming.html">Desafio</a>
+                        <a href="sobre.html">Sobre</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 Caminhos de Santiago. Todos os direitos reservados. Bom Caminho! 🐚</p>
+            </div>
+        </div>
     </footer>
 
     <script>

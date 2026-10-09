@@ -39,56 +39,144 @@
   
     <header class="hero d-flex align-items-center justify-content-center text-center">
         <div class="container">
+            <span class="hero-badge">
+                <i class="fas fa-compass me-2 text-warning"></i> O Teu Portal de Peregrinação
+            </span>
             <h1 class="display-4 fw-bold">Descubra os Caminhos de Santiago</h1>
-            <p class="lead">Planeje sua peregrinação com os melhores itinerários e dicas exclusivas.</p>
-            <a href="explorar.html" class="btn btn-light btn-lg mt-3">Explorar Caminhos</a>
+            <p class="lead">
+                Planeie a sua jornada através de séculos de tradição, mapas detalhados, variantes autênticas e desafios culturais interativos.
+            </p>
+            <div class="hero-actions">
+                <a href="explorar.html" class="btn btn-accent btn-lg">
+                    <i class="fas fa-map-marked-alt me-1"></i> Explorar Caminhos
+                </a>
+                <a href="formulario.html" class="btn btn-glass-hero btn-lg">
+                    <i class="fas fa-route me-1"></i> Planear Rota
+                </a>
+            </div>
         </div>
     </header>
 
+    <!-- STATS STRIP -->
+    <section class="stats-strip">
+        <div class="container">
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-icon"><i class="fas fa-hiking"></i></span>
+                        <div class="stat-number">9+</div>
+                        <p class="stat-label">Rotas Oficiais</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-icon"><i class="fas fa-map-signs"></i></span>
+                        <div class="stat-number">1200+</div>
+                        <p class="stat-label">km de Trilhos</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-icon"><i class="fas fa-users"></i></span>
+                        <div class="stat-number">300k+</div>
+                        <p class="stat-label">Peregrinos / Ano</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-icon"><i class="fas fa-award"></i></span>
+                        <div class="stat-number">100%</div>
+                        <p class="stat-label">Gamificado & Grátis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main>
-        <section class="sobre container text-center my-5">
-            <h2 class="fw-bold">Sobre o Caminho de Santiago</h2>
-            <p class="text-muted">
-                O Caminho de Santiago é uma peregrinação com diversas rotas que levam a Santiago de Compostela. Nossa plataforma permite que você personalize sua viagem e explore diferentes caminhos.
-            </p>
-            <div class="d-flex justify-content-center">
-                <img src="../videos/PORTO-SANTIAGO.gif" alt="gif da viagem" class="img-fluid rounded-4 shadow">
+        <!-- SOBRE O CAMINHO SECTION (2-COL) -->
+        <section class="container my-5">
+            <div class="card p-4 p-lg-5 border-0 shadow-sm" style="border-radius: 20px;">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6 text-start">
+                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2">
+                            <i class="fas fa-history me-1"></i> Património Mundial
+                        </span>
+                        <h2 class="fw-bold mb-3" style="color: var(--primary);">Milénios de História e Superação</h2>
+                        <p class="text-muted" style="line-height: 1.8;">
+                            O Caminho de Santiago é uma das peregrinações mais célebres do mundo, unindo viajantes de todas as origens até à lendária Catedral de Santiago de Compostela.
+                        </p>
+                        <p class="text-muted" style="line-height: 1.8;">
+                            A nossa plataforma permite explorar itinerários detalhados, descobrir variantes históricas e calcular as etapas necessárias para uma viagem memorável e segura.
+                        </p>
+                        <div class="mt-4">
+                            <a href="sobre.html" class="btn btn-outline-primary fw-semibold">
+                                Saber Mais Sobre as Rotas <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <div class="position-relative d-inline-block">
+                            <img src="../videos/PORTO-SANTIAGO.gif" alt="Mapa animado Porto a Santiago" class="img-fluid rounded-4 shadow" style="max-height: 380px; object-fit: cover; border: 2px solid var(--border-color);">
+                            <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3 px-3 py-1 bg-dark bg-opacity-75 text-white rounded-pill small fw-semibold">
+                                <i class="fas fa-map-pin text-warning me-1"></i> Rota Porto → Santiago
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="sobre container text-center my-5">
-            <h2 class="fw-bold">Gamificação</h2>
-            <p class="text-muted">
-                Teste os seus conhecimentos sobre os monumentos, rotas e história dos Caminhos enquanto acumula pontos no nosso desafio interativo.
-            </p>
-            <a href="gaming.html">
-                <button class="btn btn-primary btn-lg mt-2">Começar Desafio</button>
-            </a>
+        <!-- GAMIFICAÇÃO SECTION -->
+        <section class="container my-5">
+            <div class="card border-0 text-white p-4 p-md-5 position-relative overflow-hidden shadow-md" style="background: linear-gradient(135deg, #0e3d67 0%, #174b78 60%, #b8750d 140%); border-radius: 20px;">
+                <div class="row align-items-center position-relative" style="z-index: 2;">
+                    <div class="col-lg-8 text-center text-lg-start">
+                        <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3">
+                            <i class="fas fa-trophy me-1"></i> Desafio do Peregrino
+                        </span>
+                        <h2 class="fw-bold text-white mb-2">Teste os Seus Conhecimentos</h2>
+                        <p class="text-white-50 mb-4 mb-lg-0 lead" style="font-size: 1.05rem;">
+                            Responda a perguntas sobre monumentos, cidades e lendas dos Caminhos. Acumule pontos no seu perfil e chegue ao topo do ranking comunitário!
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center text-lg-end">
+                        <a href="gaming.html" class="btn btn-accent btn-lg px-4 py-3 shadow">
+                            <i class="fas fa-gamepad me-2"></i> Começar Desafio
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- BENEFÍCIOS SECTION -->
         <section class="beneficios">
             <div class="container">
-                <h2>Benefícios de peregrinar</h2>
-                <div class="row g-4 justify-content-center mt-2">
+                <div class="text-center mb-5">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2">Porquê Percorrer?</span>
+                    <h2 class="fw-bold" style="color: var(--primary);">Benefícios de Peregrinar</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Uma experiência transformadora reconhecida por viajantes de todo o planeta.</p>
+                </div>
+                <div class="row g-4 justify-content-center">
                     <div class="col-md-4">
                         <div class="beneficio-item">
                             <i class="fas fa-hiking"></i>
-                            <h4>Aventura</h4>
-                            <p>Descubra novos horizontes, paisagens únicas e viva experiências memoráveis a cada etapa percorrida.</p>
+                            <h4>Aventura Autêntica</h4>
+                            <p>Descubra novas paisagens, pontes medievais e viva experiências marcantes a cada quilómetro percorrido.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="beneficio-item">
                             <i class="fas fa-spa"></i>
-                            <h4>Bem-estar</h4>
-                            <p>Encontre tranquilidade e reconecte-se com a sua essência ao percorrer os trilhos históricos.</p>
+                            <h4>Bem-Estar & Saúde</h4>
+                            <p>Encontre serenidade, reconecte-se com a natureza e fortaleça o corpo e mente ao ar livre.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="beneficio-item">
-                            <i class="fas fa-heart"></i>
-                            <h4>Espiritualidade</h4>
-                            <p>Uma experiência transformadora para a mente, espírito e corpo ao longo de séculos de tradição.</p>
+                            <i class="fas fa-hands-helping"></i>
+                            <h4>Partilha & Tradição</h4>
+                            <p>Sinta o lendário espírito comunitário e partilhe memórias com peregrinos de todas as partes do mundo.</p>
                         </div>
                     </div>
                 </div>
@@ -97,7 +185,26 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Caminhos de Santiago | <a href="sobre.html">Saiba mais</a></p>
+        <div class="container">
+            <div class="row g-4 text-center text-md-start align-items-center">
+                <div class="col-md-6">
+                    <div class="footer-brand justify-content-center justify-content-md-start">Caminhos de Santiago</div>
+                    <p class="text-white-50 small mb-0">Plataforma informativa para apoio aos peregrinos e entusiastas das rotas jacobeias.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-links justify-content-center justify-content-md-end">
+                        <a href="home.html">Início</a>
+                        <a href="explorar.html">Explorar</a>
+                        <a href="formulario.html">Planear</a>
+                        <a href="gaming.html">Desafio</a>
+                        <a href="sobre.html">Sobre</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 Caminhos de Santiago. Todos os direitos reservados. Bom Caminho! 🐚</p>
+            </div>
+        </div>
     </footer>
 
     <div class="loader-wrapper">

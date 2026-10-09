@@ -24,19 +24,28 @@ let CarregarCaminhosView = async () => {
 
     Caminhos.forEach(c => {
         const descPreview = Array.isArray(c.descricao) ? c.descricao[0] : c.descricao;
+        const diffStr = (c.dificuldade || '').toLowerCase();
+        const diffClass = diffStr.includes('fácil') ? 'badge-facil' 
+                        : (diffStr.includes('médio') || diffStr.includes('moderado')) ? 'badge-moderado' 
+                        : 'badge-dificil';
+
         const card = `
             <div class="col-md-6 col-lg-4">
-                <div class="card caminho-card h-100 d-flex flex-column justify-content-between">
-                    <div class="card-body">
-                        <h5 class="card-title">${c.nome}</h5>
-                        <ul class="list-unstyled card-info">
-                            <li><strong>Distância:</strong> ${c.distancia}</li>
-                            <li><strong>Dificuldade:</strong> ${c.dificuldade}</li>
-                        </ul>
-                        <p class="card-text">${descPreview}</p>
+                <div class="card caminho-card h-100 d-flex flex-column justify-content-between shadow-sm border-0" style="border-radius: 18px;">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3 gap-2">
+                            <h5 class="card-title fw-bold m-0" style="color: var(--primary);">${c.nome}</h5>
+                            <span class="camino-badge ${diffClass} text-nowrap">${c.dificuldade || 'Normal'}</span>
+                        </div>
+                        <div class="mb-3 text-muted small fw-semibold">
+                            <i class="fas fa-map-marker-alt text-danger me-1"></i> ${c.distancia}
+                        </div>
+                        <p class="card-text text-muted" style="line-height: 1.6; font-size: 0.93rem;">${descPreview}</p>
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="javascript:void(0)" class="btn btn-outline-primary w-100" onclick="mostrarDetalhesView(${c.id})">Ver detalhes</a>
+                    <div class="card-footer bg-light bg-opacity-50 border-top p-3 text-center">
+                        <a href="javascript:void(0)" class="btn btn-outline-primary w-100 fw-semibold" onclick="mostrarDetalhesView(${c.id})">
+                            <i class="fas fa-info-circle me-1"></i> Ver detalhes
+                        </a>
                     </div>
                 </div>
             </div>
